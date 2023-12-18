@@ -1,0 +1,9 @@
+pandas
+gbfs-client
+streamlit
+geopandas
+folium
+geopy
+streamlit-folium
+haversine
+openai
