@@ -571,7 +571,8 @@ if st.session_state.AI_ready:
         
     ## Initialize the ai_client with the api_key. If you want to try out the code, you need to imput your own Open AI API key--------------------
 
-    ai_client = OpenAI(api_key="_")
+    ai_key = os.environ.get('OPEN_AI_API_KEY')
+    ai_client = OpenAI(api_key=ai_key)
 
     ## Create the assistant, with the own prompt engineering and gpt-4-1106-preview model to use the retrieval function--------------------
     # This Open AI Assistant API is still in its Beta version
