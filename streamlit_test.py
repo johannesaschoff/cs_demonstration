@@ -178,7 +178,126 @@ if slide == "Slide 1":
 
     """
 elif slide == "Slide 2":
-    highcharts_html = """<Insert your second HTML graph here>"""
+    highcharts_html = """
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Chart with Stacked IDs</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #container {
+        width: 80%;
+        height: 600px;
+    }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        // Define the series data with manual colors
+        var seriesData = [
+            { name: 'Financial Services', data: [536   , 511, 458, 516, 577], stack: 'GB', id: 'FinancialServices', color: '#00B9E4' },
+            { name: 'Financial Services (EU)', data: [1604  ,  1856  ,  2250   , 2336 ,   2219], stack: 'EU', linkedTo: 'FinancialServices', color: '#00B9E4' },
+            { name: 'Construction and Materials', data: [1110,   1283,    1644 ,   1499,    1390], stack: 'EU', id: 'C&M', color: '#A3DBE8' },
+            { name: 'Food and Beverage', data: [0,0,250, 229, 227], stack: 'GB', id: 'F&B', color: '#8FCB9B' },
+            { name: 'Food and Beverage (EU)', data: [1027   , 1443  ,  2073   , 2045   , 1886], stack: 'EU', linkedTo: 'F&B', color: '#8FCB9B' },
+            { name: 'Retail', data: [298    ,345 ,327 ,308 ,300], stack: 'GB', id: 'Retail', color: '#5B9279' },
+            { name: 'Retail (EU)', data: [1129, 1638, 2358, 2672, 2506], stack: 'EU', linkedTo: 'Retail', color: '#5B9279' },
+            { name: 'Industrial Goods and Services', data: [290 ,281 ,0,283 ,369], stack: 'GB', id: 'Support Services', color: '#E0E1DD' },
+            { name: 'Industrial Goods and Services (EU)', data: [1176  ,  1446    ,1907   , 1789    ,1626], stack: 'EU', linkedTo: 'Support Services', color: '#E0E1DD' },
+            { name: 'Mining', data: [217,    253, 253,0,0], stack: 'GB', id: 'Mining', color: '#A9AAA9' },
+            { name: 'Oil and Gas', data: [375   ,385 ,366 ,414 ,369], stack: 'GB', id: 'O&G', color: '#565A5C' },
+            { name: 'Relative Change in Incidents Europe', type: 'spline', yAxis: 1, data: [15270, 18394, 23168, 23567, 22431], tooltip: { valueSuffix: '%' }, id: 'Temperature', color: '#7D9AAA' },
+            { name: 'Relative Change in Incidents United Kingdom', type: 'spline', yAxis: 1, data: [3384, 3500, 3316, 3550, 4001], tooltip: { valueSuffix: '%' }, id: 'EUTemperature', color: '#E32553' }
+        ];
+
+        // Function to normalize data to show relative change from the first value
+        function normalizeData(data) {
+            return data.map((value, index) => {
+                if (index === 0) return 0;
+                return ((value - data[0]) / data[0]) * 100;
+            });
+        }
+
+        // Normalize Temperature and EU Temperature data
+        seriesData.forEach(series => {
+            if (series.id === 'Temperature' || series.id === 'EUTemperature') {
+                series.data = normalizeData(series.data);
+                series.tooltip.valueSuffix = '%'; // Update the tooltip suffix to reflect percentage change
+            }
+        });
+
+        // Render the chart
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column',
+                zooming: {
+                    type: 'xy'
+                }
+            },
+            title: {
+                text: 'Five riskiest sectors in the UK compared to Europe',
+                align: 'center'
+            },
+            subtitle: {
+                text: 'Global ESG risk incidents for companies headquartered in the UK',
+                align: 'center'
+            },
+            xAxis: [{
+                categories: ['2020', '2021', '2022', '2023', '2024'],
+                crosshair: true,
+                labels: {
+                    formatter: function() {
+                        return this.value + '<br><span style="color: #000000;">UK   </span>   <span style="color: #000000;">   EU</span>';
+                    }
+                }
+            }],
+            yAxis: [{ 
+                min: 0,
+                title: {
+                    text: 'Percentage (%)'
+                }
+            }, { 
+                title: {
+                    text: 'Relative Change in Total Incidents'
+                },
+                labels: {
+                    format: '{value}%'
+                },
+                opposite: true
+            }],
+            tooltip: {
+                shared: true,
+                useHTML: true,
+                pointFormatter: function() {
+                    var value = Math.round(this.y); // Round the value to the nearest integer
+                    return '<span style="color:' + this.color + '">' + this.series.name + '</span>: <b>' + value + (this.series.tooltipOptions.valueSuffix || '') + '</b><br/>';
+                }
+            },
+
+            plotOptions: {
+                column: {
+                    stacking: 'percent'
+                }
+            },
+            series: seriesData
+        });
+    </script>
+</body>
+</html>
+
+    """
 elif slide == "Slide 3":
     highcharts_html = """<Insert your third HTML graph here>"""
 
