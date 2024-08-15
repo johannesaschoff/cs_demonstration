@@ -25,7 +25,7 @@ if slide == "Slide 1":
 
     @font-face {
         font-family: 'UnitSlabOT-Bold';
-        src: url('https://raw.githubusercontent.com/your-username/your-repository-name/main/fonts/UnitSlabOT-Bold.otf') format('opentype');
+        src: url('https://github.com/johannesaschoff/cs_demonstration/blob/main/source_code.py') format('opentype');
         font-weight: normal;
         font-style: normal;
     }
