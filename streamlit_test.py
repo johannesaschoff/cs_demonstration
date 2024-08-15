@@ -25,10 +25,11 @@ if slide == "Slide 1":
 
     @font-face {
         font-family: 'UnitSlabOT-Bold';
-        src: url('fonts/UnitSlabOT-Bold.otf') format('opentype');
+        src: url('https://raw.githubusercontent.com/your-username/your-repository-name/main/fonts/UnitSlabOT-Bold.otf') format('opentype');
         font-weight: normal;
         font-style: normal;
-        }
+    }
+
 
     body {
         display: flex;
