@@ -28,8 +28,7 @@ if slide == "Slide 1":
         src: url('fonts/UnitSlabOT-Bold.otf') format('opentype');
         font-weight: normal;
         font-style: normal;
-    
-
+        }
 
     body {
         display: flex;
