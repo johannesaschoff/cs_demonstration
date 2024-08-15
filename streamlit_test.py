@@ -22,11 +22,10 @@ if slide == "Slide 1":
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <style>
+
     @font-face {
         font-family: 'UnitSlabOT-Bold';
-        src: url('fonts/UnitSlabOT-Bold.woff2') format('woff2'),
-             url('fonts/UnitSlabOT-Bold.woff') format('woff'),
-             url('fonts/UnitSlabOT-Bold.otf') format('opentype');
+        src: url('https://raw.githubusercontent.com/your-username/your-repository-name/main/fonts/UnitSlabOT-Bold.otf') format('opentype');
         font-weight: normal;
         font-style: normal;
     }
