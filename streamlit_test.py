@@ -48,10 +48,7 @@ if slide == "Slide 1":
     }
     </style>
 </head>
-<body>
-
-    <p style="font-family: 'UnitSlabOT-Bold';">This text should be in the custom font.</p>
-    
+<body>    
     <div id="container"></div>
     <script>
         // Define the series data with manual colors
