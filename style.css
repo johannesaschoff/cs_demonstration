@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'UnitSlabOT-Bold';
-    src: url('https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/fonts/UnitSlabOT-Bold.otf') format('opentype');
+    src: url('https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/static/UnitSlabOT-Bold.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 html, body, [class*="css"] {
-    font-family: 'UnitSlabOT-Bold', sans-serif; 
+    font-family: 'UnitSlabOT-Bold'; 
     font-size: 18px;
     font-weight: 500;
     color: #091747;
