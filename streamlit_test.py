@@ -25,7 +25,7 @@ if slide == "Slide 1":
 
     @font-face {
         font-family: 'UnitSlabOT-Bold';
-        src: url('https://raw.githubusercontent.com/your-username/your-repository-name/main/fonts/UnitSlabOT-Bold.otf') format('opentype');
+        src: url('https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/fonts/UnitSlabOT-Bold.otf') format('opentype');
         font-weight: normal;
         font-style: normal;
     }
@@ -49,6 +49,9 @@ if slide == "Slide 1":
     </style>
 </head>
 <body>
+
+    <p style="font-family: 'UnitSlabOT-Bold';">This text should be in the custom font.</p>
+    
     <div id="container"></div>
     <script>
         // Define the series data with manual colors
