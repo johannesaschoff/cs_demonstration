@@ -16,7 +16,7 @@ html_content = """
         src: url('/static/UnitSlabOT-Bold.otf') format('opentype');
     }
     body {
-        font-family: 'UnitSlabOT-Bold', sans-serif;
+        font-family: 'UnitSlabOT-Bold';
     }
     </style>
 </head>
