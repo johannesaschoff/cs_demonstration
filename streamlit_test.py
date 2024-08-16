@@ -113,7 +113,7 @@ if slide == "Slide 1":
                 align: 'left',
                 x: 200,
                 style: {
-                    fontFamily: 'UnitSlabOT-Bold',
+                    fontFamily: 'UnitSlabOT',
                     color: '#666',
                     fontWeight: 'normal'
                 }
@@ -123,7 +123,7 @@ if slide == "Slide 1":
                 crosshair: true,
                 labels: {
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold'
+                        fontFamily: 'UnitSlabOT'
                     },
                     formatter: function() {
                         return this.value + '<br><span style="color: #000000;">US   </span>   <span style="color: #000000;">   EU</span>';
@@ -135,7 +135,7 @@ if slide == "Slide 1":
                 title: {
                     text: 'Percentage (%)',
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold'
+                        fontFamily: 'UnitSlabOT'
                     }
                 }
             }, { 
@@ -148,7 +148,7 @@ if slide == "Slide 1":
                 labels: {
                     format: '{value}%',
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold'
+                        fontFamily: 'UnitSlabOT'
                     }
                 },
                 opposite: true
@@ -159,7 +159,7 @@ if slide == "Slide 1":
                 backgroundColor: '#000000',
                 style: {
                     color: '#FFFFFF',
-                    fontFamily: 'UnitSlabOT-Bold'
+                    fontFamily: 'UnitSlabOT'
                 },
                 headerFormat: '<span style="font-size: 10px; color: #FFFFFF;">{point.key}</span><br/>',
                 pointFormatter: function() {
