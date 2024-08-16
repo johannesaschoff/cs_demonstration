@@ -35,7 +35,7 @@ if slide == "Slide 1":
 
     #container {
         width: 100%;
-        height: 600px;
+        height: 400px;
         margin-left: 0;
     }
 
