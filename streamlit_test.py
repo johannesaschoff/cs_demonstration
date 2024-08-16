@@ -42,7 +42,7 @@ if slide == "Slide 1":
         height: 100vh;
         margin: 0;
         padding: 0 50px;
-        font-family: 'UnitSlabOT-Bold', sans-serif;
+        font-family: 'UnitSlabOT', sans-serif;
     }
 
     #container {
