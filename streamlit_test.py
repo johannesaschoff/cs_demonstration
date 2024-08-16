@@ -363,7 +363,7 @@ GUM;GUM;1
 
             legend: {
                 title: {
-                    text: 'Number of risk incidents linked to Indigenous people<br><span style="font-size: 10px;">(Low to High)</span>',
+                    text: 'Number of risk incidents linked to companies in the retail sector<br><span style="font-size: 10px;">(Low to High)</span>',
                     style: {
                         fontWeight: 'bold',
                         fontFamily: 'inherit',
