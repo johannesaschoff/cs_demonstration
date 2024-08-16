@@ -387,7 +387,7 @@ GUM;GUM;1
 
             tooltip: {
                 headerFormat: '', 
-                pointFormat: '<b>{point.name}</b><br>Incidences reported',
+                pointFormat: '<b>{point.name}</b><br>Incidences reported: <b>{point.value}</b>',
                 valueDecimals: 0,
                 style: {
                     fontFamily: 'inherit'
