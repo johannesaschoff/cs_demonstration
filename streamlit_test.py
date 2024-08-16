@@ -17,8 +17,410 @@ st.sidebar.markdown(
 st.sidebar.title("Navigation")
 slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3"])
 
-# Define the HTML for each slide
 if slide == "Slide 1":
+    highcharts_html = """
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Visualization</title>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+    <style>
+        @font-face {
+            font-family: 'UnitOT';
+            src: url('fonts/UnitOT.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'UnitOT';
+        }
+
+        #container {
+            height: 500px;
+            min-width: 310px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #csv {
+            display: none;
+        }
+
+        .highcharts-title {
+            font-family: 'UnitOT';
+            color: #003755;
+            text-align: right; /* Right align the title */
+        }
+
+        .highcharts-subtitle {
+            font-family: 'UnitOT';
+            color: #003755;
+            text-align: right; /* Right align the subtitle */
+        }
+
+        .custom-text {
+            text-align: center;
+            margin-top: 10px;
+            font-family: 'UnitOT';
+            color: #003755;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<pre id="csv">
+Country Name;Country Code;Retail Issue Count
+USA;USA;10719
+JPN;JPN;2839
+DEU;DEU;2399
+CHN;CHN;2132
+FRA;FRA;1830
+NLD;NLD;1768
+KOR;KOR;1758
+GBR;GBR;1584
+AUS;AUS;1053
+SWE;SWE;877
+CAN;CAN;795
+BRA;BRA;789
+ITA;ITA;655
+DNK;DNK;646
+IND;IND;632
+RUS;RUS;580
+ESP;ESP;465
+FIN;FIN;454
+CHE;CHE;448
+NOR;NOR;440
+HKG;HKG;389
+TWN;TWN;355
+SGP;SGP;345
+POL;POL;303
+IDN;IDN;298
+BEL;BEL;292
+MEX;MEX;247
+NZL;NZL;201
+TUR;TUR;200
+AUT;AUT;193
+PHL;PHL;191
+THA;THA;163
+PER;PER;133
+MYS;MYS;128
+IRL;IRL;119
+CHL;CHL;119
+ZAF;ZAF;113
+PRT;PRT;111
+ARG;ARG;102
+LUX;LUX;94
+ARE;ARE;92
+SAU;SAU;84
+UKR;UKR;67
+BGD;BGD;67
+KEN;KEN;60
+COL;COL;53
+IRN;IRN;49
+VNM;VNM;43
+NGA;NGA;33
+ISR;ISR;32
+MMR;MMR;31
+DOM;DOM;29
+EGY;EGY;28
+PRY;PRY;26
+QAT;QAT;25
+ECU;ECU;23
+CYP;CYP;22
+DZA;DZA;22
+CZE;CZE;21
+PAK;PAK;21
+GHA;GHA;19
+BLR;BLR;19
+HUN;HUN;18
+VEN;VEN;17
+EST;EST;16
+LBN;LBN;16
+KAZ;KAZ;15
+OMN;OMN;15
+AGO;AGO;14
+JOR;JOR;13
+GRC;GRC;13
+CYM;CYM;11
+BMU;BMU;11
+MAR;MAR;10
+NAM;NAM;10
+LTU;LTU;10
+ROU;ROU;10
+REU;REU;9
+VGB;VGB;9
+LVA;LVA;8
+MLT;MLT;8
+IRQ;IRQ;8
+PRI;PRI;8
+CRI;CRI;8
+AZE;AZE;8
+PAN;PAN;7
+LIE;LIE;7
+CMR;CMR;7
+ARM;ARM;7
+LKA;LKA;7
+NPL;NPL;6
+PRK;PRK;6
+SEN;SEN;6
+MUS;MUS;6
+SRB;SRB;6
+YEM;YEM;6
+ZWE;ZWE;6
+GTM;GTM;6
+KGZ;KGZ;6
+GIN;GIN;6
+HRV;HRV;5
+BGR;BGR;5
+URY;URY;5
+UGA;UGA;5
+TZA;TZA;5
+TUN;TUN;5
+COD;COD;5
+MRT;MRT;5
+GUF;GUF;5
+MWI;MWI;5
+GLP;GLP;5
+GUY;GUY;4
+GAB;GAB;4
+GRL;GRL;4
+SVN;SVN;4
+ZMB;ZMB;4
+SYR;SYR;4
+;;4
+KHM;KHM;4
+LBY;LBY;4
+MDG;MDG;3
+CAF;CAF;3
+CPV;CPV;3
+SDN;SDN;3
+FJI;FJI;3
+SVK;SVK;3
+SLV;SLV;3
+MTQ;MTQ;3
+BWA;BWA;3
+BOL;BOL;3
+UZB;UZB;3
+ALB;ALB;3
+MDA;MDA;3
+MOZ;MOZ;2
+MNG;MNG;2
+SWZ;SWZ;2
+COG;COG;2
+MAC;MAC;2
+LSO;LSO;2
+SUR;SUR;2
+BIH;BIH;2
+SOM;SOM;2
+NRU;NRU;2
+SSD;SSD;2
+AFG;AFG;2
+KWT;KWT;2
+IMN;IMN;2
+ISL;ISL;2
+LBR;LBR;2
+PSE;PSE;2
+NCL;NCL;2
+GEO;GEO;2
+MDV;MDV;2
+ETH;ETH;2
+AND;AND;1
+UMI;UMI;1
+XKX;XKX;1
+WSM;WSM;1
+MCO;MCO;1
+JAM;JAM;1
+BLZ;BLZ;1
+JEY;JEY;1
+PNG;PNG;1
+SLB;SLB;1
+BTN;BTN;1
+MNE;MNE;1
+LAO;LAO;1
+CUB;CUB;1
+NIC;NIC;1
+MNP;MNP;1
+TTO;TTO;1
+TON;TON;1
+PYF;PYF;1
+RWA;RWA;1
+SPM;SPM;1
+GUM;GUM;1
+</pre>
+
+<script>
+    (async () => {
+
+        const topology = await fetch(
+            'https://code.highcharts.com/mapdata/custom/world.topo.json'
+        ).then(response => response.json());
+
+        Highcharts.mapChart('container', {
+            chart: {
+                map: topology,
+            },
+
+            title: {
+                text: 'Map Visualization Title',
+                align: 'left',
+                style: {
+                    fontFamily: 'UnitOT',
+                    color: '#003755',
+                    fontWeight: 'bold'
+                }
+            },
+
+            subtitle: {
+                text: 'Subtitle of the Map',
+                align: 'left',
+                style: {
+                    fontFamily: 'UnitOT',
+                    color: '#003755'
+                }
+            },
+
+            credits: {
+                enabled: false 
+            },
+
+            exporting: {
+                enabled: false,
+                fallbackToExportServer: false,
+                menuItemDefinitions: {
+                    downloadPNG: {
+                        onclick: function () {
+                            this.exportChartLocal({ type: 'image/png' });
+                        },
+                        text: 'Download PNG'
+                    },
+                    downloadJPEG: {
+                        onclick: function () {
+                            this.exportChartLocal({ type: 'image/jpeg' });
+                        },
+                        text: 'Download JPEG'
+                    },
+                    downloadPDF: {
+                        onclick: function () {
+                            this.exportChartLocal({ type: 'application/pdf' });
+                        },
+                        text: 'Download PDF'
+                    },
+                    downloadSVG: {
+                        onclick: function () {
+                            this.exportChartLocal({ type: 'image/svg+xml' });
+                        },
+                        text: 'Download SVG'
+                    }
+                },
+                buttons: {
+                    contextButton: {
+                        menuItems: ['downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
+                    }
+                },
+                libURL: 'https://code.highcharts.com/',
+                sourceWidth: 800,
+                sourceHeight: 500,
+                scale: 1,
+                error: function (options, err) {
+                    console.error('Chart export failed. Error:', err);
+                },
+            },
+
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+
+            colorAxis: {
+                min: 1,
+                type: 'logarithmic',
+                minColor: '#EFEFFF',
+                maxColor: '#00A8CC',
+                labels: {
+                    formatter: function () {
+                        if (this.value === this.min) {
+                            return 'Low';
+                        } else if (this.value === this.max) {
+                            return 'High';
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+            },
+
+            legend: {
+                title: {
+                    text: 'Number of risk incidents linked to Indigenous people<br><span style="font-size: 10px;">(Low to High)</span>',
+                    style: {
+                        fontWeight: 'bold',
+                        fontFamily: 'UnitOT',
+                        color: '#003755'
+                    }
+                },
+                align: 'center',
+                verticalAlign: 'bottom',
+                layout: 'horizontal',
+                floating: false,
+                symbolWidth: 300
+            },
+
+            data: {
+                csv: document.getElementById('csv').innerText,
+                seriesMapping: [{
+                    code: 1,
+                    value: 2
+                }]
+            },
+
+            tooltip: {
+                headerFormat: '', 
+                pointFormat: '<b>{point.name}</b><br>Incidences reported',
+                valueDecimals: 0,
+                style: {
+                    fontFamily: 'UnitOT'
+                }
+            },
+
+            series: [{
+                name: 'Indigenous People Issue Count',
+                joinBy: ['iso-a3', 'code'],
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.value}',  // Show the number count
+                    filter: {
+                        operator: '>',
+                        property: 'labelrank',
+                        value: 250
+                    },
+                    style: {
+                        fontWeight: 'normal',
+                        fontFamily: 'inherit'
+                    }
+                }
+            }]
+        });
+
+    })();
+</script>
+
+</body>
+</html>
+"""
+
+if slide == "Slide 2":
     highcharts_html = """
 <!DOCTYPE html>
 <html lang="en">
