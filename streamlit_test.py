@@ -31,10 +31,10 @@ if slide == "Slide 1":
     body {
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         height: 100vh;
         margin: 0;
-        padding: 0 50px;
+        padding: 0;
         font-family: 'UnitSlabOT', sans-serif;
     }
 
