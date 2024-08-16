@@ -28,16 +28,6 @@ if slide == "Slide 1":
         font-style: normal;
     }
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        font-family: 'UnitSlabOT', sans-serif;
-    }
-
     #container {
         width: 80%;
         height: 600px;
