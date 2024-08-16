@@ -281,7 +281,7 @@ GUM;GUM;1
             },
 
             subtitle: {
-                text: 'US has the highest count of Incidents in Retail worldwide',
+                text: 'US retail companies have the highest count of ESG incidents worldwide',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
