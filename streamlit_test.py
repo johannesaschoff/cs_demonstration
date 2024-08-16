@@ -28,6 +28,11 @@ if slide == "Slide 1":
         font-style: normal;
     }
 
+    
+    body {
+        justify-content: left;
+    }
+
     #container {
         width: 80%;
         height: 600px;
