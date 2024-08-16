@@ -89,7 +89,6 @@ if slide == "Slide 1":
             title: {
                 text: 'Five riskiest sectors in the UK compared to Europe',
                 align: 'left',
-                x: 200,
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
                     color: '#333',
@@ -99,7 +98,6 @@ if slide == "Slide 1":
             subtitle: {
                 text: 'Global ESG risk incidents for companies headquartered in the UK',
                 align: 'left',
-                x: 200,
                 style: {
                     fontFamily: 'inherit',
                     color: '#666',
