@@ -34,9 +34,9 @@ if slide == "Slide 1":
     }
 
     #container {
-        width: 80%;
+        width: 100%;
         height: 600px;
-        margin-left: 100px;
+        margin-left: 0;
     }
 
     .highcharts-title, .highcharts-subtitle {
