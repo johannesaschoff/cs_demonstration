@@ -4,6 +4,15 @@ import streamlit.components.v1 as components
 # Set the page configuration to full width
 st.set_page_config(layout="wide")
 
+st.sidebar.markdown(
+    """
+    <a href="https://github.com/your-username/your-repository/folder-path" target="_blank">
+        <img src="https://your-logo-url.com/logo.png" style="max-width: 100%;">
+    </a>
+    """, unsafe_allow_html=True
+)
+
+
 # Create a sidebar menu
 st.sidebar.title("Navigation")
 slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3"])
