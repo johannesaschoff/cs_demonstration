@@ -271,7 +271,7 @@ GUM;GUM;1
             },
 
             title: {
-                text: 'Map Visualization Title',
+                text: 'Retail is the riskiest Sector in the US in the last five years',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
@@ -281,7 +281,7 @@ GUM;GUM;1
             },
 
             subtitle: {
-                text: 'Subtitle of the Map',
+                text: 'US has the highest count of Incidents in Retail worldwide',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
