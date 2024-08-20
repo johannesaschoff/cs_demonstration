@@ -445,10 +445,12 @@ if slide == "Slide 2":
     }
 
     #container {
-        width: 100%;
         height: 500px;
-        margin-left: 0;
+        min-width: 310px;
+        max-width: 800px;
+        margin: 0 auto;
     }
+
 
     .highcharts-title, .highcharts-subtitle {
         font-family: 'UnitSlabOT-Bold', sans-serif !important;
