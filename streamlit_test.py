@@ -820,9 +820,15 @@ if slide == "Slide 3":
 
             years.forEach(function(yearIndex) {
                 seriesData.sort(function(a, b) {
-                    if (a.data[yearIndex - 2020] === null) return 1;
-                    if (b.data[yearIndex - 2020] === null) return -1;
-                    return b.data[yearIndex - 2020] - a.data[yearIndex - 2020];
+                    if (a.stack === b.stack) {
+                        // Sort by value if they are in the same stack (US or EU)
+                        if (a.data[yearIndex - 2020] === null) return 1;
+                        if (b.data[yearIndex - 2020] === null) return -1;
+                        return b.data[yearIndex - 2020] - a.data[yearIndex - 2020];
+                    } else {
+                        // Ensure US stack is always on the left
+                        return a.stack === 'US' ? -1 : 1;
+                    }
                 });
             });
         }
