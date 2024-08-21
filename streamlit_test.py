@@ -589,7 +589,7 @@ if slide == "Slide 2":
                 }
             },
             title: {
-                text: 'Five riskiest sectors in the UK compared to Europe',
+                text: 'Five riskiest sectors in the US compared to Europe',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
@@ -599,7 +599,7 @@ if slide == "Slide 2":
             },
 
             subtitle: {
-                text: 'Global ESG risk incidents for companies headquartered in the UK',
+                text: 'Global ESG risk incidents for companies headquartered in the US',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitOT',
