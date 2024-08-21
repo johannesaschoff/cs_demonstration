@@ -500,9 +500,9 @@ if slide == "Slide 2":
         }
 
         #container {
-            height: 500px;
+            height: 800px;
             min-width: 310px;
-            max-width: 800px;
+            max-width: 120000px;
             margin: 0 auto;
         }
 
@@ -747,9 +747,9 @@ if slide == "Slide 3":
         }
 
         #container {
-            height: 500px;
+            height: 800px;
             min-width: 310px;
-            max-width: 800px;
+            max-width: 120000px;
             margin: 0 auto;
         }
 
