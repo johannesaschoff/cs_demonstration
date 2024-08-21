@@ -460,6 +460,13 @@ if slide == "Slide 2":
             font-family: 'UnitOT', 'UnitSlabOT-Bold', sans-serif;
         }
 
+        #container {
+            height: 500px;
+            min-width: 310px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
         #csv {
             display: none;
         }
