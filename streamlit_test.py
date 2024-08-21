@@ -563,7 +563,7 @@ if slide == "Slide 2":
             { name: 'UTL: Utilities', data: [0, 0, 0, 0, 1578], stack: 'EU', id: 'Utilities', abbreviation: 'UTL', color: darkenColor(baseColor, 50, 0.5) },
             { name: 'CON: Construction and Materials', data: [1191, 1386, 1754, 1598, 0], stack: 'EU', id: 'ConstructionandMaterials', abbreviation: 'CON', color: darkenColor(baseColor, 15, 0.5) },
 
-            { name: 'Relative Change in Incidents United Kingdom', type: 'spline', yAxis: 1, data: [0.0, 1.4961585119288356, -6.636311895276037, 5.370641306998292, 26.33497251952559], tooltip: { valueSuffix: '%' }, color: '#E32553' },
+            { name: 'Relative Change in Incidents United States', type: 'spline', yAxis: 1, data: [0.0, 1.4961585119288356, -6.636311895276037, 5.370641306998292, 26.33497251952559], tooltip: { valueSuffix: '%' }, color: '#E32553' },
             { name: 'Relative Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 18.442095845216123, 21.547613427128077, 2.509225092250933, 0.6934182107536602], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
         ];
 
