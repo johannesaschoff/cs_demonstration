@@ -833,8 +833,8 @@ if slide == "Slide 3":
             { name: 'Was: Waste issues', data: [null, 2009, 2780, 2941, 2396], stack: 'EU', linkedTo: 'Was', abbreviation: 'Was', color: darkenColor(baseColor, 70, 0.5) },
 
             // Add Relative Change Lines
-            { name: 'Relative Change in Incidents United States', type: 'spline', yAxis: 1, data: [0.0, 1.4961585119288356, -6.636311895276037, 5.370641306998292, 26.33497251952559], tooltip: { valueSuffix: '%' }, color: '#E32553' },
-            { name: 'Relative Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 18.442095845216123, 21.547613427128077, 2.509225092250933, 0.6934182107536602], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
+            { name: 'Relative Change in Incidents United States', type: 'spline', yAxis: 1, data: [0.0,28.391598, 	-5.238389, 4.741634, 10.188530], tooltip: { valueSuffix: '%' }, color: '#E32553' },
+            { name: 'Relative Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 58.444514, 40.566645, 13.756651, -10.804448], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
         ];
 
         // Sort the series data for each year
