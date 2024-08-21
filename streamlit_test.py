@@ -398,7 +398,7 @@ GUM;GUM;1
                 pointFormat: '<b>{point.name}</b><br>Incidences reported: <b>{point.value}</b>',
                 valueDecimals: 0,
                 style: {
-                    fontFamily: 'inherit'
+                    fontFamily: 'UnitOT'
                 }
             },
 
@@ -415,7 +415,7 @@ GUM;GUM;1
                     },
                     style: {
                         fontWeight: 'normal',
-                        fontFamily: 'inherit'
+                        fontFamily: 'UnitOT'
                     }
                 }
             }]
