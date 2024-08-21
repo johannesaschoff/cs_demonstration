@@ -469,7 +469,13 @@ GUM;GUM;1
 
 if slide == "Slide 2":
     highcharts_html = """
+c
 
+    """
+elif slide == "Slide 3":
+    highcharts_html = """
+
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -711,10 +717,8 @@ if slide == "Slide 2":
 </html>
 
 
-
+    
     """
-elif slide == "Slide 3":
-    highcharts_html = """<Insert your third HTML graph here>"""
 
 # Embed the selected Highcharts graph in Streamlit
 components.html(highcharts_html, height=1000)
