@@ -91,10 +91,9 @@ if slide == "Slide 1":
         }
 
         #container {
-            height: 500px;
-            min-width: 310px;
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
 
         #csv {
