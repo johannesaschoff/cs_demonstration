@@ -814,6 +814,22 @@ if slide == "Slide 3":
             { name: 'Relative Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 18.442095845216123, 21.547613427128077, 2.509225092250933, 0.6934182107536602], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
         ];
 
+        // Sort the series data for each year
+        function sortSeriesData(seriesData) {
+            var years = [2020, 2021, 2022, 2023, 2024];
+
+            years.forEach(function(yearIndex) {
+                seriesData.sort(function(a, b) {
+                    if (a.data[yearIndex - 2020] === null) return 1;
+                    if (b.data[yearIndex - 2020] === null) return -1;
+                    return b.data[yearIndex - 2020] - a.data[yearIndex - 2020];
+                });
+            });
+        }
+
+        // Call the sort function before rendering the chart
+        sortSeriesData(seriesData);
+
         // Render the chart
         Highcharts.chart('container', {
             chart: {
@@ -956,6 +972,7 @@ if slide == "Slide 3":
     </script>
 </body>
 </html>
+
     
     """
 
