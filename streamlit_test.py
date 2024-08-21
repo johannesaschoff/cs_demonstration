@@ -54,7 +54,7 @@ st.sidebar.markdown(
 st.sidebar.markdown('<div class="sidebar-text">Navigation</div>', unsafe_allow_html=True)
 
 # Create the radio buttons with custom font applied
-slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3"])
+slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3", "Slide 4"])
 
 if slide == "Slide 1":
     highcharts_html = """
@@ -713,7 +713,7 @@ if slide == "Slide 2":
 
 
     """
-elif slide == "Slide 3":
+if slide == "Slide 3":
     highcharts_html = """
 
     
@@ -957,6 +957,119 @@ elif slide == "Slide 3":
 </body>
 </html>
 
+
+    
+    """
+
+elif slide == "Slide 4":
+    highcharts_html = """
+    
+    
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Highcharts Bubble Chart</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            Highcharts.chart('container', {
+                chart: {
+                    type: 'bubble',
+                    plotBorderWidth: 1,
+                    zoomType: 'xy'
+                },
+                legend: {
+                    enabled: false
+                },
+                title: {
+                    text: 'Companies with the 50 Highest Due Diligence Scores, HQ in UK'
+                },
+                subtitle: {
+                    text: 'Highest Scoring DD Factors in the UK are: (1) Human rights abuses and corporate complicity, (2) Impacts on communities and (3) Impacts on landscapes, ecosystems and biodiversity'
+                },
+                xAxis: {
+                    gridLineWidth: 1,
+                    title: {
+                        text: 'Company DD Score'
+                    },
+                    labels: {
+                        format: '{value}'
+                    },
+                    plotLines: [{
+                        color: 'black',
+                        dashStyle: 'dot',
+                        width: 2,
+                        value: 65,
+                        label: {
+                            rotation: 0,
+                            y: 15,
+                            style: {
+                                fontStyle: 'italic'
+                            },
+                            text: 'Reference Line'
+                        },
+                        zIndex: 3
+                    }]
+                },
+                yAxis: {
+                    startOnTick: false,
+                    endOnTick: false,
+                    title: {
+                        text: 'Highest Factor DD Score'
+                    },
+                    labels: {
+                        format: '{value}'
+                    },
+                    maxPadding: 0.2,
+                    plotLines: [{
+                        color: 'black',
+                        dashStyle: 'dot',
+                        width: 2,
+                        value: 50,
+                        label: {
+                            align: 'right',
+                            style: {
+                                fontStyle: 'italic'
+                            },
+                            text: 'Reference Line',
+                            x: -10
+                        },
+                        zIndex: 3
+                    }]
+                },
+                tooltip: {
+                    useHTML: true,
+                    headerFormat: '<table>',
+                    pointFormat: '<tr><th colspan="2"><h3>{point.name}</h3></th></tr>' +
+                        '<tr><th>Company DD Score:</th><td>{point.x}</td></tr>' +
+                        '<tr><th>Highest Factor DD Score:</th><td>{point.y}</td></tr>' +
+                        '<tr><th>Highest Factor:</th><td>{point.shortname}</td></tr>',
+                    footerFormat: '</table>',
+                    followPointer: true
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }
+                },
+                series: [{
+                    data: [{"x": 90, "y": 89, "z": 90, "name": "East African Crude Oil Pipeline Ltd (EACOP; formerly Goldentulip Ltd)", "shortname": "Impacts on communities"}, {"x": 74, "y": 73, "z": 74, "name": "Mallinckrodt PLC (Mallinckrodt Pharmaceuticals)", "shortname": "Controversial products and services"}, {"x": 69, "y": 67, "z": 69, "name": "Shell PLC (Shell; formerly Royal Dutch Shell PLC)", "shortname": "Impacts on communities"}, {"x": 69, "y": 65, "z": 69, "name": "James Finlay Ltd (Finlays Group)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 65, "y": 60, "z": 65, "name": "Rio Tinto PLC", "shortname": "Human rights abuses and corporate complicity"}, {"x": 65, "y": 60, "z": 65, "name": "HSBC Holdings PLC (HSBC)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 65, "y": 59, "z": 65, "name": "Barclays PLC (Barclays)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 63, "y": 61, "z": 63, "name": "BP PLC (formerly BP Amoco PLC)", "shortname": "Impacts on communities"}, {"x": 63, "y": 63, "z": 63, "name": "Savaro Ltd", "shortname": "Impacts on communities"}, {"x": 63, "y": 63, "z": 63, "name": "Camellia PLC", "shortname": "Human rights abuses and corporate complicity"}, {"x": 62, "y": 57, "z": 62, "name": "Standard Chartered Holdings Ltd", "shortname": "Corruption, bribery, extortion and money laundering"}, {"x": 62, "y": 66, "z": 62, "name": "Unilever PLC", "shortname": "Impacts on communities"}, {"x": 62, "y": 57, "z": 62, "name": "Standard Chartered Bank (SCB)", "shortname": "Corruption, bribery, extortion and money laundering"}, {"x": 62, "y": 62, "z": 62, "name": "BHP Group (UK) Ltd (formerly BHP Group PLC; BHP Billiton PLC)", "shortname": "Impacts on landscapes, ecosystems and biodiversity"}, {"x": 61, "y": 57, "z": 61, "name": "Hesley Group Ltd; The", "shortname": "Human rights abuses and corporate complicity"}, {"x": 60, "y": 60, "z": 60, "name": "Fresnillo PLC", "shortname": "Human rights abuses and corporate complicity"}, {"x": 60, "y": 60, "z": 60, "name": "Barrick Tz Ltd (formerly Acacia Mining PLC)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 60, "y": 59, "z": 60, "name": "Southern Water Services Ltd (Southern Water)", "shortname": "Local pollution"}, {"x": 59, "y": 68, "z": 59, "name": "Tesco PLC", "shortname": "Human rights abuses and corporate complicity"}, {"x": 57, "y": 57, "z": 57, "name": "THG Healthcare Ltd (formerly Huntercombe Group Ltd; The)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 57, "y": 57, "z": 57, "name": "Active Care Group Ltd", "shortname": "Human rights abuses and corporate complicity"}, {"x": 57, "y": 57, "z": 57, "name": "Petra Diamonds Ltd", "shortname": "Human rights abuses and corporate complicity"}, {"x": 57, "y": 57, "z": 57, "name": "McDonald's Restaurants Ltd (McDonald's UK)", "shortname": "Discrimination in employment"}, {"x": 57, "y": 57, "z": 57, "name": "McDonald's Real Estate LLP", "shortname": "Discrimination in employment"}, {"x": 55, "y": 52, "z": 55, "name": "Intertek Group PLC", "shortname": "Human rights abuses and corporate complicity"}, {"x": 55, "y": 55, "z": 55, "name": "Elbit Systems UK Ltd (ESUK)", "shortname": "Controversial products and services"}, {"x": 55, "y": 54, "z": 55, "name": "Anglo American PLC", "shortname": "Impacts on communities"}, {"x": 55, "y": 64, "z": 55, "name": "J Sainsbury PLC (Sainsbury's)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 55, "y": 55, "z": 55, "name": "Ithaca Energy PLC", "shortname": "Climate change, GHG emissions, and global pollution"}, {"x": 54, "y": 56, "z": 54, "name": "Antofagasta PLC", "shortname": "Impacts on communities"}, {"x": 54, "y": 54, "z": 54, "name": "G's Group Holdings Ltd (formerly G's Marketing Ltd)", "shortname": "Impacts on communities"}, {"x": 53, "y": 52, "z": 53, "name": "Rio Tinto International Holdings Ltd", "shortname": "Impacts on landscapes, ecosystems and biodiversity"}, {"x": 53, "y": 55, "z": 53, "name": "BAE Systems PLC (British Aerospace)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 53, "y": 47, "z": 53, "name": "Natwest Group PLC (NatWest; formerly Royal Bank of Scotland Group PLC (RBS); The)", "shortname": "Violation of national legislation"}, {"x": 53, "y": 61, "z": 53, "name": "WM Morrison Supermarkets Ltd (Morrisons; formerly WM Morrison Supermarkets PLC)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 53, "y": 53, "z": 53, "name": "P&O Ferries Ltd (formerly Townsend Thoresen; P&O European Ferries)", "shortname": "Poor employment conditions"}, {"x": 52, "y": 52, "z": 52, "name": "Post Office Ltd", "shortname": "Poor employment conditions"}, {"x": 52, "y": 52, "z": 52, "name": "Hochschild Mining PLC", "shortname": "Impacts on landscapes, ecosystems and biodiversity"}, {"x": 52, "y": 52, "z": 52, "name": "Odey Asset Management LP (Odey Partners)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 52, "y": 52, "z": 52, "name": "Anglian Water Group Ltd", "shortname": "Impacts on landscapes, ecosystems and biodiversity"}, {"x": 52, "y": 49, "z": 52, "name": "European Bank for Reconstruction and Development (EBRD)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 52, "y": 54, "z": 52, "name": "Thames Water Utilities Ltd (Thames Water)", "shortname": "Local pollution"}, {"x": 52, "y": 52, "z": 52, "name": "Typhoo Tea Ltd (Typhoo)", "shortname": "Human rights abuses and corporate complicity"}, {"x": 51, "y": 51, "z": 51, "name": "UAV Engines Ltd (UEL)", "shortname": "Controversial products and services"}, {"x": 51, "y": 51, "z": 51, "name": "Aviagen Ltd", "shortname": "Animal mistreatment"}, {"x": 51, "y": 51, "z": 51, "name": "Aviagen International Holdings Ltd", "shortname": "Animal mistreatment"}, {"x": 51, "y": 51, "z": 51, "name": "Anglian Water Services Ltd (Anglian Water)", "shortname": "Impacts on landscapes, ecosystems and biodiversity"}, {"x": 51, "y": 50, "z": 51, "name": "AG Recruitment & Management Ltd", "shortname": "Forced labor"}, {"x": 51, "y": 51, "z": 51, "name": "Runwood Homes Ltd", "shortname": "Products (health and environmental issues)"}, {"x": 51, "y": 51, "z": 51, "name": "Bettys & Taylors Group Ltd", "shortname": "Supply chain issues"}]
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container" style="width: 70%; height: 600px;"></div>
+</body>
+</html>
 
     
     """
