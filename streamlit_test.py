@@ -1096,19 +1096,23 @@ if slide == "Slide 4":
                     enabled: false
                 },
                 title: {
-                    text: 'Companies with the 50 Highest Due Diligence Scores, HQ in UK',
+                    text: 'Companies with the 50 Highest Due Diligence Scores, HQ in US',
+                    align: 'left',
                     style: {
                         fontFamily: 'UnitSlabOT-Bold',
                         color: '#003755',
+                        fontWeight: 'bold'
                     }
                 },
                 subtitle: {
-                    text: 'Highest Scoring DD Factors in the UK are: (1) Human rights abuses and corporate complicity, (2) Forced labor, (3) Child labor and (4) Economic Impact',
+                    text: 'Highest Scoring DD Factors in the US are: (1) Human rights abuses and corporate complicity, (2) Violation of national legislation, (3) Health impact and (4) Economic Impact',
+                    align: 'left',
                     style: {
                         fontFamily: 'UnitOT',
                         color: '#003755',
                     }
                 },
+
                 xAxis: {
                     gridLineWidth: 1,
                     title: {
