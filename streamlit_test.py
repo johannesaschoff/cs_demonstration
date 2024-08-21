@@ -54,7 +54,7 @@ st.sidebar.markdown(
 st.sidebar.markdown('<div class="sidebar-text">Navigation</div>', unsafe_allow_html=True)
 
 # Create the radio buttons with custom font applied
-slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3", "Slide 4"])
+slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3", "Slide 4", "Slide 5"])
 
 if slide == "Slide 1":
     highcharts_html = """
@@ -961,7 +961,7 @@ if slide == "Slide 3":
     
     """
 
-elif slide == "Slide 4":
+if slide == "Slide 4":
     highcharts_html = """
     
     
@@ -1071,7 +1071,445 @@ elif slide == "Slide 4":
 </body>
 </html>
 
-    
+
+    """
+
+elif slide == "Slide 5":
+    highcharts_html = """
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wind Speed Charts</title>
+    <style>
+        body {
+            font-family: 'Arial, Helvetica, sans-serif'; /* Ensure consistent font across the page */
+        }
+        .superheader {
+            text-align: center; 
+            font-size: 24px; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .chart {
+            width: 30%;
+            min-width: 300px;
+            margin-bottom: 20px;
+        }
+        .invisible-chart {
+            width: 30%;
+            margin-bottom: 20px;
+            visibility: hidden; 
+        }
+    </style>
+    <!-- Include Highcharts library -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div id="container1" class="chart"></div>
+    <div id="container2" class="chart"></div>
+    <div id="container3" class="chart"></div>
+    <div id="container4" class="chart"></div>
+    <div id="container5" class="chart"></div>
+    <div id="container6" class="chart invisible-chart"></div> <!-- Invisible chart to align the fifth chart -->
+</div>
+
+<script>
+
+    const chartOptions2 = {
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 300, 
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Impacts on landscapes, ecosystems and biodiversity',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Top 5 topic tags (FY24) contributing to the second most risky sector in the UK',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ['2020', '2021', '2022', '2023', '2024'],
+            labels: {
+                rotation: 0,
+                align: 'center'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Incidents'
+            },
+            min: 0,
+            max:1500,
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [
+                { from: 0, to: 498, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},                      
+                { from: 498, to: 591, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Protected areas', style: { color: '#606060' }}},
+                { from: 591, to: 699, color: 'rgba(0, 0, 0, 0)', label: { text: 'Marine/Coastal ecosystems', style: { color: '#606060' }}},
+                { from: 699, to: 811, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }}},
+                { from: 811, to: 943, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }}},
+                { from: 943, to: 1332, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }}}
+            ]
+
+
+        },
+        tooltip: {
+            valueSuffix: ' Incidents'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'Companies headquatered in UK',
+            data: [
+                839, 1114, 1205, 1329, 1332
+            ]
+
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    };
+
+
+    const chartOptions1 = {
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 300, 
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Impacts on communities',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Top 5 topic tags (FY24) contributing to the riskiest sector in the UK',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ['2020', '2021', '2022', '2023', '2024'],
+            labels: {
+                rotation: 0,
+                align: 'center'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Incidents'
+            },
+            min: 0,
+            max: 1500,            
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [
+                { from: 0, to: 536, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},
+                { from: 536, to: 633, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }}},
+                { from: 633, to: 754, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }}},
+                { from: 754, to: 970, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }}},
+                { from: 970, to: 1208, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }}},
+                { from: 1208, to: 1460, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }}}
+            ]
+
+        },
+        tooltip: {
+            valueSuffix: ' Incidents'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'Companies headquatered in UK',
+            data: [
+                772, 1114, 1183, 1382, 1460
+
+            ]
+
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    };
+    const chartOptions3 = {
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 300, 
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Local pollution',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Top 5 topic tags (FY24) contributing to the third most risky sector in the UK',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ['2020', '2021', '2022', '2023', '2024'],
+            labels: {
+                rotation: 0,
+                align: 'center'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Incidents'
+            },
+            min: 0,
+            max:1500,
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [
+                { from: 0, to: 379, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},                      
+                { from: 379, to: 482, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Wastewater management', style: { color: '#606060' }}},
+                { from: 482, to: 586, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }}},
+                { from: 586, to: 704, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }}},
+                { from: 704, to: 855, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { color: '#606060' }}},
+                { from: 855, to: 1078, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }}}
+            ]
+
+
+        },
+        tooltip: {
+            valueSuffix: ' Incidents'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'Companies headquatered in UK',
+            data: [
+                525, 765, 864, 1052, 1078
+
+            ]
+
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    };
+
+    const chartOptions4 = {
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 300, 
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Violation of national legislation',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Top 5 topic tags (FY24) contributing to the fourth most risky sector in the UK',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ['2020', '2021', '2022', '2023', '2024'],
+            labels: {
+                rotation: 0,
+                align: 'center'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Incidents'
+            },
+            min: 0,
+            max:1500,
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [
+                { from: 0, to: 198, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},                      
+                { from: 198, to: 301, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }}},
+                { from: 301, to: 405, color: 'rgba(0, 0, 0, 0)', label: { text: 'Wastewater management', style: { color: '#606060' }}},
+                { from: 405, to: 523, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }}},
+                { from: 523, to: 674, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }}},
+                { from: 674, to: 897, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { color: '#606060' }}}
+            ]
+
+        },
+        tooltip: {
+            valueSuffix: ' Incidents'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'Companies headquatered in UK',
+            data: [
+                678, 685, 718, 839, 897
+
+
+            ]
+
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    };
+
+
+    const chartOptions5 = {
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 300, 
+                scrollPositionX: 1
+            }
+        },
+        title: {
+            text: 'Human rights abuses and corporate complicity',
+            align: 'left'
+        },
+        subtitle: {
+            text: 'Top 5 topic tags (FY24) contributing to the fifth most risky sector in the UK',
+            align: 'left'
+        },
+        xAxis: {
+            categories: ['2020', '2021', '2022', '2023', '2024'],
+            labels: {
+                rotation: 0,
+                align: 'center'
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Incidents'
+            },
+            min: 0,
+            max:1500,
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [
+                { from: 0, to: 338, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "right"}},                      
+                { from: 338, to: 370, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Salaries and benefits', style: { color: '#606060' }}},
+                { from: 370, to: 405, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "right"}},
+                { from: 405, to: 453, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { color: '#606060' }}},
+                { from: 453, to: 531, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "right"}},
+                { from: 531, to: 641, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }, align: "left"}}
+            ]
+
+        },
+        tooltip: {
+            valueSuffix: ' Incidents'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'Companies headquatered in UK',
+            data: [
+                412, 448, 534, 641, 611
+
+            ]
+
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    };
+
+
+
+    Highcharts.chart('container1', chartOptions1);
+    Highcharts.chart('container2', chartOptions2);
+    Highcharts.chart('container3', chartOptions3);
+    Highcharts.chart('container4', chartOptions4);
+    Highcharts.chart('container5', chartOptions5);
+    Highcharts.chart('container6', chartOptions); 
+</script>
+
+</body>
+</html>
+
+
     """
 
 # Embed the selected Highcharts graph in Streamlit
