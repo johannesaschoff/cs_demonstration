@@ -1,5 +1,4 @@
 import streamlit.components.v1 as components
-
 import streamlit as st
 
 # Set the page configuration to full width
@@ -13,18 +12,26 @@ font_base64 = """
         font-weight: normal;
         font-style: normal;
     }
+        
 
     body {
         font-family: 'UnitOT', sans-serif;
     }
 """
 
-# Apply the custom font in markdown
+# Apply the custom font to all sidebar elements
 st.sidebar.markdown(
     f"""
     <style>
     {font_base64}
+
+    /* Apply custom font to all text in the sidebar */
     .sidebar-text {{
+        font-family: 'UnitOT', sans-serif;
+    }}
+
+    /* Apply custom font to Streamlit's radio buttons */
+    .stRadio > div {{
         font-family: 'UnitOT', sans-serif;
     }}
     </style>
@@ -38,15 +45,19 @@ st.sidebar.markdown(
     """, unsafe_allow_html=True
 )
 
-# Create a sidebar menu with custom font
+# Create a sidebar menu with custom font applied to navigation title
 st.sidebar.markdown('<div class="sidebar-text">Navigation</div>', unsafe_allow_html=True)
-slide = st.sidebar.radio(
-    '<div class="sidebar-text">Go to Slide</div>',
-    ["Slide 1", "Slide 2", "Slide 3"],
-    format_func=lambda x: f'<div class="sidebar-text">{x}</div>',
-    key='slide',
-    label_visibility='collapsed'  # hide the original label
-)
+
+# Create the radio buttons with custom font applied
+slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3"])
+
+# Handling the slides
+if slide == "Slide 1":
+    st.write("Content for Slide 1")
+elif slide == "Slide 2":
+    st.write("Content for Slide 2")
+else:
+    st.write("Content for Slide 3")
 
 if slide == "Slide 1":
     highcharts_html = """
