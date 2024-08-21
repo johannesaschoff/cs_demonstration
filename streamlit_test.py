@@ -6,9 +6,7 @@ st.set_page_config(layout="wide")
 
 st.sidebar.markdown(
     """
-    <a href="https://github.com/your-username/your-repository/folder-path" target="_blank">
-        <img src="https://github.com/johannesaschoff/cs_demonstration/blob/main/images/RR_Hor_rgb.png?raw=true" style="max-width: 60%;">
-    </a>
+    <img src="https://github.com/johannesaschoff/cs_demonstration/blob/main/images/RR_Hor_rgb.png?raw=true" style="max-width: 60%;">
     """, unsafe_allow_html=True
 )
 
