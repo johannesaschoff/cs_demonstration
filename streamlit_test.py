@@ -636,7 +636,7 @@ if slide == "Slide 2":
                         style: {
                             fontFamily: 'UnitOT',
                             fontSize: '10px',
-                            color: '#000000',
+                            color: '#FFFFFF',
                             //textOutline: 'none'
                         },
                         filter: {
