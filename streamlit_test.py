@@ -552,23 +552,22 @@ if slide == "Slide 2":
             title: {
                 text: 'Five riskiest sectors in the UK compared to Europe',
                 align: 'left',
-                x: 200,
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
-                    color: '#333',
-                    fontWeight: 'normal'
+                    color: '#003755',
+                    fontWeight: 'bold'
                 }
             },
+
             subtitle: {
                 text: 'Global ESG risk incidents for companies headquartered in the UK',
                 align: 'left',
-                x: 200,
                 style: {
                     fontFamily: 'UnitOT',
-                    color: '#666',
-                    fontWeight: 'normal'
+                    color: '#003755',
                 }
             },
+
             xAxis: [{
                 categories: [2020, 2021, 2022, 2023, 2024],
                 crosshair: true,
