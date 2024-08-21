@@ -478,7 +478,7 @@ if slide == "Slide 2":
         }
 
         .highcharts-subtitle {
-            font-family: 'UnitSlabOT-Bold';
+            font-family: 'UnitOT';
             color: #003755;
             text-align: right; /* Right align the subtitle */
         }
@@ -564,7 +564,7 @@ if slide == "Slide 2":
                 align: 'left',
                 x: 200,
                 style: {
-                    fontFamily: 'UnitSlabOT-Bold',
+                    fontFamily: 'UnitOT',
                     color: '#666',
                     fontWeight: 'normal'
                 }
@@ -574,7 +574,7 @@ if slide == "Slide 2":
                 crosshair: true,
                 labels: {
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold'
+                        fontFamily: 'UnitOT'
                     },
                     formatter: function() {
                         return this.value + '<br><span style="color: #000000;">US   </span>   <span style="color: #000000;">   EU</span>';
@@ -586,20 +586,20 @@ if slide == "Slide 2":
                 title: {
                     text: 'Percentage (%)',
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold'
+                        fontFamily: 'UnitOT'
                     }
                 }
             }, { 
                 title: {
                     text: 'Relative Change in Total Incidents',
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold'
+                        fontFamily: 'UnitOT'
                     }
                 },
                 labels: {
                     format: '{value}%',
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold'
+                        fontFamily: 'UnitOT'
                     }
                 },
                 opposite: true
@@ -610,7 +610,7 @@ if slide == "Slide 2":
                 backgroundColor: '#000000',
                 style: {
                     color: '#FFFFFF',
-                    fontFamily: 'UnitSlabOT-Bold'
+                    fontFamily: 'UnitOT'
                 },
                 headerFormat: '<span style="font-size: 10px; color: #FFFFFF;">{point.key}</span><br/>',
                 pointFormatter: function() {
