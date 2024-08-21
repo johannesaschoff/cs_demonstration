@@ -653,6 +653,13 @@ if slide == "Slide 2":
                 }
             },
             series: seriesData,
+            legend: {
+                itemStyle: {
+                    fontFamily: 'UnitOT',
+                    color: '#333',
+                    fontWeight: 'normal'
+                }
+            },
             credits: {
                 enabled: false
             },
