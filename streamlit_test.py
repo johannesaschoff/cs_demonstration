@@ -1112,7 +1112,7 @@ if slide == "Slide 4":
                         }
                     },
                     labels: {
-                        format: '{{value}}',
+                        format: '{value}',
                         style: {
                             fontFamily: 'UnitOT'
                         }
@@ -1144,7 +1144,7 @@ if slide == "Slide 4":
                         }
                     },
                     labels: {
-                        format: '{{value}}',
+                        format: '{value}',
                         style: {
                             fontFamily: 'UnitOT'
                         }
@@ -1170,10 +1170,10 @@ if slide == "Slide 4":
                 tooltip: {
                     useHTML: true,
                     headerFormat: '<table>',
-                    pointFormat: '<tr><th colspan="2"><h3>{{point.name}}</h3></th></tr>' +
-                        '<tr><th>Company DD Score:</th><td>{{point.x}}</td></tr>' +
-                        '<tr><th>Highest Factor DD Score:</th><td>{{point.y}}</td></tr>' +
-                        '<tr><th>Highest Factor:</th><td>{{point.shortname}}</td></tr>',
+                    pointFormat: '<tr><th colspan="2"><h3>{point.name}</h3></th></tr>' +
+                        '<tr><th>Company DD Score:</th><td>{point.x}</td></tr>' +
+                        '<tr><th>Highest Factor DD Score:</th><td>{point.y}</td></tr>' +
+                        '<tr><th>Highest Factor:</th><td>{point.shortname}</td></tr>',
                     footerFormat: '</table>',
                     followPointer: true
                 },
@@ -1181,7 +1181,7 @@ if slide == "Slide 4":
                     series: {
                         dataLabels: {
                             enabled: true,
-                            format: '{{point.name}}',
+                            format: '{point.name}',
                             style: {
                                 fontFamily: 'UnitOT'
                             }
