@@ -1102,7 +1102,7 @@ if slide == "Slide 4":
                     text: 'Highest Scoring DD Factors in the UK are: (1) Human rights abuses and corporate complicity, (2) Forced labor, (3) Child labor and (4) Economic Impact',
                     align: 'left',
                     style: {
-                        fontFamily: 'UnitSlabOT-Bold',
+                        fontFamily: 'UnitOT',
                         color: '#003755',
                         fontWeight: 'bold'
                     }
