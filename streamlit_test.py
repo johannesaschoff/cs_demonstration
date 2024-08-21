@@ -715,8 +715,6 @@ if slide == "Slide 2":
     """
 if slide == "Slide 3":
     highcharts_html = """
-
-    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -796,20 +794,22 @@ if slide == "Slide 3":
 
         // Define the series data with abbreviations in the names for the legend
         var seriesData = [
-            { name: 'RTL: Retail', data: [2075, 2253, 2252, 2117, 2655], stack: 'US', linkedTo: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 1) },
-            { name: 'FIN: Financial Services', data: [1872, 1818, 1562, 1937, 2466], stack: 'US', linkedTo: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 1) },
-            { name: 'SFT: Software and Computer Services', data: [1307, 1241, 1259, 1519, 2045], stack: 'US', id: 'SoftwareandComputerServices', abbreviation: 'SFT', color: darkenColor(baseColor, 40, 1) },
-            { name: 'SUP: Support Services (Industrial Goods and Services)', data: [1099, 1080, 889, 1016, 1399], stack: 'US', linkedTo: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 1) },
-            { name: 'HC: Health Care Equipment and Services', data: [0, 0, 0, 0, 1235], stack: 'US', id: 'HealthCareEquipmentandServices', abbreviation: 'HC', color: darkenColor(baseColor, 40, 1) },
-            { name: 'F&B: Food and Beverage', data: [1150, 1338, 1253, 1112, 0], stack: 'US', linkedTo: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 1) },
+            { name: 'H&C: Human rights abuses and corporate complicity', data: [1779, 1793, 1940, 2363, 3164], stack: 'US', id: 'H&C', abbreviation: 'H&C', color: darkenColor(baseColor, 10, 1) },
+            { name: 'H&C: Human rights abuses and corporate complicity', data: [null, null, null, null, null], stack: 'EU', linkedTo: 'H&C', abbreviation: 'H&C', color: darkenColor(baseColor, 10, 0.5) },
+            { name: 'Imp: Impacts on communities', data: [3183, 4495, 4138, 4172, 4282], stack: 'US', id: 'Imp', abbreviation: 'Imp', color: darkenColor(baseColor, 20, 1) },
+            { name: 'Imp: Impacts on communities', data: [2815, 4716, 7103, 8382, 7926], stack: 'EU', linkedTo: 'Imp', abbreviation: 'Imp', color: darkenColor(baseColor, 20, 0.5) },
+            { name: 'Eco: Impacts on landscapes, ecosystems and biodiversity', data: [2912, 4050, 3756, 3718, 3475], stack: 'US', id: 'Eco', abbreviation: 'Eco', color: darkenColor(baseColor, 30, 1) },
+            { name: 'Eco: Impacts on landscapes, ecosystems and biodiversity', data: [3127, 5096, 7479, 8770, 7858], stack: 'EU', linkedTo: 'Eco', abbreviation: 'Eco', color: darkenColor(baseColor, 30, 0.5) },
+            { name: 'Loc: Local pollution', data: [2372, 3405, 3122, 3177, 3112], stack: 'US', id: 'Loc', abbreviation: 'Loc', color: darkenColor(baseColor, 40, 1) },
+            { name: 'Loc: Local pollution', data: [2148, 4017, 5692, 6399, 5356], stack: 'EU', linkedTo: 'Loc', abbreviation: 'Loc', color: darkenColor(baseColor, 40, 0.5) },
+            { name: 'Occ: Occupational health and safety issues', data: [null, null, null, null, null], stack: 'US', id: 'Occ', abbreviation: 'Occ', color: darkenColor(baseColor, 50, 1) },
+            { name: 'Occ: Occupational health and safety issues', data: [1426, null, null, null, null], stack: 'EU', linkedTo: 'Occ', abbreviation: 'Occ', color: darkenColor(baseColor, 50, 0.5) },
+            { name: 'Vio: Violation of national legislation', data: [3656, 4106, 3958, 4286, 5488], stack: 'US', id: 'Vio', abbreviation: 'Vio', color: darkenColor(baseColor, 60, 1) },
+            { name: 'Vio: Violation of national legislation', data: [3226, 4351, 5325, 5791, 5259], stack: 'EU', linkedTo: 'Vio', abbreviation: 'Vio', color: darkenColor(baseColor, 60, 0.5) },
+            { name: 'Was: Waste issues', data: [null, null, null, null, null], stack: 'US', id: 'Was', abbreviation: 'Was', color: darkenColor(baseColor, 70, 1) },
+            { name: 'Was: Waste issues', data: [null, 2009, 2780, 2941, 2396], stack: 'EU', linkedTo: 'Was', abbreviation: 'Was', color: darkenColor(baseColor, 70, 0.5) },
 
-            { name: 'RTL: Retail', data: [1366, 1918, 2621, 2907, 2844], stack: 'EU', id: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 0.5) },
-            { name: 'FIN: Financial Services', data: [2059, 2283, 2619, 2774, 2846], stack: 'EU', id: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 0.5) },
-            { name: 'F&B: Food and Beverage', data: [1122, 1610, 2256, 2202, 2139], stack: 'EU', id: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 0.5) },
-            { name: 'SUP: Support Services (Industrial Goods and Services)', data: [1432, 1709, 2121, 2091, 2039], stack: 'EU', id: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 0.5) },
-            { name: 'UTL: Utilities', data: [0, 0, 0, 0, 1578], stack: 'EU', id: 'Utilities', abbreviation: 'UTL', color: darkenColor(baseColor, 50, 0.5) },
-            { name: 'CON: Construction and Materials', data: [1191, 1386, 1754, 1598, 0], stack: 'EU', id: 'ConstructionandMaterials', abbreviation: 'CON', color: darkenColor(baseColor, 15, 0.5) },
-
+            // Add Relative Change Lines
             { name: 'Relative Change in Incidents United Kingdom', type: 'spline', yAxis: 1, data: [0.0, 1.4961585119288356, -6.636311895276037, 5.370641306998292, 26.33497251952559], tooltip: { valueSuffix: '%' }, color: '#E32553' },
             { name: 'Relative Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 18.442095845216123, 21.547613427128077, 2.509225092250933, 0.6934182107536602], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
         ];
@@ -956,8 +956,6 @@ if slide == "Slide 3":
     </script>
 </body>
 </html>
-
-
     
     """
 
