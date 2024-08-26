@@ -1307,7 +1307,7 @@ elif slide == "Slide 5":
                 { from: 745, to: 832, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Gender inequality', style: { color: '#606060' }, align: "left"}},
                 { from: 832, to: 961, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: { color: '#606060' }, align: "right"}},
                 { from: 961, to: 1309, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Cyberattack', style: { color: '#606060' }, align: "left"}},
-                { from: 1309, to: 1984, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "right"}},
+                { from: 1309, to: 1984, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}},
                 { from: 1984, to: 2966, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }, align: "left"}}
             ]
 
@@ -1359,7 +1359,7 @@ elif slide == "Slide 5":
         },
 
         title: {
-            text: 'Impacts on communities',
+            text: 'Impacts on landscapes, ecosystems and biodiversity',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
@@ -1388,17 +1388,17 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max: 1500,            
+            max: 4000,            
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 536, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},
-                { from: 536, to: 633, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }}},
-                { from: 633, to: 754, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }}},
-                { from: 754, to: 970, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }}},
-                { from: 970, to: 1208, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }}},
-                { from: 1208, to: 1460, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }}}
+                { from: 0, to: 739, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},
+                { from: 739, to: 850, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Marine/Coastal ecosystems', style: { color: '#606060' }, align: "left"}},
+                { from: 850, to: 995, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}},
+                { from: 995, to: 1154, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { color: '#606060' }, align: "left"}},
+                { from: 1154, to: 1876, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { color: '#606060' }, align: "left"}},
+                { from: 1876, to: 2613, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}}
             ]
 
         },
@@ -1421,7 +1421,7 @@ elif slide == "Slide 5":
         series: [{
             name: 'Companies headquatered in UK',
             data: [
-                772, 1114, 1183, 1382, 1460
+                2351, 3080, 2926, 2900, 2613
 
             ]
 
