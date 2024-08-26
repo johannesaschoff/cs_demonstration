@@ -1298,7 +1298,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:4000,
+            max:5000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1388,7 +1388,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max: 4000,            
+            max: 5000,            
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1477,7 +1477,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:4000,
+            max:5000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1567,7 +1567,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:4000,
+            max:5000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1657,7 +1657,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:4000,
+            max:5000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
