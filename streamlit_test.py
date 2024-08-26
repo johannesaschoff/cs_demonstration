@@ -564,7 +564,7 @@ if slide == "Slide 2":
             { name: 'SFT: Software and Computer Services', data: [1291, 1224, 1246, 1504, 2023], stack: 'US', id: 'SoftwareandComputerServices', abbreviation: 'SFT', color: darkenColor(baseColor, 40, 1) },
             { name: 'SUP: Support Services (Industrial Goods and Services)', data: [0, 1003, 0, 932, 1265], stack: 'US', linkedTo: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 1) },
             { name: 'HC: Health Care Equipment and Services', data: [0, 0, 0, 0, 1213], stack: 'US', id: 'HealthCareEquipmentandServices', abbreviation: 'HC', color: darkenColor(baseColor, 40, 1) },
-            { name: 'F&B: Food and Beverage', data: [1060, 1204, 1125, 1006, 1204], stack: 'US', linkedTo: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 1) },
+            { name: 'F&B: Food and Beverage', data: [1060, 1204, 1125, 1006, 0], stack: 'US', linkedTo: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 1) },
             { name: 'TRV: Travel and Leisure', data: [1037, 0, 847, 0, 0], stack: 'US', linkedTo: 'TravelandLeisure', abbreviation: 'TRV', color: darkenColor(baseColor, 35, 1) },
         
             { name: 'YoY Change in Incidents United States', type: 'spline', yAxis: 1, data: [0.0, 1.4961585119288356, -6.636311895276037, 5.370641306998292, 26.33497251952559], tooltip: { valueSuffix: '%' }, color: '#E32553' },
