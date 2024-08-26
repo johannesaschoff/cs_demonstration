@@ -562,10 +562,10 @@ if slide == "Slide 2":
             { name: 'RTL: Retail', data: [1967, 2083, 2125, 2019, 2535], stack: 'US', linkedTo: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 1) },
             { name: 'FIN: Financial Services', data: [1779, 1732, 1467, 1843, 2351], stack: 'US', linkedTo: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 1) },
             { name: 'SFT: Software and Computer Services', data: [1291, 1224, 1246, 1504, 2023], stack: 'US', id: 'SoftwareandComputerServices', abbreviation: 'SFT', color: darkenColor(baseColor, 40, 1) },
-            { name: 'SUP: Support Services (Industrial Goods and Services)', data: [1003, 1080, 889, 932, 1265], stack: 'US', linkedTo: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 1) },
+            { name: 'SUP: Support Services (Industrial Goods and Services)', data: [0, 1003, 0, 932, 1265], stack: 'US', linkedTo: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 1) },
             { name: 'HC: Health Care Equipment and Services', data: [0, 0, 0, 0, 1213], stack: 'US', id: 'HealthCareEquipmentandServices', abbreviation: 'HC', color: darkenColor(baseColor, 40, 1) },
             { name: 'F&B: Food and Beverage', data: [1060, 1204, 1125, 1006, 1204], stack: 'US', linkedTo: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 1) },
-            { name: 'TRV: Travel and Leisure', data: [1037, 847, 0, 0, 0], stack: 'US', linkedTo: 'TravelandLeisure', abbreviation: 'TRV', color: darkenColor(baseColor, 35, 1) },
+            { name: 'TRV: Travel and Leisure', data: [1037, 0, 847, 0, 0], stack: 'US', linkedTo: 'TravelandLeisure', abbreviation: 'TRV', color: darkenColor(baseColor, 35, 1) },
         
             { name: 'YoY Change in Incidents United States', type: 'spline', yAxis: 1, data: [0.0, 1.4961585119288356, -6.636311895276037, 5.370641306998292, 26.33497251952559], tooltip: { valueSuffix: '%' }, color: '#E32553' },
             { name: 'YoY Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 18.442095845216123, 21.547613427128077, 2.509225092250933, 0.6934182107536602], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
