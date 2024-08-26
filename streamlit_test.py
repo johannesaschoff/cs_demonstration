@@ -1653,7 +1653,7 @@ elif slide == "Slide 5":
             categories: ['2020', '2021', '2022', '2023', '2024'],
             labels: {
                 rotation: 0,
-                align: 'center'
+                align: 'center',
                 style: {
                     fontFamily: "'UnitOT', sans-serif",  
                     fontSize: '12px'
