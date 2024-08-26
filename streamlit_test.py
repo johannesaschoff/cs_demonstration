@@ -1298,7 +1298,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:3000,
+            max:4000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1477,17 +1477,17 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:1500,
+            max:4000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 1154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: 'left'}},                      
-                { from: 1154, to: 1494, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }, align: 'left}},
-                { from: 1494, to: 1906, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }, align: 'left}},
-                { from: 1906, to: 2331, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { color: '#606060' }, align: 'left}},
-                { from: 2331, to: 2828, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: 'left}},
-                { from: 2828, to: 3468, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }, align: 'left}}
+                { from: 0, to: 1154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},                      
+                { from: 1154, to: 1494, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }, align: "left"}},
+                { from: 1494, to: 1906, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }, align: "left"}},
+                { from: 1906, to: 2331, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}},
+                { from: 2331, to: 2828, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}},
+                { from: 2828, to: 3468, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }, align: "left"}}
             ]
 
         },
