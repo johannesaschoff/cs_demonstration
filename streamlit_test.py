@@ -548,6 +548,7 @@ if slide == "Slide 2":
         var baseColor = '#00A8CC';
 
         // Define the series data with abbreviations in the names for the legend
+
         var seriesData = [
             { name: 'RTL: Retail', data: [1967, 2083, 2125, 2019, 2535], stack: 'US', linkedTo: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 1) },
             { name: 'FIN: Financial Services', data: [1779, 1732, 1467, 1843, 2351], stack: 'US', linkedTo: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 1) },
