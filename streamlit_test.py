@@ -1448,7 +1448,7 @@ elif slide == "Slide 5":
         },
 
         title: {
-            text: 'Local pollution',
+            text: 'Impacts on communities',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
@@ -1482,14 +1482,13 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 379, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},                      
-                { from: 379, to: 482, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Wastewater management', style: { color: '#606060' }}},
-                { from: 482, to: 586, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }}},
-                { from: 586, to: 704, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }}},
-                { from: 704, to: 855, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { color: '#606060' }}},
-                { from: 855, to: 1078, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }}}
+                { from: 0, to: 1154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: 'left'}},                      
+                { from: 1154, to: 1494, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }, align: 'left}},
+                { from: 1494, to: 1906, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }, align: 'left}},
+                { from: 1906, to: 2331, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { color: '#606060' }, align: 'left}},
+                { from: 2331, to: 2828, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: 'left}},
+                { from: 2828, to: 3468, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }, align: 'left}}
             ]
-
 
         },
         tooltip: {
@@ -1511,7 +1510,7 @@ elif slide == "Slide 5":
         series: [{
             name: 'Companies headquatered in UK',
             data: [
-                525, 765, 864, 1052, 1078
+                2630, 3537, 3337, 3451, 3468
 
             ]
 
