@@ -1280,7 +1280,7 @@ elif slide == "Slide 5":
             text: 'Impacts on landscapes, ecosystems and biodiversity',
             align: 'left',
             style: {
-                fontFamily: "'UnitSlabOT-Bold', sans-serif",  // Custom font reference
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
                 fontSize: '16px' 
             }
@@ -1289,7 +1289,7 @@ elif slide == "Slide 5":
             text: 'Top 5 topic tags (FY24) contributing to the second most risky sector in the UK',
             align: 'left',
             style: {
-                fontFamily: "'UnitSlabOT-Bold', sans-serif", 
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
                 fontWeight: 'normal',  
                 fontSize: '12px'   
             }
