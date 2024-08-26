@@ -1317,6 +1317,12 @@ elif slide == "Slide 5":
 
 
     const chartOptions1 = {
+        credits: {
+            enabled: false 
+        },
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline',
             scrollablePlotArea: {
@@ -1389,6 +1395,12 @@ elif slide == "Slide 5":
         }
     };
     const chartOptions3 = {
+        credits: {
+            enabled: false 
+        },
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline',
             scrollablePlotArea: {
@@ -1463,6 +1475,12 @@ elif slide == "Slide 5":
     };
 
     const chartOptions4 = {
+        credits: {
+            enabled: false 
+        },
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline',
             scrollablePlotArea: {
@@ -1538,6 +1556,12 @@ elif slide == "Slide 5":
 
 
     const chartOptions5 = {
+        credits: {
+            enabled: false 
+        },
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline',
             scrollablePlotArea: {
