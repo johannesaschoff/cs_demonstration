@@ -549,20 +549,20 @@ if slide == "Slide 2":
 
         // Define the series data with abbreviations in the names for the legend
         var seriesData = [
-            { name: 'RTL: Retail', data: [2075, 2253, 2252, 2117, 2655], stack: 'US', linkedTo: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 1) },
-            { name: 'FIN: Financial Services', data: [1872, 1818, 1562, 1937, 2466], stack: 'US', linkedTo: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 1) },
+            { name: 'RTL: Retail', data: [1967, 2083, 2125, 2019, 2535], stack: 'US', linkedTo: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 1) },
+            { name: 'FIN: Financial Services', data: [1779, 1732, 1467, 1843, 2351], stack: 'US', linkedTo: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 1) },
             { name: 'SFT: Software and Computer Services', data: [1307, 1241, 1259, 1519, 2045], stack: 'US', id: 'SoftwareandComputerServices', abbreviation: 'SFT', color: darkenColor(baseColor, 40, 1) },
             { name: 'SUP: Support Services (Industrial Goods and Services)', data: [1099, 1080, 889, 1016, 1399], stack: 'US', linkedTo: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 1) },
-            { name: 'HC: Health Care Equipment and Services', data: [0, 0, 0, 0, 1235], stack: 'US', id: 'HealthCareEquipmentandServices', abbreviation: 'HC', color: darkenColor(baseColor, 40, 1) },
-            { name: 'F&B: Food and Beverage', data: [1150, 1338, 1253, 1112, 0], stack: 'US', linkedTo: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 1) },
-
-            { name: 'RTL: Retail', data: [1366, 1918, 2621, 2907, 2844], stack: 'EU', id: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 0.5) },
-            { name: 'FIN: Financial Services', data: [2059, 2283, 2619, 2774, 2846], stack: 'EU', id: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 0.5) },
-            { name: 'F&B: Food and Beverage', data: [1122, 1610, 2256, 2202, 2139], stack: 'EU', id: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 0.5) },
-            { name: 'SUP: Support Services (Industrial Goods and Services)', data: [1432, 1709, 2121, 2091, 2039], stack: 'EU', id: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 0.5) },
-            { name: 'UTL: Utilities', data: [0, 0, 0, 0, 1578], stack: 'EU', id: 'Utilities', abbreviation: 'UTL', color: darkenColor(baseColor, 50, 0.5) },
-            { name: 'CON: Construction and Materials', data: [1191, 1386, 1754, 1598, 0], stack: 'EU', id: 'ConstructionandMaterials', abbreviation: 'CON', color: darkenColor(baseColor, 15, 0.5) },
-
+            { name: 'HC: Health Care Equipment and Services', data: [0, 0, 0, 0, 1213], stack: 'US', id: 'HealthCareEquipmentandServices', abbreviation: 'HC', color: darkenColor(baseColor, 40, 1) },
+            { name: 'F&B: Food and Beverage', data: [1060, 1204, 1125, 1006, 0], stack: 'US', linkedTo: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 1) },
+        
+            { name: 'RTL: Retail', data: [1366, 1918, 2621, 2908, 2845], stack: 'EU', id: 'Retail', abbreviation: 'RTL', color: darkenColor(baseColor, 10, 0.5) },
+            { name: 'FIN: Financial Services', data: [2060, 2283, 2619, 2774, 2850], stack: 'EU', id: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 0.5) },
+            { name: 'F&B: Food and Beverage', data: [1122, 1610, 2256, 2202, 2140], stack: 'EU', id: 'FoodandBeverage', abbreviation: 'F&B', color: darkenColor(baseColor, 30, 0.5) },
+            { name: 'SUP: Support Services (Industrial Goods and Services)', data: [1431, 1708, 2121, 2090, 2040], stack: 'EU', id: 'SupportServicesIndustrialGoodsandServices', abbreviation: 'SUP', color: darkenColor(baseColor, 25, 0.5) },
+            { name: 'UTL: Utilities', data: [0, 0, 0, 0, 1579], stack: 'EU', id: 'Utilities', abbreviation: 'UTL', color: darkenColor(baseColor, 50, 0.5) },
+            { name: 'CON: Construction and Materials', data: [1191, 1386, 1754, 1599, 0], stack: 'EU', id: 'ConstructionandMaterials', abbreviation: 'CON', color: darkenColor(baseColor, 15, 0.5) },
+        
             { name: 'YoY Change in Incidents United States', type: 'spline', yAxis: 1, data: [0.0, 1.4961585119288356, -6.636311895276037, 5.370641306998292, 26.33497251952559], tooltip: { valueSuffix: '%' }, color: '#E32553' },
             { name: 'YoY Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 18.442095845216123, 21.547613427128077, 2.509225092250933, 0.6934182107536602], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
         ];
