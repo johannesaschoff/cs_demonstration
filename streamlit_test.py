@@ -1703,11 +1703,11 @@ elif slide == "Slide 5":
     };
 
 
-    Highcharts.chart('container1', chartOptions1);
+    Highcharts.chart('container1', chartOptions5);
     Highcharts.chart('container2', chartOptions2);
     Highcharts.chart('container3', chartOptions3);
     Highcharts.chart('container4', chartOptions4);
-    Highcharts.chart('container5', chartOptions5);
+    Highcharts.chart('container5', chartOptions1);
     Highcharts.chart('container6', chartOptions); 
 </script>
 
