@@ -1357,9 +1357,10 @@ elif slide == "Slide 5":
                 scrollPositionX: 1
             }
         },
+
         title: {
             text: 'Impacts on communities',
-            align: 'left'
+            align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
@@ -1368,7 +1369,12 @@ elif slide == "Slide 5":
         },
         subtitle: {
             text: 'Top 5 topic tags (FY24) contributing to the riskiest sector in the UK',
-            align: 'left'
+            align: 'left',
+            style: {
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
+                fontWeight: 'normal',  
+                fontSize: '12px'   
+            }
         },
         xAxis: {
             categories: ['2020', '2021', '2022', '2023', '2024'],
@@ -1440,9 +1446,10 @@ elif slide == "Slide 5":
                 scrollPositionX: 1
             }
         },
+
         title: {
             text: 'Local pollution',
-            align: 'left'
+            align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
@@ -1451,7 +1458,12 @@ elif slide == "Slide 5":
         },
         subtitle: {
             text: 'Top 5 topic tags (FY24) contributing to the third most risky sector in the UK',
-            align: 'left'
+            align: 'left',
+            style: {
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
+                fontWeight: 'normal',  
+                fontSize: '12px'   
+            }
         },
         xAxis: {
             categories: ['2020', '2021', '2022', '2023', '2024'],
@@ -1525,9 +1537,10 @@ elif slide == "Slide 5":
                 scrollPositionX: 1
             }
         },
+
         title: {
             text: 'Violation of national legislation',
-            align: 'left'
+            align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
@@ -1536,7 +1549,12 @@ elif slide == "Slide 5":
         },
         subtitle: {
             text: 'Top 5 topic tags (FY24) contributing to the fourth most risky sector in the UK',
-            align: 'left'
+            align: 'left',
+            style: {
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
+                fontWeight: 'normal',  
+                fontSize: '12px'   
+            }
         },
         xAxis: {
             categories: ['2020', '2021', '2022', '2023', '2024'],
@@ -1611,9 +1629,10 @@ elif slide == "Slide 5":
                 scrollPositionX: 1
             }
         },
+
         title: {
             text: 'Human rights abuses and corporate complicity',
-            align: 'left'
+            align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
@@ -1622,7 +1641,12 @@ elif slide == "Slide 5":
         },
         subtitle: {
             text: 'Top 5 topic tags (FY24) contributing to the fifth most risky sector in the UK',
-            align: 'left'
+            align: 'left',
+            style: {
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
+                fontWeight: 'normal',  
+                fontSize: '12px'   
+            }
         },
         xAxis: {
             categories: ['2020', '2021', '2022', '2023', '2024'],
