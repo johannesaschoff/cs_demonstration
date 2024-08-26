@@ -1278,7 +1278,7 @@ elif slide == "Slide 5":
             }
         },
         subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the second most risky sector in the UK',
+            text: 'Top 5 topic tags (FY24) contributing to the second most risky sector in the US',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
@@ -1329,7 +1329,7 @@ elif slide == "Slide 5":
             }
         },
         series: [{
-            name: 'Companies headquatered in UK',
+            name: 'Companies headquatered in US',
             data: [
                 1650, 1617, 1762, 2226, 2966
             ]
@@ -1368,7 +1368,7 @@ elif slide == "Slide 5":
             }
         },
         subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the riskiest sector in the UK',
+            text: 'Top 5 topic tags (FY24) contributing to the riskiest sector in the US',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
@@ -1419,7 +1419,7 @@ elif slide == "Slide 5":
             }
         },
         series: [{
-            name: 'Companies headquatered in UK',
+            name: 'Companies headquatered in US',
             data: [
                 2351, 3080, 2926, 2900, 2613
 
@@ -1457,7 +1457,7 @@ elif slide == "Slide 5":
             }
         },
         subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the third most risky sector in the UK',
+            text: 'Top 5 topic tags (FY24) contributing to the third most risky sector in the US',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
@@ -1508,7 +1508,7 @@ elif slide == "Slide 5":
             }
         },
         series: [{
-            name: 'Companies headquatered in UK',
+            name: 'Companies headquatered in US',
             data: [
                 2630, 3537, 3337, 3451, 3468
 
@@ -1547,7 +1547,7 @@ elif slide == "Slide 5":
             }
         },
         subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the fourth most risky sector in the UK',
+            text: 'Top 5 topic tags (FY24) contributing to the fourth most risky sector in the US',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
@@ -1628,7 +1628,7 @@ elif slide == "Slide 5":
         },
 
         title: {
-            text: 'Human rights abuses and corporate complicity',
+            text: 'Violation of national legislation',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
@@ -1637,7 +1637,7 @@ elif slide == "Slide 5":
             }
         },
         subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the fifth most risky sector in the UK',
+            text: 'Top 5 topic tags (FY24) contributing to the fifth most risky sector in the US',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
@@ -1657,17 +1657,17 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:1500,
+            max:4000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 338, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "right"}},                      
-                { from: 338, to: 370, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Salaries and benefits', style: { color: '#606060' }}},
-                { from: 370, to: 405, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "right"}},
-                { from: 405, to: 453, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { color: '#606060' }}},
-                { from: 453, to: 531, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "right"}},
-                { from: 531, to: 641, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }, align: "left"}}
+                { from: 0, to: 1640, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},                      
+                { from: 1640, to: 1881, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}},
+                { from: 1881, to: 2154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}},
+                { from: 2154, to: 2672, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }, align: "left"}},
+                { from: 2672, to: 3386, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: { color: '#606060' }, align: "left"}},
+                { from: 3386, to: 4914, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}}
             ]
 
         },
@@ -1688,9 +1688,9 @@ elif slide == "Slide 5":
             }
         },
         series: [{
-            name: 'Companies headquatered in UK',
+            name: 'Companies headquatered in US',
             data: [
-                412, 448, 534, 641, 611
+                3334, 3666, 3526, 3826, 4914
 
             ]
 
@@ -1701,7 +1701,6 @@ elif slide == "Slide 5":
             }
         }
     };
-
 
 
     Highcharts.chart('container1', chartOptions1);
