@@ -1298,7 +1298,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:5000,
+            max:5250,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1388,7 +1388,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max: 5000,            
+            max: 5250,            
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1477,7 +1477,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:5000,
+            max:5250,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1567,7 +1567,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:5000,
+            max:5250,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1657,7 +1657,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:5000,
+            max:5250,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
@@ -1706,8 +1706,8 @@ elif slide == "Slide 5":
     Highcharts.chart('container1', chartOptions5);
     Highcharts.chart('container2', chartOptions3);
     Highcharts.chart('container3', chartOptions2);
-    Highcharts.chart('container4', chartOptions4);
-    Highcharts.chart('container5', chartOptions1);
+    Highcharts.chart('container4', chartOptions1);
+    Highcharts.chart('container5', chartOptions4);
     Highcharts.chart('container6', chartOptions); 
 </script>
 
