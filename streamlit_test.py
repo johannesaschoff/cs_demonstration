@@ -341,46 +341,7 @@ RWA;RWA;1
             },
 
             exporting: {
-                enabled: false,
-                fallbackToExportServer: false,
-                menuItemDefinitions: {
-                    downloadPNG: {
-                        onclick: function () {
-                            this.exportChartLocal({ type: 'image/png' });
-                        },
-                        text: 'Download PNG'
-                    },
-                    downloadJPEG: {
-                        onclick: function () {
-                            this.exportChartLocal({ type: 'image/jpeg' });
-                        },
-                        text: 'Download JPEG'
-                    },
-                    downloadPDF: {
-                        onclick: function () {
-                            this.exportChartLocal({ type: 'application/pdf' });
-                        },
-                        text: 'Download PDF'
-                    },
-                    downloadSVG: {
-                        onclick: function () {
-                            this.exportChartLocal({ type: 'image/svg+xml' });
-                        },
-                        text: 'Download SVG'
-                    }
-                },
-                buttons: {
-                    contextButton: {
-                        menuItems: ['downloadPNG', 'downloadJPEG', 'downloadPDF', 'downloadSVG']
-                    }
-                },
-                libURL: 'https://code.highcharts.com/',
-                sourceWidth: 800,
-                sourceHeight: 500,
-                scale: 1,
-                error: function (options, err) {
-                    console.error('Chart export failed. Error:', err);
-                },
+                enabled: false
             },
 
             mapNavigation: {
