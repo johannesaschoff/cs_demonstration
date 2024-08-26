@@ -1298,7 +1298,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents'
             },
             min: 0,
-            max:1500,
+            max:3000,
             minorGridLineWidth: 0,
             gridLineWidth: 0,
             alternateGridColor: null,
