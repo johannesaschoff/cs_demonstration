@@ -1407,7 +1407,13 @@ elif slide == "Slide 5":
             title: {
                 text: 'Number of Incidents',
                 style: {
-                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontFamily: "'UnitOT', sans-serif", 
+                    fontSize: '12px',
+                }
+            },
+            labels: {
+                style: {
+                    fontFamily: "'UnitOT', sans-serif",  
                     fontSize: '12px',
                 }
             },
@@ -1505,7 +1511,13 @@ elif slide == "Slide 5":
             title: {
                 text: 'Number of Incidents',
                 style: {
-                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontFamily: "'UnitOT', sans-serif", 
+                    fontSize: '12px',
+                }
+            },
+            labels: {
+                style: {
+                    fontFamily: "'UnitOT', sans-serif",  
                     fontSize: '12px',
                 }
             },
@@ -1604,7 +1616,13 @@ elif slide == "Slide 5":
             title: {
                 text: 'Number of Incidents',
                 style: {
-                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontFamily: "'UnitOT', sans-serif", 
+                    fontSize: '12px',
+                }
+            },
+            labels: {
+                style: {
+                    fontFamily: "'UnitOT', sans-serif",  
                     fontSize: '12px',
                 }
             },
@@ -1703,7 +1721,13 @@ elif slide == "Slide 5":
             title: {
                 text: 'Number of Incidents',
                 style: {
-                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontFamily: "'UnitOT', sans-serif", 
+                    fontSize: '12px',
+                }
+            },
+            labels: {
+                style: {
+                    fontFamily: "'UnitOT', sans-serif",  
                     fontSize: '12px',
                 }
             },
