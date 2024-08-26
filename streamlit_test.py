@@ -834,27 +834,6 @@ if slide == "Slide 3":
             { name: 'YoY Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 58.444514, 40.566645, 13.756651, -10.804448], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
         ];
 
-        var seriesData = [
-            { name: 'H&C: Human rights abuses and corporate complicity', data: [1779, 1793, 1940, 2363, 3164], stack: 'US', id: 'H&C', abbreviation: 'H&C', color: darkenColor(baseColor, 10, 1) },
-            { name: 'H&C: Human rights abuses and corporate complicity', data: [null, null, null, null, null], stack: 'EU', linkedTo: 'H&C', abbreviation: 'H&C', color: darkenColor(baseColor, 10, 0.5) },
-            { name: 'Imp: Impacts on communities', data: [3183, 4495, 4138, 4172, 4282], stack: 'US', id: 'Imp', abbreviation: 'Imp', color: darkenColor(baseColor, 20, 1) },
-            { name: 'Imp: Impacts on communities', data: [2815, 4716, 7103, 8382, 7926], stack: 'EU', linkedTo: 'Imp', abbreviation: 'Imp', color: darkenColor(baseColor, 20, 0.5) },
-            { name: 'Eco: Impacts on landscapes, ecosystems and biodiversity', data: [2912, 4050, 3756, 3718, 3475], stack: 'US', id: 'Eco', abbreviation: 'Eco', color: darkenColor(baseColor, 30, 1) },
-            { name: 'Eco: Impacts on landscapes, ecosystems and biodiversity', data: [3127, 5096, 7479, 8770, 7858], stack: 'EU', linkedTo: 'Eco', abbreviation: 'Eco', color: darkenColor(baseColor, 30, 0.5) },
-            { name: 'Loc: Local pollution', data: [2372, 3405, 3122, 3177, 3112], stack: 'US', id: 'Loc', abbreviation: 'Loc', color: darkenColor(baseColor, 40, 1) },
-            { name: 'Loc: Local pollution', data: [2148, 4017, 5692, 6399, 5356], stack: 'EU', linkedTo: 'Loc', abbreviation: 'Loc', color: darkenColor(baseColor, 40, 0.5) },
-            { name: 'Occ: Occupational health and safety issues', data: [null, null, null, null, null], stack: 'US', id: 'Occ', abbreviation: 'Occ', color: darkenColor(baseColor, 50, 1) },
-            { name: 'Occ: Occupational health and safety issues', data: [1426, null, null, null, null], stack: 'EU', linkedTo: 'Occ', abbreviation: 'Occ', color: darkenColor(baseColor, 50, 0.5) },
-            { name: 'Vio: Violation of national legislation', data: [3656, 4106, 3958, 4286, 5488], stack: 'US', id: 'Vio', abbreviation: 'Vio', color: darkenColor(baseColor, 60, 1) },
-            { name: 'Vio: Violation of national legislation', data: [3226, 4351, 5325, 5791, 5259], stack: 'EU', linkedTo: 'Vio', abbreviation: 'Vio', color: darkenColor(baseColor, 60, 0.5) },
-            { name: 'Was: Waste issues', data: [null, null, null, null, null], stack: 'US', id: 'Was', abbreviation: 'Was', color: darkenColor(baseColor, 70, 1) },
-            { name: 'Was: Waste issues', data: [null, 2009, 2780, 2941, 2396], stack: 'EU', linkedTo: 'Was', abbreviation: 'Was', color: darkenColor(baseColor, 70, 0.5) },
-
-            // Add Relative Change Lines
-            { name: 'YoY Change in Incidents United States', type: 'spline', yAxis: 1, data: [0.0,28.391598, 	-5.238389, 4.741634, 10.188530], tooltip: { valueSuffix: '%' }, color: '#E32553' },
-            { name: 'YoY Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 58.444514, 40.566645, 13.756651, -10.804448], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
-        ]; 
-
 
         // Sort the series data for each year
         function sortSeriesData(seriesData) {
