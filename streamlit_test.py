@@ -1301,11 +1301,17 @@ elif slide == "Slide 5":
             title: {
                 text: 'Number of Incidents',
                 style: {
-                    fontFamily: "'YourCustomFont', sans-serif", 
-                    fontSize: '14px',
-                    color: '#333333'
+                    fontFamily: "'UnitOT', sans-serif", 
+                    fontSize: '12px',
                 }
             },
+            labels: {
+                style: {
+                    fontFamily: "'UnitOT', sans-serif",  
+                    fontSize: '12px',
+                }
+            },
+
             min: 0,
             max:5000,
             tickInterval: 1000,
@@ -1402,8 +1408,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents',
                 style: {
                     fontFamily: "'YourCustomFont', sans-serif", 
-                    fontSize: '14px',
-                    color: '#333333'
+                    fontSize: '12px',
                 }
             },
             min: 0,
@@ -1501,8 +1506,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents',
                 style: {
                     fontFamily: "'YourCustomFont', sans-serif", 
-                    fontSize: '14px',
-                    color: '#333333'
+                    fontSize: '12px',
                 }
             },
             min: 0,
@@ -1601,8 +1605,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents',
                 style: {
                     fontFamily: "'YourCustomFont', sans-serif", 
-                    fontSize: '14px',
-                    color: '#333333'
+                    fontSize: '12px',
                 }
             },
             min: 0,
@@ -1701,8 +1704,7 @@ elif slide == "Slide 5":
                 text: 'Number of Incidents',
                 style: {
                     fontFamily: "'YourCustomFont', sans-serif", 
-                    fontSize: '14px',
-                    color: '#333333'
+                    fontSize: '12px',
                 }
             },
             min: 0,
