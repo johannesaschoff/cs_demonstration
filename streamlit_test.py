@@ -1738,12 +1738,12 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 1640, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { fontFamily: "'YourCustomFont', sans-serif",color: '#606060' }, align: "left"}},                      
-                { from: 1640, to: 1881, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: {fontFamily: "'YourCustomFont', sans-serif", color: '#606060' }, align: "left"}},
-                { from: 1881, to: 2154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { fontFamily: "'YourCustomFont', sans-serif",color: '#606060' }, align: "left"}},
-                { from: 2154, to: 2672, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { fontFamily: "'YourCustomFont', sans-serif",color: '#606060' }, align: "left"}},
-                { from: 2672, to: 3386, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: {fontFamily: "'YourCustomFont', sans-serif", color: '#606060' }, align: "left"}},
-                { from: 3386, to: 4914, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { fontFamily: "'YourCustomFont', sans-serif",color: '#606060' }, align: "left"}}
+                { from: 0, to: 1640, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "left"}},                      
+                { from: 1640, to: 1881, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
+                { from: 1881, to: 2154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "left"}},
+                { from: 2154, to: 2672, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "left"}},
+                { from: 2672, to: 3386, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
+                { from: 3386, to: 4914, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "left"}}
             ]
 
         },
