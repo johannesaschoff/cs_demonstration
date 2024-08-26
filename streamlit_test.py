@@ -1303,12 +1303,12 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 745, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},                      
-                { from: 745, to: 832, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Gender inequality', style: { color: '#606060' }}},
-                { from: 832, to: 961, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: { color: '#606060' }}},
-                { from: 961, to: 1309, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Cyberattack', style: { color: '#606060' }}},
-                { from: 1309, to: 1984, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }}},
-                { from: 1984, to: 2966, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }}}
+                { from: 0, to: 745, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},                      
+                { from: 745, to: 832, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Gender inequality', style: { color: '#606060' }, align: "right"}},
+                { from: 832, to: 961, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: { color: '#606060' }, align: "left"}},
+                { from: 961, to: 1309, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Cyberattack', style: { color: '#606060' }, align: "right"}},
+                { from: 1309, to: 1984, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}},
+                { from: 1984, to: 2966, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }, align: "right"}}
             ]
 
         },
