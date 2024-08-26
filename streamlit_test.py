@@ -1319,12 +1319,12 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 745, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "right"}},                      
-                { from: 745, to: 832, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Gender inequality', style: { color: '#606060' }, align: "left"}},
-                { from: 832, to: 961, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: { color: '#606060' }, align: "right"}},
-                { from: 961, to: 1309, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Cyberattack', style: { color: '#606060' }, align: "left"}},
-                { from: 1309, to: 1984, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "right"}},
-                { from: 1984, to: 2966, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }, align: "left"}}
+                { from: 0, to: 745, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "right"}},                      
+                { from: 745, to: 832, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Gender inequality', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 832, to: 961, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "right"}},
+                { from: 961, to: 1309, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Cyberattack', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}},
+                { from: 1309, to: 1984, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "right"}},
+                { from: 1984, to: 2966, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}}
             ]
 
         },
@@ -1424,12 +1424,12 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 739, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},
-                { from: 739, to: 850, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Marine/Coastal ecosystems', style: { color: '#606060' }, align: "left"}},
-                { from: 850, to: 995, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "right"}},
-                { from: 995, to: 1154, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { color: '#606060' }, align: "left"}},
-                { from: 1154, to: 1876, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { color: '#606060' }, align: "left"}},
-                { from: 1876, to: 2613, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}}
+                { from: 0, to: 739, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}},
+                { from: 739, to: 850, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Marine/Coastal ecosystems', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}},
+                { from: 850, to: 995, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "right"}},
+                { from: 995, to: 1154, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 1154, to: 1876, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 1876, to: 2613, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}}
             ]
 
         },
@@ -1528,12 +1528,12 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 1154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},                      
-                { from: 1154, to: 1494, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }, align: "left"}},
-                { from: 1494, to: 1906, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }, align: "left"}},
-                { from: 1906, to: 2331, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}},
-                { from: 2331, to: 2828, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}},
-                { from: 2828, to: 3468, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }, align: "left"}}
+                { from: 0, to: 1154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},                      
+                { from: 1154, to: 1494, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}},
+                { from: 1494, to: 1906, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}},
+                { from: 1906, to: 2331, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 2331, to: 2828, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 2828, to: 3468, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}}
             ]
 
         },
@@ -1633,12 +1633,12 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 723, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},                      
-                { from: 723, to: 901, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { color: '#606060' }, align: "left"}},
-                { from: 901, to: 1167, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}},
-                { from: 1167, to: 1563, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { color: '#606060' }, align: "left"}},
-                { from: 1563, to: 2010, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}},
-                { from: 2010, to: 2482, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }, align: "left"}}
+                { from: 0, to: 723, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}},                      
+                { from: 723, to: 901, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 901, to: 1167, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 1167, to: 1563, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { fontFamily: "'UnitOT', color: '#606060' }, align: "left"}},
+                { from: 1563, to: 2010, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}},
+                { from: 2010, to: 2482, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: {fontFamily: "'UnitOT',  color: '#606060' }, align: "left"}}
             ]
         },
         tooltip: {
