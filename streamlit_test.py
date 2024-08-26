@@ -1319,7 +1319,7 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 745, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "right"}},                      
+                { from: 0, to: 745, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},                      
                 { from: 745, to: 832, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Gender inequality', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
                 { from: 832, to: 961, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: {fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "right"}},
                 { from: 961, to: 1309, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Cyberattack', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
