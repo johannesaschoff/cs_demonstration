@@ -1269,7 +1269,7 @@ elif slide == "Slide 5":
             }
         },
         title: {
-            text: 'Impacts on landscapes, ecosystems and biodiversity',
+            text: 'Human rights abuses and corporate complicity',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
@@ -1303,14 +1303,13 @@ elif slide == "Slide 5":
             gridLineWidth: 0,
             alternateGridColor: null,
             plotBands: [
-                { from: 0, to: 498, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},                      
-                { from: 498, to: 591, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Protected areas', style: { color: '#606060' }}},
-                { from: 591, to: 699, color: 'rgba(0, 0, 0, 0)', label: { text: 'Marine/Coastal ecosystems', style: { color: '#606060' }}},
-                { from: 699, to: 811, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: { color: '#606060' }}},
-                { from: 811, to: 943, color: 'rgba(0, 0, 0, 0)', label: { text: 'Economic impact', style: { color: '#606060' }}},
-                { from: 943, to: 1332, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }}}
+                { from: 0, to: 745, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }}},                      
+                { from: 745, to: 832, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Gender inequality', style: { color: '#606060' }}},
+                { from: 832, to: 961, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: { color: '#606060' }}},
+                { from: 961, to: 1309, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Cyberattack', style: { color: '#606060' }}},
+                { from: 1309, to: 1984, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { color: '#606060' }}},
+                { from: 1984, to: 2966, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }}}
             ]
-
 
         },
         tooltip: {
@@ -1332,7 +1331,7 @@ elif slide == "Slide 5":
         series: [{
             name: 'Companies headquatered in UK',
             data: [
-                839, 1114, 1205, 1329, 1332
+                1650, 1617, 1762, 2226, 2966
             ]
 
         }],
