@@ -1236,6 +1236,13 @@ elif slide == "Slide 5":
 <script>
 
     const chartOptions2 = {
+        credits: {
+            enabled: false 
+        },
+
+        exporting: {
+            enabled: false
+        },
         chart: {
             type: 'spline',
             scrollablePlotArea: {
