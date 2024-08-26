@@ -1299,7 +1299,12 @@ elif slide == "Slide 5":
         },
         yAxis: {
             title: {
-                text: 'Number of Incidents'
+                text: 'Number of Incidents',
+                style: {
+                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontSize: '14px',
+                    color: '#333333'
+                }
             },
             min: 0,
             max:5000,
@@ -1394,7 +1399,12 @@ elif slide == "Slide 5":
         },
         yAxis: {
             title: {
-                text: 'Number of Incidents'
+                text: 'Number of Incidents',
+                style: {
+                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontSize: '14px',
+                    color: '#333333'
+                }
             },
             min: 0,
             max: 5000,    
@@ -1488,7 +1498,12 @@ elif slide == "Slide 5":
         },
         yAxis: {
             title: {
-                text: 'Number of Incidents'
+                text: 'Number of Incidents',
+                style: {
+                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontSize: '14px',
+                    color: '#333333'
+                }
             },
             min: 0,
             max:5000,
@@ -1583,7 +1598,12 @@ elif slide == "Slide 5":
         },
         yAxis: {
             title: {
-                text: 'Number of Incidents'
+                text: 'Number of Incidents',
+                style: {
+                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontSize: '14px',
+                    color: '#333333'
+                }
             },
             min: 0,
             max:5000,
@@ -1678,7 +1698,12 @@ elif slide == "Slide 5":
         },
         yAxis: {
             title: {
-                text: 'Number of Incidents'
+                text: 'Number of Incidents',
+                style: {
+                    fontFamily: "'YourCustomFont', sans-serif", 
+                    fontSize: '14px',
+                    color: '#333333'
+                }
             },
             min: 0,
             max:5000,
