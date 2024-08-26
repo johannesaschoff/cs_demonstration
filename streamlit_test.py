@@ -1669,7 +1669,7 @@ elif slide == "Slide 5":
             plotBands: [
                 { from: 0, to: 1640, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: { color: '#606060' }, align: "left"}},                      
                 { from: 1640, to: 1881, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}},
-                { from: 1881, to: 2154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: { color: '#606060' }, align: "left"}},
+                { from: 1881, to: 2154, color: 'rgba(0, 0, 0, 0)', label: { text: 'Health impact', style: { color: '#606060' }, align: "left"}},
                 { from: 2154, to: 2672, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Privacy violations', style: { color: '#606060' }, align: "left"}},
                 { from: 2672, to: 3386, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: { color: '#606060' }, align: "left"}},
                 { from: 3386, to: 4914, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { color: '#606060' }, align: "left"}}
