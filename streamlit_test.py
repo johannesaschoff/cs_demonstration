@@ -1269,15 +1269,6 @@ elif slide == "Slide 5":
         },
         title: {
             text: 'Impacts on landscapes, ecosystems and biodiversity',
-            align: 'left'
-        },
-        subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the second most risky sector in the UK',
-            align: 'left'
-        },
-
-        title: {
-            text: 'Impacts on landscapes, ecosystems and biodiversity',
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
