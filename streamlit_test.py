@@ -32,7 +32,8 @@ st.sidebar.markdown(
 
     /* Apply custom font to all text in the sidebar */
     .sidebar-text {{
-        font-family: 'UnitSlabOT-Bold', sans-serif;
+        font-family: 'UnitOT', sans-serif;
+        fontWeight: 'bold'
     }}
 
     /* Apply custom font to Streamlit's radio buttons */
