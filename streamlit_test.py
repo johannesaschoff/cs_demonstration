@@ -1280,15 +1280,6 @@ elif slide == "Slide 5":
                 fontSize: '16px' 
             }
         },
-        subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the second most risky sector in the US',
-            align: 'left',
-            style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
-                fontWeight: 'normal',  
-                fontSize: '12px'   
-            }
-        },
         xAxis: {
             categories: ['2020', '2021', '2022', '2023', '2024'],
             labels: {
@@ -1398,15 +1389,6 @@ elif slide == "Slide 5":
                 fontSize: '16px' 
             }
         },
-        subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the riskiest sector in the US',
-            align: 'left',
-            style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
-                fontWeight: 'normal',  
-                fontSize: '12px'   
-            }
-        },
         xAxis: {
             categories: ['2020', '2021', '2022', '2023', '2024'],
             labels: {
@@ -1512,15 +1494,6 @@ elif slide == "Slide 5":
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
                 fontSize: '16px' 
-            }
-        },
-        subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the third most risky sector in the US',
-            align: 'left',
-            style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
-                fontWeight: 'normal',  
-                fontSize: '12px'   
             }
         },
         xAxis: {
@@ -1629,15 +1602,6 @@ elif slide == "Slide 5":
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
                 fontSize: '16px' 
-            }
-        },
-        subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the fourth most risky sector in the US',
-            align: 'left',
-            style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
-                fontWeight: 'normal',  
-                fontSize: '12px'   
             }
         },
         xAxis: {
@@ -1806,7 +1770,7 @@ elif slide == "Slide 5":
             }
         },
         series: [{
-            name: 'Custom Legend Text',  // Set your custom legend text here
+            name: 'Custom Legend Text',  
             data: [
                 3334, 3666, 3526, 3826, 4914
             ]
