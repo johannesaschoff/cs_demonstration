@@ -1708,7 +1708,7 @@ elif slide == "Slide 5":
             align: 'left',
             style: {
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
-                fontWeight: 'bold',  
+                fontWeight: 'normal',  
                 fontSize: '16px' 
             }
         },
