@@ -1351,6 +1351,18 @@ elif slide == "Slide 5":
             ]
 
         }],
+        legend: {
+            labelFormatter: function () {
+                return 'Violation of National Legislation';
+            },
+            align: 'center',
+            verticalAlign: 'bottom',
+            layout: 'horizontal',
+            itemStyle: { 
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
+                fontSize: '12px'
+            }
+        },
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
@@ -1457,6 +1469,18 @@ elif slide == "Slide 5":
             ]
 
         }],
+        legend: {
+            labelFormatter: function () {
+                return 'Violation of National Legislation';
+            },
+            align: 'center',
+            verticalAlign: 'bottom',
+            layout: 'horizontal',
+            itemStyle: { 
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
+                fontSize: '12px'
+            }
+        },
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
@@ -1561,6 +1585,18 @@ elif slide == "Slide 5":
             ]
 
         }],
+        legend: {
+            labelFormatter: function () {
+                return 'Violation of National Legislation';
+            },
+            align: 'center',
+            verticalAlign: 'bottom',
+            layout: 'horizontal',
+            itemStyle: { 
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
+                fontSize: '12px'
+            }
+        },
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
@@ -1665,6 +1701,18 @@ elif slide == "Slide 5":
             ]
 
         }],
+        legend: {
+            labelFormatter: function () {
+                return 'Violation of National Legislation';
+            },
+            align: 'center',
+            verticalAlign: 'bottom',
+            layout: 'horizontal',
+            itemStyle: { 
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
+                fontSize: '12px'
+            }
+        },
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
