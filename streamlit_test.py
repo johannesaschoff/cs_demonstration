@@ -1777,6 +1777,11 @@ elif slide == "Slide 5":
             align: 'center',
             verticalAlign: 'bottom',
             layout: 'horizontal'
+            itemStyle: { 
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
+                fontSize: '14px',
+                fontWeight: 'bold'
+            }
         },
         navigation: {
             menuItemStyle: {
