@@ -1776,7 +1776,7 @@ elif slide == "Slide 5":
             },
             align: 'center',
             verticalAlign: 'bottom',
-            layout: 'horizontal'
+            layout: 'horizontal',
             itemStyle: { 
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
                 fontSize: '14px',
