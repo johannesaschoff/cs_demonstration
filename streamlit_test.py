@@ -1213,7 +1213,7 @@ elif slide == "Slide 5":
         }
 
         .superheader {
-            text-align: center; 
+            text-align: left; 
             font-size: 24px; 
             margin-bottom: 20px; 
             font-weight: bold; 
