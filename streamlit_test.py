@@ -609,7 +609,7 @@ if slide == "Slide 2":
             yAxis: [{ 
                 min: 0,
                 title: {
-                    text: 'Percentage',
+                    text: 'Percentage (%)',
                     style: {
                         fontFamily: 'UnitOT'
                     }
@@ -878,7 +878,7 @@ if slide == "Slide 3":
             yAxis: [{ 
                 min: 0,
                 title: {
-                    text: 'Percentage',
+                    text: 'Percentage (%)',
                     style: {
                         fontFamily: 'UnitOT'
                     }
@@ -1692,7 +1692,7 @@ elif slide == "Slide 5":
             text: 'Violation of national legislation',
             align: 'left',
             style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
                 fontWeight: 'bold',  
                 fontSize: '16px' 
             }
@@ -1771,19 +1771,6 @@ elif slide == "Slide 5":
             ]
 
         }],
-        navigation: {
-            menuItemStyle: {
-                fontSize: '10px'
-            }
-        }
-        legend: {
-            labelFormatter: function () {
-            return 'Violation of National Legislation';
-            },
-            align: 'center',
-            verticalAlign: 'top',
-            layout: 'horizontal'
-        },
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
