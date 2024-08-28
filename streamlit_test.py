@@ -1066,7 +1066,7 @@ if slide == "Slide 4":
                     enabled: false
                 },
                 title: {
-                    text: 'Companies with the 50 Highest Due Diligence Scores, HQ in US',
+                    text: 'Sectors of 50 US headquatered companies with the highest Due Diligence Scores',
                     align: 'left',
                     style: {
                         fontFamily: 'UnitSlabOT-Bold',
@@ -1218,6 +1218,7 @@ elif slide == "Slide 5":
             margin-bottom: 20px; 
             font-weight: bold;
             font-family: 'UnitSlabOT-Bold', sans-serif; 
+            color: #003755;
 
         }
         .container {
