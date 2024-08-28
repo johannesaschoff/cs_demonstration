@@ -508,8 +508,6 @@ if slide == "Slide 2":
         // Base color
         var baseColor = '#00A8CC';
 
-        // Define the series data with abbreviations in the names for the legend
-
         var seriesData = [
             // EU Data
             { name: 'FIN: Financial Services', data: [2060, 2283, 2619, 2774, 2850], stack: 'EU', id: 'FinancialServices', abbreviation: 'FIN', color: darkenColor(baseColor, 20, 0.5) },
@@ -532,7 +530,6 @@ if slide == "Slide 2":
             { name: 'YoY Change in Incidents Europe', type: 'spline', yAxis: 1, data: [0.0, 18.442095845216123, 21.547613427128077, 2.509225092250933, 0.6934182107536602], tooltip: { valueSuffix: '%' }, color: '#7D9AAA' }
         ];
 
-        // Sort the series data for each year
         function sortSeriesData(seriesData) {
             var years = [2020, 2021, 2022, 2023, 2024];
 
@@ -551,10 +548,8 @@ if slide == "Slide 2":
             });
         }
 
-        // Call the sort function before rendering the chart
         sortSeriesData(seriesData);
 
-        // Render the chart
         Highcharts.chart('container', {
             chart: {
                 type: 'column',
@@ -639,8 +634,8 @@ if slide == "Slide 2":
                 },
                 headerFormat: '<span style="font-size: 10px; color: #FFFFFF;">{point.key}</span><br/>',
                 pointFormatter: function() {
-                    // Check if the series is one of the "Relative Change" series
-                    if (this.series.name.includes('Relative Change')) {
+
+                    if (this.series.name.includes('Change')) {
                         return '<span style="color:#FFFFFF; font-family: UnitOT;">' + this.series.name + '</span>: <b>' + Math.round(this.y) + (this.series.tooltipOptions.valueSuffix || '') + '</b><br/>';
                     } else {
                         var region = this.series.options.stack === 'US' ? 'US' : 'EU';
