@@ -576,7 +576,7 @@ if slide == "Slide 2":
                 }
             },
             title: {
-                text: 'Five riskiest sectors in the US compared to Europe',
+                text: 'Five riskiest company sectors in the US vs. EU',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
@@ -586,7 +586,7 @@ if slide == "Slide 2":
             },
 
             subtitle: {
-                text: 'Global ESG risk incidents for companies headquartered in the US',
+                text: 'Global ESG risk incidents for companies headquartered in the US and EU (FY2020 - FY2024)',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitOT',
