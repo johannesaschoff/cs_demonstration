@@ -1582,7 +1582,112 @@ elif slide == "Slide 5":
                 scrollPositionX: 1
             }
         },
-    
+
+        title: {
+            text: 'Local pollution',
+            align: 'left',
+            style: {
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
+                fontWeight: 'bold',  
+                fontSize: '16px' 
+            }
+        },
+        subtitle: {
+            text: 'Top 5 topic tags (FY24) contributing to the fourth most risky sector in the US',
+            align: 'left',
+            style: {
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
+                fontWeight: 'normal',  
+                fontSize: '12px'   
+            }
+        },
+        xAxis: {
+            categories: ['2020', '2021', '2022', '2023', '2024'],
+            labels: {
+                rotation: 0,
+                align: 'center',
+                style: {
+                    fontFamily: "'UnitOT', sans-serif",  
+                    fontSize: '12px'
+                }
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Number of Incidents',
+                style: {
+                    fontFamily: "'UnitOT', sans-serif", 
+                    fontSize: '12px',
+                }
+            },
+            labels: {
+                style: {
+                    fontFamily: "'UnitOT', sans-serif",  
+                    fontSize: '12px',
+                }
+            },
+            min: 0,
+            max:5000,
+            tickInterval: 1000,
+            minorGridLineWidth: 0,
+            gridLineWidth: 0,
+            alternateGridColor: null,
+            plotBands: [
+                { from: 0, to: 723, color: 'rgba(0, 0, 0, 0)', label: { text: 'Other tags', style: {fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "left"}},                      
+                { from: 723, to: 901, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Economic impact', style: { fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
+                { from: 901, to: 1167, color: 'rgba(0, 0, 0, 0)', label: { text: 'Negligence', style: { fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
+                { from: 1167, to: 1563, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Airborne pollutants', style: { fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
+                { from: 1563, to: 2010, color: 'rgba(0, 0, 0, 0)', label: { text: 'Land ecosystems', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
+                { from: 2010, to: 2482, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Health impact', style: {fontFamily: "'UnitOT', sans-serif",  color: '#606060' }, align: "left"}}
+            ]
+        },
+        tooltip: {
+            valueSuffix: ' Incidents'
+        },
+        plotOptions: {
+            spline: {
+                lineWidth: 4,
+                states: {
+                    hover: {
+                        lineWidth: 5
+                    }
+                },
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+        series: [{
+            name: 'Companies headquatered in US',
+            data: [
+                1976, 2735, 2584, 2650, 2482
+
+            ]
+
+        }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
+    };
+
+
+    const chartOptions5 = {
+        credits: {
+            enabled: false 
+        },
+        exporting: {
+            enabled: false
+        },
+        chart: {
+            type: 'spline',
+            scrollablePlotArea: {
+                minWidth: 300, 
+                scrollPositionX: 1
+            }
+        },
+
         title: {
             text: 'Violation of national legislation',
             align: 'left',
@@ -1640,7 +1745,7 @@ elif slide == "Slide 5":
                 { from: 2672, to: 3386, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
                 { from: 3386, to: 4914, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "left"}}
             ]
-    
+
         },
         tooltip: {
             valueSuffix: ' Incidents'
@@ -1659,15 +1764,21 @@ elif slide == "Slide 5":
             }
         },
         series: [{
-            name: 'Custom Legend Text',  // Set your custom legend text here
+            name: 'Companies headquatered in US',
             data: [
                 3334, 3666, 3526, 3826, 4914
+
             ]
-    
+
         }],
+        navigation: {
+            menuItemStyle: {
+                fontSize: '10px'
+            }
+        }
         legend: {
             labelFormatter: function () {
-                return 'Violation of National Legislation'; // Custom text for the legend
+            return 'Violation of National Legislation';
             },
             align: 'center',
             verticalAlign: 'top',
