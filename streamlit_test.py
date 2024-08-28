@@ -1489,10 +1489,10 @@ elif slide == "Slide 5":
 
         title: {
             text: 'Impacts on communities',
-            align: 'normal',
+            align: 'left',
             style: {
                 fontFamily: "'UnitOT', sans-serif",  
-                fontWeight: 'bold',  
+                fontWeight: 'normal',  
                 fontSize: '16px' 
             }
         },
