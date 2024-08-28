@@ -834,7 +834,7 @@ if slide == "Slide 3":
                 }
             },
             title: {
-                text: 'Five most counted issues in the US compared to Europe',
+                text: 'Five most frequented issues in the US vs. EU',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
@@ -844,7 +844,7 @@ if slide == "Slide 3":
             },
 
             subtitle: {
-                text: 'Global ESG risk issues for companies headquartered in the US',
+                text: 'Global ESG risk issues for companies headquartered in the US and EU (FY2020 - FY2024)',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitOT',
