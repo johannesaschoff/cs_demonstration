@@ -1275,8 +1275,8 @@ elif slide == "Slide 5":
             text: 'Human rights abuses and corporate complicity',
             align: 'left',
             style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
-                fontWeight: 'bold',  
+                fontFamily: "'UnitOT',  sans-serif", 
+                fontWeight: 'normal',  
                 fontSize: '16px' 
             }
         },
@@ -1384,8 +1384,8 @@ elif slide == "Slide 5":
             text: 'Impacts on landscapes, ecosystems and biodiversity',
             align: 'left',
             style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
-                fontWeight: 'bold',  
+                fontFamily: "'UnitOT', sans-serif", 
+                fontWeight: 'normal',  
                 fontSize: '16px' 
             }
         },
@@ -1489,9 +1489,9 @@ elif slide == "Slide 5":
 
         title: {
             text: 'Impacts on communities',
-            align: 'left',
+            align: 'normal',
             style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
+                fontFamily: "'UnitOT', sans-serif",  
                 fontWeight: 'bold',  
                 fontSize: '16px' 
             }
@@ -1599,8 +1599,8 @@ elif slide == "Slide 5":
             text: 'Local pollution',
             align: 'left',
             style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
-                fontWeight: 'bold',  
+                fontFamily: "'UnitOT', sans-serif",  
+                fontWeight: 'normal',  
                 fontSize: '16px' 
             }
         },
@@ -1707,7 +1707,7 @@ elif slide == "Slide 5":
             text: 'Violation of national legislation',
             align: 'left',
             style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
+                fontFamily: "'UnitOT', sans-serif",
                 fontWeight: 'normal',  
                 fontSize: '16px' 
             }
