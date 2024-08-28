@@ -1241,6 +1241,7 @@ elif slide == "Slide 5":
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </head>
 <body>
+<div class="superheader">Your Super Title Here Explaining All Graphs</div>
 
 <div class="container">
     <div id="container1" class="chart"></div>
