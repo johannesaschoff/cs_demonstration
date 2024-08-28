@@ -1214,9 +1214,11 @@ elif slide == "Slide 5":
 
         .superheader {
             text-align: left; 
-            font-size: 24px; 
+            font-size: 18px; 
             margin-bottom: 20px; 
-            font-weight: bold; 
+            font-weight: bold;
+            font-family: 'UnitSlabOT-Bold', sans-serif; 
+
         }
         .container {
             display: flex;
