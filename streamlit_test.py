@@ -1779,8 +1779,7 @@ elif slide == "Slide 5":
             layout: 'horizontal',
             itemStyle: { 
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
-                fontSize: '14px',
-                fontWeight: 'bold'
+                fontSize: '12px'
             }
         },
         navigation: {
