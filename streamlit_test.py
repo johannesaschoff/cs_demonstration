@@ -1243,7 +1243,7 @@ elif slide == "Slide 5":
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </head>
 <body>
-<div class="superheader">Your Super Title Here Explaining All Graphs</div>
+<div class="superheader">Top five topic tags (FY24) contributing to the five most frequent issues in the US</div>
 
 <div class="container">
     <div id="container1" class="chart"></div>
@@ -1746,15 +1746,6 @@ elif slide == "Slide 5":
                 fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
                 fontWeight: 'bold',  
                 fontSize: '16px' 
-            }
-        },
-        subtitle: {
-            text: 'Top 5 topic tags (FY24) contributing to the fifth most risky sector in the US',
-            align: 'left',
-            style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif", 
-                fontWeight: 'normal',  
-                fontSize: '12px'   
             }
         },
         xAxis: {
