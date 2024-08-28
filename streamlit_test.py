@@ -1353,7 +1353,7 @@ elif slide == "Slide 5":
         }],
         legend: {
             labelFormatter: function () {
-                return 'Violation of National Legislation';
+                return 'Human rights abuses and corporate complicity';
             },
             align: 'center',
             verticalAlign: 'bottom',
@@ -1471,7 +1471,7 @@ elif slide == "Slide 5":
         }],
         legend: {
             labelFormatter: function () {
-                return 'Violation of National Legislation';
+                return 'Impacts on landscapes, ecosystems and biodiversity';
             },
             align: 'center',
             verticalAlign: 'bottom',
@@ -1587,7 +1587,7 @@ elif slide == "Slide 5":
         }],
         legend: {
             labelFormatter: function () {
-                return 'Violation of National Legislation';
+                return 'Impacts on communities';
             },
             align: 'center',
             verticalAlign: 'bottom',
@@ -1703,7 +1703,7 @@ elif slide == "Slide 5":
         }],
         legend: {
             labelFormatter: function () {
-                return 'Violation of National Legislation';
+                return 'Local pollution';
             },
             align: 'center',
             verticalAlign: 'bottom',
