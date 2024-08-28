@@ -1772,10 +1772,10 @@ elif slide == "Slide 5":
         }],
         legend: {
             labelFormatter: function () {
-                return 'Violation of National Legislation'; // Custom text for the legend
+                return 'Violation of National Legislation';
             },
             align: 'center',
-            verticalAlign: 'top',
+            verticalAlign: 'bottom',
             layout: 'horizontal'
         },
         navigation: {
