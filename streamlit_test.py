@@ -609,7 +609,7 @@ if slide == "Slide 2":
             yAxis: [{ 
                 min: 0,
                 title: {
-                    text: 'Percentage (%)',
+                    text: 'Percentage',
                     style: {
                         fontFamily: 'UnitOT'
                     }
@@ -878,7 +878,7 @@ if slide == "Slide 3":
             yAxis: [{ 
                 min: 0,
                 title: {
-                    text: 'Percentage (%)',
+                    text: 'Percentage',
                     style: {
                         fontFamily: 'UnitOT'
                     }
