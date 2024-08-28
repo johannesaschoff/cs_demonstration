@@ -1687,12 +1687,12 @@ elif slide == "Slide 5":
                 scrollPositionX: 1
             }
         },
-
+    
         title: {
             text: 'Violation of national legislation',
             align: 'left',
             style: {
-                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",  // Custom font reference
+                fontFamily: "'UnitOT', 'UnitSlabOT-Bold', sans-serif",
                 fontWeight: 'bold',  
                 fontSize: '16px' 
             }
@@ -1745,7 +1745,7 @@ elif slide == "Slide 5":
                 { from: 2672, to: 3386, color: 'rgba(0, 0, 0, 0)', label: { text: 'Salaries and benefits', style: {fontFamily: "'UnitOT', sans-serif", color: '#606060' }, align: "left"}},
                 { from: 3386, to: 4914, color: 'rgba(68, 170, 213, 0.1)', label: { text: 'Negligence', style: { fontFamily: "'UnitOT', sans-serif",color: '#606060' }, align: "left"}}
             ]
-
+    
         },
         tooltip: {
             valueSuffix: ' Incidents'
@@ -1764,19 +1764,27 @@ elif slide == "Slide 5":
             }
         },
         series: [{
-            name: 'Companies headquatered in US',
+            name: 'Custom Legend Text',  // Set your custom legend text here
             data: [
                 3334, 3666, 3526, 3826, 4914
-
             ]
-
+    
         }],
+        legend: {
+            labelFormatter: function () {
+                return 'Violation of National Legislation'; // Custom text for the legend
+            },
+            align: 'center',
+            verticalAlign: 'top',
+            layout: 'horizontal'
+        },
         navigation: {
             menuItemStyle: {
                 fontSize: '10px'
             }
         }
     };
+
 
 
     Highcharts.chart('container1', chartOptions5);
