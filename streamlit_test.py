@@ -794,9 +794,6 @@ if slide == "Slide 3":
         ];
 
 
-
-
-        // Sort the series data for each year
         function sortSeriesData(seriesData) {
             var years = [2020, 2021, 2022, 2023, 2024];
 
@@ -815,10 +812,8 @@ if slide == "Slide 3":
             });
         }
 
-        // Call the sort function before rendering the chart
         sortSeriesData(seriesData);
 
-        // Render the chart
         Highcharts.chart('container', {
             chart: {
                 type: 'column',
@@ -828,10 +823,9 @@ if slide == "Slide 3":
                 events: {
                     load: function() {
                         var chart = this;
-                        // Add the logo image
                         chart.renderer.image(
-                            'RR_DBlue_Hor_rgb.png', // Path to your logo
-                            chart.plotLeft + 0, // Adjust horizontal position to align with title margin
+                            'RR_DBlue_Hor_rgb.png', 
+                            chart.plotLeft + 0, 
                             0, // Vertical position
                             130, // Width of the logo (adjust as needed)
                             130/2.11 // Height of the logo (adjust as needed, maintain aspect ratio)
@@ -894,7 +888,7 @@ if slide == "Slide 3":
                 opposite: true
             }],
             tooltip: {
-                shared: false,  // Set shared to false for individual point hover
+                shared: false, 
                 useHTML: true,
                 backgroundColor: '#000000',
                 style: {
@@ -903,8 +897,7 @@ if slide == "Slide 3":
                 },
                 headerFormat: '<span style="font-size: 10px; color: #FFFFFF;">{point.key}</span><br/>',
                 pointFormatter: function() {
-                    // Check if the series is one of the "Relative Change" series
-                    if (this.series.name.includes('Relative Change')) {
+                    if (this.series.name.includes('Change')) {
                         return '<span style="color:#FFFFFF; font-family: UnitOT;">' + this.series.name + '</span>: <b>' + Math.round(this.y) + (this.series.tooltipOptions.valueSuffix || '') + '</b><br/>';
                     } else {
                         var region = this.series.options.stack === 'US' ? 'US' : 'EU';
@@ -918,7 +911,7 @@ if slide == "Slide 3":
                     stacking: 'percent',
                     pointPadding: 0.1,
                     groupPadding: 0.1,
-                    borderWidth: 0, // Optional: Remove borders for a cleaner look
+                    borderWidth: 0,
                     dataLabels: {
                         enabled: true,
                         inside: true,
