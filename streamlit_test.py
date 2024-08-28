@@ -834,7 +834,7 @@ if slide == "Slide 3":
                 }
             },
             title: {
-                text: 'Five most frequented issues in the US vs. EU',
+                text: 'Five most frequent issues in the US vs. EU',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
