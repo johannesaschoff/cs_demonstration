@@ -1188,19 +1188,11 @@ if slide == "Slide 4":
             font-family: 'UnitOT', 'UnitSlabOT-Bold', sans-serif;
         }
 
-        .superheader {
-            text-align: left; 
-            font-size: 18px; 
-            margin-bottom: 20px; 
-            font-weight: bold;
-            font-family: 'UnitSlabOT-Bold', sans-serif; 
-            color: #003755;
-
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        #container {
+            height: 800px;
+            min-width: 310px;
+            max-width: 120000px;
+            margin: 0 auto;
         }
 
         .highcharts-title {
