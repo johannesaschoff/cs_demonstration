@@ -319,7 +319,7 @@ RWA;RWA;1
             },
 
             title: {
-                text: 'ESG risk incidents caused by global companies in the retail sector',
+                text: 'ESG risk incidents caused by global companies in the retail sector (FY2020 - FY 2024)',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
