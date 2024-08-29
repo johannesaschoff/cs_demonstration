@@ -1429,7 +1429,7 @@ elif slide == "Slide 5":
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </head>
 <body>
-<div class="superheader">Top five topic tags (FY24) contributing to the five most frequent issues in the US</div>
+<div class="superheader">Most frequent topic tags (FY24) contributing to the five most frequent issues in the US</div>
 
 <div class="container">
     <div id="container1" class="chart"></div>
