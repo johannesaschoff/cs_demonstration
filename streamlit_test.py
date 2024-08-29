@@ -57,7 +57,7 @@ st.sidebar.markdown('<div class="sidebar-text">Navigation</div>', unsafe_allow_h
 # Create the radio buttons with custom font applied
 slide = st.sidebar.radio("Go to Slide", ["Slide 1", "Slide 2", "Slide 3", "Slide 4", "Slide 5"])
 
-if slide == "Slide 1":
+if slide == "Slide 2":
     highcharts_html = """
     
 <!DOCTYPE html>
@@ -319,7 +319,7 @@ RWA;RWA;1
             },
 
             title: {
-                text: 'Retail is the riskiest Sector in the US in the last five years',
+                text: 'ESG risk incidents caused by global companies in the retail sector',
                 align: 'left',
                 style: {
                     fontFamily: 'UnitSlabOT-Bold',
@@ -429,7 +429,7 @@ RWA;RWA;1
 </html>
 """
 
-if slide == "Slide 2":
+if slide == "Slide 1":
     highcharts_html = """
 <!DOCTYPE html>
 <html lang="en">
