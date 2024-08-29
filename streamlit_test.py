@@ -1248,10 +1248,10 @@ if slide == "Slide 4":
                     zoomType: 'xy'
                 },
                 legend: {
-                    enabled: false
+                    enabled: true // Enable legend
                 },
                 title: {
-                    text: 'Sectors of 50 US headquatered companies with the highest Due Diligence Scores',
+                    text: 'Sectors of 50 US headquartered companies with the highest Due Diligence Scores',
                     align: 'left',
                     style: {
                         fontFamily: 'UnitSlabOT-Bold',
@@ -1267,7 +1267,6 @@ if slide == "Slide 4":
                         color: '#003755',
                     }
                 },
-
                 xAxis: {
                     gridLineWidth: 1,
                     title: {
@@ -1350,15 +1349,39 @@ if slide == "Slide 4":
                             style: {
                                 fontFamily: 'UnitOT'
                             }
+                        },
+                        events: {
+                            legendItemClick: function() { // Custom legend click event
+                                var visible = this.visible;
+                                this.chart.series.forEach(function(s) {
+                                    if (s.name === this.name) {
+                                        s.setVisible(!visible);
+                                    }
+                                }, this);
+                                return false; // Prevent default action
+                            }
                         }
                     }
                 },
-                series: [{
-                    data: [{"x": 44.07, "y": 72.0, "z": 44.07, "name": "Development Banks, Central Banks, and Export Credit Agencies", "shortname": "Human rights abuses and corporate complicity", "color": "#048bb4"}, {"x": 40.31, "y": 71.0, "z": 40.31, "name": "Development Banks, Central Banks, and Export Credit Agencies", "shortname": "Human rights abuses and corporate complicity", "color": "#048bb4"}, {"x": 37.69, "y": 71.0, "z": 37.69, "name": "Travel and Leisure", "shortname": "Human rights abuses and corporate complicity", "color": "#13293b"}, {"x": 36.07, "y": 66.0, "z": 36.07, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}, {"x": 35.97, "y": 63.0, "z": 35.97, "name": "Retail", "shortname": "Human trafficking", "color": "#7bc4d9"}, {"x": 35.66, "y": 61.0, "z": 35.66, "name": "Retail", "shortname": "Violation of national legislation", "color": "#7bc4d9"}, {"x": 35.0, "y": 64.0, "z": 35.0, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}, {"x": 32.72, "y": 61.0, "z": 32.72, "name": "Retail", "shortname": "Human rights abuses and corporate complicity", "color": "#7bc4d9"}, {"x": 31.9, "y": 53.0, "z": 31.9, "name": "Software and Computer Services", "shortname": "Violation of national legislation", "color": "#2994ad"}, {"x": 31.76, "y": 61.0, "z": 31.76, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}, {"x": 31.59, "y": 63.0, "z": 31.59, "name": "Retail", "shortname": "Violation of national legislation", "color": "#7bc4d9"}, {"x": 30.52, "y": 57.0, "z": 30.52, "name": "Software and Computer Services", "shortname": "Genocide/Ethnic cleansing", "color": "#2994ad"}, {"x": 29.86, "y": 63.0, "z": 29.86, "name": "Oil and Gas", "shortname": "Health impact", "color": "#d0cbc5"}, {"x": 29.83, "y": 58.0, "z": 29.83, "name": "Financial Services", "shortname": "Human rights abuses and corporate complicity", "color": "#006080"}, {"x": 29.21, "y": 63.0, "z": 29.21, "name": "Financial Services", "shortname": "Violation of national legislation", "color": "#006080"}, {"x": 29.17, "y": 65.0, "z": 29.17, "name": "Financial Services", "shortname": "Human rights abuses and corporate complicity", "color": "#006080"}, {"x": 29.1, "y": 57.0, "z": 29.1, "name": "Financial Services", "shortname": "Health impact", "color": "#006080"}, {"x": 28.79, "y": 67.0, "z": 28.79, "name": "Software and Computer Services", "shortname": "Violation of national legislation", "color": "#2994ad"}, {"x": 28.41, "y": 59.0, "z": 28.41, "name": "Chemicals", "shortname": "Health impact", "color": "#0099cc"}, {"x": 28.34, "y": 57.0, "z": 28.34, "name": "Food and Beverage", "shortname": "Indigenous people", "color": "#72b0dc"}, {"x": 28.1, "y": 57.0, "z": 28.1, "name": "Financial Services", "shortname": "Human rights abuses and corporate complicity", "color": "#006080"}, {"x": 27.72, "y": 59.0, "z": 27.72, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}, {"x": 26.55, "y": 55.0, "z": 26.55, "name": "Financial Services", "shortname": "Health impact", "color": "#006080"}, {"x": 26.41, "y": 61.0, "z": 26.41, "name": "Food and Beverage", "shortname": "Poor employment conditions", "color": "#72b0dc"}, {"x": 25.9, "y": 49.0, "z": 25.9, "name": "Software and Computer Services", "shortname": "Child labor", "color": "#2994ad"}, {"x": 25.9, "y": 45.0, "z": 25.9, "name": "Automobiles and Parts", "shortname": "Violation of national legislation", "color": "#d3325b"}, {"x": 25.9, "y": 44.0, "z": 25.9, "name": "Automobiles and Parts", "shortname": "Economic impact", "color": "#d3325b"}, {"x": 25.83, "y": 55.0, "z": 25.83, "name": "Retail", "shortname": "Human rights abuses and corporate complicity", "color": "#7bc4d9"}, {"x": 25.72, "y": 69.0, "z": 25.72, "name": "Financial Services", "shortname": "Violation of national legislation", "color": "#006080"}, {"x": 25.69, "y": 71.0, "z": 25.69, "name": "Financial Services", "shortname": "Violation of national legislation", "color": "#006080"}, {"x": 25.17, "y": 59.0, "z": 25.17, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}, {"x": 24.9, "y": 64.0, "z": 24.9, "name": "Industrial Engineering", "shortname": "Human rights abuses and corporate complicity", "color": "#7aafbf"}, {"x": 24.83, "y": 56.0, "z": 24.83, "name": "Retail", "shortname": "Forced labor", "color": "#7bc4d9"}, {"x": 24.76, "y": 57.0, "z": 24.76, "name": "Food and Beverage", "shortname": "Economic impact", "color": "#72b0dc"}, {"x": 24.0, "y": 67.0, "z": 24.0, "name": "Travel and Leisure", "shortname": "Products (health and environmental issues)", "color": "#13293b"}, {"x": 23.69, "y": 50.0, "z": 23.69, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}, {"x": 23.52, "y": 52.0, "z": 23.52, "name": "Banks", "shortname": "Violation of national legislation", "color": "#046083"}]
-                }]
+                series: [
+                    {
+                        name: 'Development Banks, Central Banks, and Export Credit Agencies',
+                        data: [{"x": 44.07, "y": 72.0, "z": 44.07, "name": "Development Banks, Central Banks, and Export Credit Agencies", "shortname": "Human rights abuses and corporate complicity", "color": "#048bb4"}, {"x": 40.31, "y": 71.0, "z": 40.31, "name": "Development Banks, Central Banks, and Export Credit Agencies", "shortname": "Human rights abuses and corporate complicity", "color": "#048bb4"}]
+                    },
+                    {
+                        name: 'Travel and Leisure',
+                        data: [{"x": 37.69, "y": 71.0, "z": 37.69, "name": "Travel and Leisure", "shortname": "Human rights abuses and corporate complicity", "color": "#13293b"}, {"x": 24.0, "y": 67.0, "z": 24.0, "name": "Travel and Leisure", "shortname": "Products (health and environmental issues)", "color": "#13293b"}]
+                    },
+                    {
+                        name: 'Food and Beverage',
+                        data: [{"x": 36.07, "y": 66.0, "z": 36.07, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}, {"x": 35.0, "y": 64.0, "z": 35.0, "name": "Food and Beverage", "shortname": "Human rights abuses and corporate complicity", "color": "#72b0dc"}]
+                    },
+                    // Continue with other sectors in separate series...
+                ]
             });
         });
     </script>
+
 </head>
 <body>
     <div id="container"></div>
