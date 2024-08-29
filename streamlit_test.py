@@ -1260,7 +1260,7 @@ if slide == "Slide 4":
                     }
                 },
                 subtitle: {
-                    text: 'Highest scoring DD factors in the US are: (1) Human rights abuses and corporate complicity, (2) Violation of national legislation, (3) Health impact and (4) Economic Impact',
+                    text: 'Highest scoring DD factors in the US are: (1) Human rights abuses and corporate complicity, (2) Violation of national legislation, (3) Health impact and (4) Economic impact',
                     align: 'left',
                     style: {
                         fontFamily: 'UnitOT',
