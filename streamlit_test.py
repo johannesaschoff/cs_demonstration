@@ -743,7 +743,7 @@ if slide == "Slide 2":
                         enabled: true,
                         useHTML: true,
                         formatter: function () {
-                            return `<span>${this.series.userOptions.abbreviation}: ${this.percentage.toFixed(1)}%</span>`;
+                            return `<span><br>${this.series.userOptions.abbreviation}: </br>${this.percentage.toFixed(1)}%</span>`;
                         },
                         style: {
                             fontFamily: 'UnitOT',
