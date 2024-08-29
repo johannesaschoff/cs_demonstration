@@ -1106,7 +1106,8 @@ if slide == "Slide 3":
                         style: {
                             fontFamily: 'UnitOT',
                             fontSize: '10px',
-                            color: '#FFFFFF'
+                            color: '#FFFFFF',
+                            fontWeight: 'normal'
                         },
                         textPath: { enabled: false }
                     }
