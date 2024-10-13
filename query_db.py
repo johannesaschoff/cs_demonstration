@@ -15,26 +15,18 @@ df2 = pd.read_csv(default_csv_part2)
 # Merging the two DataFrames
 df = pd.concat([df1, df2], ignore_index=True)
 
-# State to hold active filters (used in multiselect)
-if 'filters' not in st.session_state:
-    st.session_state['filters'] = []
+# Input box for users to enter multiple keywords separated by commas
+search_query = st.text_input("Enter keywords to search within 'charity activities' (separate keywords with commas)")
 
-# User can enter multiple search keywords as custom categories using multiselect
-filters = st.multiselect(
-    "Enter keywords to search within 'charity activities'",
-    options=[],  # We don't provide preset options, it's fully user-defined
-    default=st.session_state['filters'],
-    help="Add search terms as categories to filter results in 'charity activities'."
-)
-
-# Save the selected filters to session state for persistence
-st.session_state['filters'] = filters
+# Convert the search query to a list of keywords
+keywords = [word.strip() for word in search_query.split(",")] if search_query else []
 
 # Filter the DataFrame based on the entered keywords (categories) in 'charity activities'
 filtered_df = df
-for filter_word in filters:
-    filtered_df = filtered_df[filtered_df['charity_activities'].str.contains(filter_word, case=False, na=False)]
+for keyword in keywords:
+    if keyword:
+        filtered_df = filtered_df[filtered_df['charity_activities'].str.contains(keyword, case=False, na=False)]
 
 # Display the filtered DataFrame
-st.write(f"Filtered results based on 'charity activities' for filters: {', '.join(filters)}")
+st.write(f"Filtered results based on 'charity activities' for filters: {', '.join(keywords)}")
 st.dataframe(filtered_df)
