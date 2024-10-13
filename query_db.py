@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 
+# Set the page to full width
+st.set_page_config(layout="wide")
+
 # Title of the application
 st.title("NGO Search App")
 
