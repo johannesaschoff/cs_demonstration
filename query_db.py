@@ -27,6 +27,10 @@ for keyword in keywords:
     if keyword:
         filtered_df = filtered_df[filtered_df['charity_activities'].str.contains(keyword, case=False, na=False)]
 
+# Display the number of search results
+num_results = len(filtered_df)
+st.write(f"Number of results: {num_results}")
+
 # Display the filtered DataFrame
 st.write(f"Filtered results based on 'charity activities' for filters: {', '.join(keywords)}")
 st.dataframe(filtered_df)
