@@ -15,30 +15,29 @@ df2 = pd.read_csv(default_csv_part2)
 # Merging the two DataFrames
 df = pd.concat([df1, df2], ignore_index=True)
 
-# Display the first few rows of the merged DataFrame
-st.write("Merged NGO Dataset Preview:")
-st.dataframe(df.head())
+# State to hold active filters
+if 'filters' not in st.session_state:
+    st.session_state['filters'] = []
 
 # Search box for filtering by keywords in the "charity activities" column
 search_query = st.text_input("Enter keywords to search within 'charity activities'")
 
-# Always filter based on the "charity activities" column
+# Add the filter to the session state if it's not already there
 if search_query:
-    filtered_df = df[df['charity_activities'].str.contains(search_query, case=False, na=False)]
-else:
-    filtered_df = df
+    if search_query not in st.session_state['filters']:
+        st.session_state['filters'].append(search_query)
 
-# Multi-selection for filtering based on additional specific columns
-options = st.multiselect(
-    "Select additional columns to filter by:",
-    df.columns.tolist(),  # Assuming all columns are searchable
-    default=None
-)
+# Display active filters as clickable categories
+st.write("Active Filters:")
+for filter_word in st.session_state['filters']:
+    if st.button(f"Remove {filter_word}", key=filter_word):
+        st.session_state['filters'].remove(filter_word)
 
-# Further filter based on selected columns (if any)
-if options:
-    filtered_df = filtered_df[filtered_df[options].notnull().all(axis=1)]
+# Filter the DataFrame based on active filters
+filtered_df = df
+for filter_word in st.session_state['filters']:
+    filtered_df = filtered_df[filtered_df['charity_activities'].str.contains(filter_word, case=False, na=False)]
 
 # Display the filtered DataFrame
-st.write(f"Filtered results based on 'charity activities' for '{search_query}':")
+st.write(f"Filtered results based on 'charity activities' for filters: {', '.join(st.session_state['filters'])}")
 st.dataframe(filtered_df)
