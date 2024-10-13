@@ -6,7 +6,7 @@ st.title("NGO Search App")
 
 # Path to the default CSV files in the repository
 default_csv_part1 = 'ngo_data_part1.csv'
-default_csv_part2 = 'ngo_data_part2.csv'
+default_csv_part2 = 'charity_filtered_under50.csv'
 
 # Load the default CSV files automatically
 df1 = pd.read_csv(default_csv_part1)
