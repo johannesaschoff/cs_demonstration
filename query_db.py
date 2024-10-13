@@ -8,24 +8,15 @@ st.title("NGO Search App")
 default_csv_part1 = 'ngo_data_part1.csv'
 default_csv_part2 = 'ngo_data_part2.csv'
 
-# Option to upload CSV files or use the default ones
-uploaded_file1 = st.file_uploader("Upload the first part of your NGO CSV file (or use the default)", type="csv", key="part1")
-uploaded_file2 = st.file_uploader("Upload the second part of your NGO CSV file (or use the default)", type="csv", key="part2")
-
-# Load the default CSV files if no upload is provided
-if uploaded_file1 and uploaded_file2:
-    df1 = pd.read_csv(uploaded_file1)
-    df2 = pd.read_csv(uploaded_file2)
-    st.write("Preview of the uploaded files:")
-else:
-    df1 = pd.read_csv(default_csv_part1)
-    df2 = pd.read_csv(default_csv_part2)
-    st.write("Preview of the default files:")
+# Load the default CSV files automatically
+df1 = pd.read_csv(default_csv_part1)
+df2 = pd.read_csv(default_csv_part2)
 
 # Merging the two DataFrames
 df = pd.concat([df1, df2], ignore_index=True)
 
 # Display the first few rows of the merged DataFrame
+st.write("Merged NGO Dataset Preview:")
 st.dataframe(df.head())
 
 # Search box for filtering organizations by keywords
