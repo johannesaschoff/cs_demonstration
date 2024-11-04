@@ -9,15 +9,15 @@ st.title("NGO Search App")
 
 # Path to the default CSV files in the repository
 default_csv_part1 = 'charity_filtered_above50.csv'
-default_csv_part2 = 'charity_filtered_under50.csv'
+#default_csv_part2 = 'charity_filtered_under50.csv'
 
 # Load the default CSV files automatically
 df1 = pd.read_csv(default_csv_part1)
-df2 = pd.read_csv(default_csv_part2)
+#df2 = pd.read_csv(default_csv_part2)
 
 # Merging the two DataFrames
-df = pd.concat([df1, df2], ignore_index=True)
-
+#df = pd.concat([df1, df2], ignore_index=True)
+df = df1
 # Input box for users to enter multiple keywords separated by commas
 search_query = st.text_input("Enter keywords to search within 'charity activities' (separate keywords with commas)")
 
