@@ -34,7 +34,6 @@ elif selected_slide == slides[2]:
     st.write("- Simplify complex data into visuals.")
     st.write("- Highlight critical patterns.")
     st.write("- Engage the audience with interactive visuals.")
-    st.line_chart([1, 2, 3, 4, 5])  # Example visualization
 elif selected_slide == slides[3]:
     st.title("Slide 4: Analysis")
     st.markdown("**Category: Detailed Examination**")
