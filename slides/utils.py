@@ -6,44 +6,65 @@ def display_slideshow(images, captions):
     <html>
     <head>
     <style>
-    .mySlides {{display: none;}}
-    .slideshow-container {{max-width: 1000px; margin: auto; position: relative;}}
-    .prev, .next {{
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
+    body {{
+        font-family: 'Arial', sans-serif;
     }}
-    .next {{right: 0; border-radius: 3px 0 0 3px;}}
-    .prev {{left: 0; border-radius: 3px 0 0 3px;}}
+    .slideshow-container {{
+        max-width: 1000px;
+        margin: auto;
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }}
+    .mySlides {{
+        display: none;
+        border-radius: 15px;
+    }}
+    .prev, .next {{
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        user-select: none;
+    }}
+    .next {{
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }}
+    .prev {{
+        left: 0;
+        border-radius: 0 3px 3px 0;
+    }}
     .text {{
-      color: #f2f2f2;
-      font-size: 15px;
-      position: absolute;
-      bottom: 8px;
-      width: 100%;
-      text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 0 0 15px 15px;
     }}
     .dot {{
-      height: 15px;
-      width: 15px;
-      margin: 0 2px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
+        height: 12px;
+        width: 12px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
     }}
-    .active {{background-color: #717171;}}
-    .fade {{animation-name: fade; animation-duration: 1.5s;}}
-    @keyframes fade {{from {{opacity: .4}} to {{opacity: 1}}}}
+    .active {{
+        background-color: #717171;
+    }}
     </style>
     </head>
     <body>
@@ -54,7 +75,7 @@ def display_slideshow(images, captions):
         html_code += f"""
         <div class="mySlides fade">
           <div class="numbertext">{i} / {len(images)}</div>
-          <img src="{image}" style="width:100%">
+          <img src="{image}" style="width:100%; border-radius: 15px;">
           <div class="text">{caption}</div>
         </div>
         """
