@@ -13,9 +13,8 @@ def display_slideshow(images):
         max-width: 1000px;
         margin: auto;
         position: relative;
-        border-radius: 0;
         overflow: hidden;
-        background-color: transparent; /* Transparent background */
+        background-color: transparent;
     }}
     .mySlides {{
         display: none;
@@ -62,8 +61,7 @@ def display_slideshow(images):
     """
     for i, image in enumerate(images, 1):
         html_code += f"""
-        <div class="mySlides fade">
-          <div class="numbertext">{i} / {len(images)}</div>
+        <div class="mySlides">
           <img src="{image}" style="width:100%;">
         </div>
         """
@@ -111,4 +109,4 @@ def display_slideshow(images):
     </body>
     </html>
     """
-    components.html(html_code, height=600)
+    components.html(html_code, height=500)
