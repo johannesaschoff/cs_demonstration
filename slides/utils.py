@@ -1,6 +1,6 @@
 import streamlit.components.v1 as components
 
-def display_slideshow(images):
+def display_slideshow(images, captions=None):
     html_code = f"""
     <!DOCTYPE html>
     <html>
@@ -15,32 +15,24 @@ def display_slideshow(images):
         position: relative;
         overflow: hidden;
         background-color: transparent; /* Transparent background */
-        border-radius: 15px; /* Rounded corners for the entire slideshow container */
     }}
     .mySlides {{
         display: none;
-    }}
-    .mySlides img {{
-        width: 100%;
-        border-radius: 15px; /* Rounded corners for images */
     }}
     .prev, .next {{
         cursor: pointer;
         position: absolute;
         top: 50%;
-        width: 40px; /* Fixed width for circular arrows */
-        height: 40px; /* Fixed height for circular arrows */
-        padding: 0; /* Remove extra padding */
-        margin-top: -20px;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
         color: white;
         font-weight: bold;
         font-size: 18px;
         transition: 0.6s ease;
         user-select: none;
         background: rgba(0, 0, 0, 0.5);
-        border-radius: 50%; /* Make the arrows circular */
-        text-align: center;
-        line-height: 40px; /* Center the arrow symbol vertically */
+        border-radius: 50%;
     }}
     .next {{
         right: 10px;
@@ -70,7 +62,7 @@ def display_slideshow(images):
     for i, image in enumerate(images, 1):
         html_code += f"""
         <div class="mySlides">
-          <img src="{image}">
+          <img src="{image}" style="width:100%;">
         </div>
         """
     html_code += """
