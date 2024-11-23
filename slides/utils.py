@@ -15,9 +15,14 @@ def display_slideshow(images, captions=None):
         position: relative;
         overflow: hidden;
         background-color: transparent; /* Transparent background */
+        border-radius: 15px; /* Rounded corners for the slideshow */
     }}
     .mySlides {{
         display: none;
+    }}
+    .mySlides img {{
+        width: 100%;
+        border-radius: 15px; /* Rounded corners for images */
     }}
     .prev, .next {{
         cursor: pointer;
@@ -32,7 +37,7 @@ def display_slideshow(images, captions=None):
         transition: 0.6s ease;
         user-select: none;
         background: rgba(0, 0, 0, 0.5);
-        border-radius: 50%;
+        border-radius: 50%; /* Rounded buttons */
     }}
     .next {{
         right: 10px;
@@ -45,7 +50,7 @@ def display_slideshow(images, captions=None):
         width: 12px;
         margin: 0 4px;
         background-color: #bbb;
-        border-radius: 50%;
+        border-radius: 50%; /* Rounded dots */
         display: inline-block;
         transition: background-color 0.6s ease;
         cursor: pointer;
