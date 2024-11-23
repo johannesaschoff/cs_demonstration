@@ -1,6 +1,6 @@
 import streamlit.components.v1 as components
 
-def display_slideshow(images):
+def display_slideshow(images, captions=None):
     html_code = f"""
     <!DOCTYPE html>
     <html>
@@ -14,7 +14,7 @@ def display_slideshow(images):
         margin: auto;
         position: relative;
         overflow: hidden;
-        background-color: transparent;
+        background-color: transparent; /* Transparent background */
     }}
     .mySlides {{
         display: none;
@@ -109,4 +109,4 @@ def display_slideshow(images):
     </body>
     </html>
     """
-    components.html(html_code, height=500)
+    components.html(html_code, height=600)
