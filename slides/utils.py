@@ -36,8 +36,8 @@ def display_slideshow(images, captions=None):
         font-size: 18px;
         transition: 0.6s ease;
         user-select: none;
-        background: rgba(0, 0, 0, 0.5);
         border-radius: 50%; /* Rounded buttons */
+        background: transparent; /* No background */
     }}
     .next {{
         right: 10px;
