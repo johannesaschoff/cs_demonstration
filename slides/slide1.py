@@ -12,7 +12,7 @@ def render():
     st.write("- Sets the stage for deeper dives into data.")
     display_slideshow(
         images=[
-            "https://github.com/johannesaschoff/cs_demonstration/blob/4010f37ca53b5861a2bd43c853a7c4f596549e77/slides/image1.png",
+            "https://github.com/johannesaschoff/cs_demonstration/slides/image1.png",
             "https://unsplash.com/photos/eHlVZcSrjfg/download?force=true&w=1920",
             "https://unsplash.com/photos/zVhYcSjd7-Q/download?force=true&w=1920"
         ],
