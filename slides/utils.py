@@ -1,6 +1,6 @@
 import streamlit.components.v1 as components
 
-def display_slideshow(images, captions):
+def display_slideshow(images):
     html_code = f"""
     <!DOCTYPE html>
     <html>
@@ -13,9 +13,8 @@ def display_slideshow(images, captions):
         max-width: 1000px;
         margin: auto;
         position: relative;
-        border-radius: 15px;
+        border-radius: 0;
         overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         background-color: transparent; /* Transparent background */
     }}
     .mySlides {{
@@ -42,16 +41,6 @@ def display_slideshow(images, captions):
     .prev {{
         left: 10px;
     }}
-    .text {{
-        color: #ffffff;
-        font-size: 16px;
-        padding: 8px 12px;
-        position: absolute;
-        bottom: 10px;
-        width: 100%;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.5);
-    }}
     .dot {{
         height: 12px;
         width: 12px;
@@ -71,12 +60,11 @@ def display_slideshow(images, captions):
 
     <div class="slideshow-container">
     """
-    for i, (image, caption) in enumerate(zip(images, captions), 1):
+    for i, image in enumerate(images, 1):
         html_code += f"""
         <div class="mySlides fade">
           <div class="numbertext">{i} / {len(images)}</div>
-          <img src="{image}" style="width:100%; border-radius: 15px;">
-          <div class="text">{caption}</div>
+          <img src="{image}" style="width:100%;">
         </div>
         """
     html_code += """
