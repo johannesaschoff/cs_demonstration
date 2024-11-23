@@ -16,10 +16,10 @@ def display_slideshow(images, captions):
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: transparent; /* Transparent background */
     }}
     .mySlides {{
         display: none;
-        border-radius: 15px;
     }}
     .prev, .next {{
         cursor: pointer;
@@ -33,14 +33,14 @@ def display_slideshow(images, captions):
         font-size: 18px;
         transition: 0.6s ease;
         user-select: none;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
     }}
     .next {{
-        right: 0;
-        border-radius: 3px 0 0 3px;
+        right: 10px;
     }}
     .prev {{
-        left: 0;
-        border-radius: 0 3px 3px 0;
+        left: 10px;
     }}
     .text {{
         color: #ffffff;
@@ -51,16 +51,16 @@ def display_slideshow(images, captions):
         width: 100%;
         text-align: center;
         background: rgba(0, 0, 0, 0.5);
-        border-radius: 0 0 15px 15px;
     }}
     .dot {{
         height: 12px;
         width: 12px;
-        margin: 0 2px;
+        margin: 0 4px;
         background-color: #bbb;
         border-radius: 50%;
         display: inline-block;
         transition: background-color 0.6s ease;
+        cursor: pointer;
     }}
     .active {{
         background-color: #717171;
@@ -86,8 +86,8 @@ def display_slideshow(images, captions):
     <br>
     <div style="text-align:center">
     """
-    for _ in images:
-        html_code += '<span class="dot"></span> '
+    for idx in range(len(images)):
+        html_code += f'<span class="dot" onclick="currentSlide({idx+1})"></span>'
     html_code += """
     </div>
 
