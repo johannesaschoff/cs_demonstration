@@ -23,28 +23,8 @@ def render():
     st.write("- Fish Farming")
     st.write("- Experimental Agriculture")
 
-    # Section: Slideshow
-    st.write("### Pitchdeck Overview")
-    st.markdown(
-        """
-        <style>
-        .slideshow-container {
-            margin-bottom: -20px; /* Reduces margin below the slideshow */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.markdown('<div class="slideshow-container">', unsafe_allow_html=True)
-    display_slideshow(
-        images=[
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
-        ],
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-
+    # Section: PDF Download
+    st.write("### Downloadable Resources")
     pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
         pdf_data = fetch_pdf(pdf_url)
@@ -56,6 +36,16 @@ def render():
         )
     except Exception as e:
         st.error(f"Could not fetch the PDF file: {e}")
+
+    # Section: Slideshow
+    st.write("### Pitchdeck Overview")
+    display_slideshow(
+        images=[
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
+        ],
+    )
 
     # Section: Corporate Dataset
     st.write("### Corporate Dataset with Logos")
