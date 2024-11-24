@@ -69,7 +69,9 @@ def render():
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
+    csv_education_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/education.csv"
 
+    #dataframe corporates
     try:
         # Load the dataset
         df = pd.read_csv(csv_url)
@@ -93,12 +95,34 @@ def render():
         st.download_button(
             label="Download data as CSV",
             data=csv_data,
-            file_name="corporate_dataset_with_logos.csv",
+            file_name="corporate_education.csv",
             mime="text/csv",
         )
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
+    #dataframe charities
+    try:
+        # Load the dataset
+        df = pd.read_csv(csv_education_url)
+
+        # Use Streamlit's column_config.ImageColumn for the Logo column
+        st.dataframe(
+            df,
+            hide_index=True,  # Optionally hide the index column
+        )
+
+        # Add a download button for the original dataset
+        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
+        st.download_button(
+            label="Download data as CSV",
+            data=csv_data,
+            file_name="charities_education.csv",
+            mime="text/csv",
+        )
+
+    except Exception as e:
+        st.error(f"Failed to load the dataset: {e}")
 # Run the app
 render()
