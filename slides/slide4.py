@@ -1,6 +1,15 @@
 import streamlit as st
 import pandas as pd
 
+@st.cache_data
+def fetch_pdf(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.content  # Return the binary content of the PDF
+    else:
+        raise Exception(f"Failed to fetch the PDF. Status code: {response.status_code}")
+
+
 def render():
     st.title("Emergency Relief and Basic Needs")
     st.markdown("**Project types**")
