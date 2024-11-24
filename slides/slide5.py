@@ -25,6 +25,17 @@ def render():
 
     # Section: Slideshow
     st.write("### Pitchdeck Overview")
+    st.markdown(
+        """
+        <style>
+        .slideshow-container {
+            margin-bottom: -20px; /* Reduces margin below the slideshow */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="slideshow-container">', unsafe_allow_html=True)
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
@@ -32,6 +43,7 @@ def render():
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
         ],
     )
+    st.markdown('</div>', unsafe_allow_html=True)
 
     pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
