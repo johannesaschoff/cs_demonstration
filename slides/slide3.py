@@ -2,13 +2,15 @@ import streamlit as st
 from slides.utils import display_slideshow
 
 def render():
-    st.title("Slide 3: Visualization")
-    st.markdown("**Category: Visual Data Representation**")
-    st.write("- Show relationships between variables.")
-    st.write("- Provide clear visual aids.")
-    st.write("- Simplify complex data into visuals.")
-    st.write("- Highlight critical patterns.")
-    st.write("- Engage the audience with interactive visuals.")
+    st.title("Community Development and Employment")
+    st.markdown("**Project types**")
+    st.write("- Bungalows and suites")
+    st.write("- Farmhouse Restaurant")
+    st.write("- Restaurant «Un»")
+    st.write("- Sanctuary Spa")
+    st.write("- Pool Bar and Lounge")
+    st.write("- Local Attractions")
+
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
