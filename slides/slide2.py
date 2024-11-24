@@ -12,9 +12,9 @@ def render():
 
     display_slideshow(
         images=[
-            "https://unsplash.com/photos/zVhYcSjd7-Q/download?force=true&w=1920",
-            "https://unsplash.com/photos/eHlVZcSrjfg/download?force=true&w=1920",
-            "https://unsplash.com/photos/GJ8ZQV7eGmU/download?force=true&w=1920"
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg"
         ],
         captions=["Insight 1", "Insight 2", "Insight 3"]
     )
