@@ -3,11 +3,11 @@ from slides import slide1, slide2, slide3, slide4, slide5
 
 # Sidebar for slide selection
 st.sidebar.title("Navigation")
-slides = ["Slide 1: Overview", 
-          "Slide 2: Data Insights", 
-          "Slide 3: Visualization", 
-          "Slide 4: Analysis", 
-          "Slide 5: Conclusion"]
+slides = ["Craftsmanship and production", 
+          "Educational Development", 
+          "Community Development and Employment", 
+          "Emergency Relief and Basic Needs", 
+          "Food Security and Sustainable Agriculture"]
 selected_slide = st.sidebar.radio("Choose a slide", slides)
 
 # Render the selected slide
