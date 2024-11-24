@@ -13,7 +13,7 @@ def fetch_pdf(url):
 
 
 def render():
-    st.title("Craftsmanship and production")
+    st.title("Craftsmanship and Production")
     st.markdown("**Project types**")
     st.write("- Butchery")
     st.write("- Bakery")
