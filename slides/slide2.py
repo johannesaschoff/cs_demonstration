@@ -2,13 +2,14 @@ import streamlit as st
 from slides.utils import display_slideshow
 
 def render():
-    st.title("Slide 2: Data Insights")
-    st.markdown("**Category: Key Data Points**")
-    st.write("- Discuss significant data findings.")
-    st.write("- Highlight trends in the dataset.")
-    st.write("- Present supporting evidence.")
-    st.write("- Describe the source of the data.")
-    st.write("- Explain why these insights matter.")
+    st.title("Educational Development")
+    st.markdown("**Project types**")
+    st.write("- Teaching")
+    st.write("- School Meals")
+    st.write("- Hygiene")
+    st.write("- Medical Care")
+    st.write("- Musical Education")
+
     display_slideshow(
         images=[
             "https://unsplash.com/photos/zVhYcSjd7-Q/download?force=true&w=1920",
