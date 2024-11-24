@@ -1,5 +1,6 @@
 import streamlit as st
 from slides.utils import display_slideshow
+import pandas as pd
 
 def render():
     st.title("Food Security and Sustainable Agriculture")
