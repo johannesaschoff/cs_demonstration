@@ -21,20 +21,6 @@ def render():
     st.write("- Fish Farming")
     st.write("- Experimental Agriculture")
 
-    # Section: PDF Download
-    st.markdown("**Downloada Pitchdeck**")
-    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
-    try:
-        pdf_data = fetch_pdf(pdf_url)
-        st.download_button(
-            label="Download PDF File",
-            data=pdf_data,
-            file_name="PitchDeck.pdf",
-            mime="application/pdf",
-        )
-    except Exception as e:
-        st.error(f"Could not fetch the PDF file: {e}")
-
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
     columns = st.columns(3)
@@ -68,6 +54,19 @@ def render():
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
             use_column_width=True
         )
+    # Section: PDF Download
+    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
+    try:
+        pdf_data = fetch_pdf(pdf_url)
+        st.download_button(
+            label="Download PDF File",
+            data=pdf_data,
+            file_name="PitchDeck.pdf",
+            mime="application/pdf",
+        )
+    except Exception as e:
+        st.error(f"Could not fetch the PDF file: {e}")
+
 
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
