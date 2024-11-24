@@ -24,7 +24,7 @@ def render():
     st.write("- Experimental Agriculture")
 
     # Section: PDF Download
-    st.write("##### Downloada Pitchdeck")
+    st.markdown("**Downloada Pitchdeck**")
     pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
         pdf_data = fetch_pdf(pdf_url)
