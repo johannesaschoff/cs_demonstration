@@ -3,7 +3,7 @@ from slides.utils import display_slideshow
 
 def render():
     st.title("Food Security and Sustainable Agriculture")
-    st.markdown("**Category: Summary and Next Steps**")
+    st.markdown("**Project types**")
     st.write("- Fruit and Vegetable Growing")
     st.write("- Cattle")
     st.write("- Chicken Farming")
