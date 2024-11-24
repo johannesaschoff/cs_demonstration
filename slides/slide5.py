@@ -19,11 +19,23 @@ def render():
         ],
     )
 
+    # Add custom CSS to reduce margins
+    st.markdown(
+        """
+        <style>
+        .stMarkdown {
+            margin-bottom: -30px; /* Adjust this value to fine-tune spacing */
+        }
+        div.stButton > button {
+            margin-top: -40px; /* Moves button closer to the slideshow */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
     # Raw URL for the PowerPoint file
     ppt_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
-
-    # Add spacing control to reduce the margin
-    st.markdown("<style>div.stButton {margin-top: -30px;}</style>", unsafe_allow_html=True)
 
     # Single button for downloading the file
     st.markdown(
