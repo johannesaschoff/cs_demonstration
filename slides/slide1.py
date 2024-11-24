@@ -12,9 +12,9 @@ def render():
     st.write("- Sets the stage for deeper dives into data.")
     display_slideshow(
         images=[
-            "https://github.com/johannesaschoff/cs_demonstration/main/images/welink.png",
-            "https://unsplash.com/photos/eHlVZcSrjfg/download?force=true&w=1920",
-            "https://unsplash.com/photos/zVhYcSjd7-Q/download?force=true&w=1920"
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg"
         ],
         captions=["Caption 1", "Caption 2", "Caption 3"]
     )
