@@ -9,7 +9,7 @@ def render():
     st.write("- Medical Care")
     st.write("- Musical Education")
 
-    st.markdown("### Additional Images")
+    st.markdown("**Pitchdeck Preview**")
     columns = st.columns(3)
 
     with columns[0]:
