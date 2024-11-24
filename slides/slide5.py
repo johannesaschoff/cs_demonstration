@@ -54,6 +54,7 @@ def render():
     try:
         # Load the dataset
         df = pd.read_csv(csv_url)
+        df = df[df["Food Security and Sustainable Agriculture"] == True]
 
         # Use Streamlit's column_config.ImageColumn for the Logo column
         st.dataframe(
