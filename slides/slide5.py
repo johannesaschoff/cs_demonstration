@@ -2,13 +2,14 @@ import streamlit as st
 from slides.utils import display_slideshow
 
 def render():
-    st.title("Slide 5: Conclusion")
+    st.title("Food Security and Sustainable Agriculture")
     st.markdown("**Category: Summary and Next Steps**")
-    st.write("- Recap the main findings.")
-    st.write("- Emphasize key takeaways.")
-    st.write("- Suggest potential actions.")
-    st.write("- Identify areas for further research.")
-    st.write("- End with a strong closing statement.")
+    st.write("- Fruit and Vegetable Growing")
+    st.write("- Cattle")
+    st.write("- Chicken Farming")
+    st.write("- Fish Farming")
+    st.write("- Experimental Agriculture")
+
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
