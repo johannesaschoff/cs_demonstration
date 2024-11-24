@@ -49,7 +49,7 @@ def render():
         st.error(f"Could not fetch the PDF file: {e}")
 
     # Load CSV from GitHub
-    csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates.csv"
+    csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     try:
         df = pd.read_csv(csv_url)  # Load the CSV file
         st.write("### Corporate Dataset")
