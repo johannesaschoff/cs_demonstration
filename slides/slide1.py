@@ -4,12 +4,14 @@ from slides.utils import display_slideshow
 
 def render():
     st.title("Craftsmanship and production")
-    st.markdown("**Category: Introduction**")
-    st.write("- Welcome to the Overview slide.")
-    st.write("- This slide introduces the topic.")
-    st.write("- Provides a general summary.")
-    st.write("- Prepares the user for the content ahead.")
-    st.write("- Sets the stage for deeper dives into data.")
+    st.markdown("**Project types**")
+    st.write("- Butchery")
+    st.write("- Bakery")
+    st.write("- Kitchen")
+    st.write("- Woodwork")
+    st.write("- Sewing")
+    st.write("- Metal Construction Workshop")
+
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
