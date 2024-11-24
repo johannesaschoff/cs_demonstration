@@ -10,38 +10,45 @@ def render():
     st.write("- Medical Care")
     st.write("- Musical Education")
 
+    # Display the main slideshow
+    display_slideshow(
+        images=[
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg"
+        ],
+    )
+
+    # Add multiple image sections next to each other
+    st.markdown("### Additional Images")
+    columns = st.columns(3)
+
     with columns[0]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
-            caption="Caption 1",
             use_column_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
-            caption="Caption 2",
             use_column_width=True
         )
 
     with columns[1]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
-            caption="Caption 3",
             use_column_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
-            caption="Caption 4",
             use_column_width=True
         )
 
     with columns[2]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
-            caption="Caption 5",
             use_column_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
-            caption="Caption 6",
             use_column_width=True
         )
