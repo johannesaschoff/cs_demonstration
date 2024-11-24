@@ -1,5 +1,4 @@
 import streamlit as st
-from slides.utils import display_slideshow
 
 def render():
     st.title("Educational Development")
