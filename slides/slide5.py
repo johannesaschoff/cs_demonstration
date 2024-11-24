@@ -24,7 +24,7 @@ def render():
     st.write("- Experimental Agriculture")
 
     # Section: Slideshow
-    st.write("### Slideshow")
+    st.write("### Pitchdeck Overview")
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
