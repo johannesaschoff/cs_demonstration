@@ -27,31 +27,31 @@ def render():
 
     with columns[0]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.1.jpg",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.4.jpg",
             use_column_width=True
         )
 
     with columns[1]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.2.jpg",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.5.jpg",
             use_column_width=True
         )
 
     with columns[2]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.3.jpg",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.6.jpg",
             use_column_width=True
         )
     # Section: PDF Download
