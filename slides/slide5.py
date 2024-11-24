@@ -33,8 +33,6 @@ def render():
         ],
     )
 
-    # Section: PDF Download
-    st.write("### Downloadable Resources")
     pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
         pdf_data = fetch_pdf(pdf_url)
