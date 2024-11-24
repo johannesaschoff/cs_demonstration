@@ -47,5 +47,13 @@ def render():
         unsafe_allow_html=True,
     )
 
+    csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates.csv"
+    try:
+        df = pd.read_csv(csv_url)  # Load the CSV file
+        st.write("### Corporate Dataset")
+        st.dataframe(df)  # Display the dataframe in Streamlit
+    except Exception as e:
+        st.error(f"Failed to load the dataset: {e}")
+
 # Run the function
 render()
