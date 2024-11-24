@@ -103,6 +103,7 @@ def render():
         st.error(f"Failed to load the dataset: {e}")
 
     #dataframe charities
+    st.markdown("**Matching Charities**")
     try:
         # Load the dataset
         df = pd.read_csv(csv_education_url)
