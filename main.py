@@ -1,7 +1,7 @@
 import streamlit as st
 
 # GitHub image URL
-image_url = "https://github.com/johannesaschoff/cs_demonstration/blob/main/images/image1.jpg"
+image_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg"
 
 # Streamlit app
 st.title("Display Image from GitHub")
