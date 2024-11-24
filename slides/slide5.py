@@ -24,7 +24,7 @@ def render():
     st.write("- Experimental Agriculture")
 
     # Section: PDF Download
-    st.write("# Downloada Pitchdeck")
+    st.write("##### Downloada Pitchdeck")
     pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
         pdf_data = fetch_pdf(pdf_url)
@@ -38,7 +38,7 @@ def render():
         st.error(f"Could not fetch the PDF file: {e}")
 
     # Section: Slideshow
-    st.write("# Pitchdeck Preview")
+    st.write("##### Pitchdeck Preview")
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
