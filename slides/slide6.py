@@ -9,16 +9,6 @@ def render():
     st.write("- Medical Care")
     st.write("- Musical Education")
 
-    # Display the main slideshow
-    display_slideshow(
-        images=[
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg"
-        ],
-    )
-
-    # Add multiple image sections next to each other
     st.markdown("### Additional Images")
     columns = st.columns(3)
 
