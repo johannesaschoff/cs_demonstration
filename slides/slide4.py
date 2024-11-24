@@ -3,7 +3,7 @@ from slides.utils import display_slideshow
 
 def render():
     st.title("Emergency Relief and Basic Needs")
-    st.markdown("**Category: Detailed Examination**")
+    st.markdown("**Project types**")
     st.write("- Food")
     st.write("- Medicine")
     st.write("- Water Pumps")
