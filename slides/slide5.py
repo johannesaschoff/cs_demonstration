@@ -27,35 +27,35 @@ def render():
 
     with columns[0]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.1.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.1.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.4.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.4.png",
             use_column_width=True
         )
 
     with columns[1]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.2.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.2.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.5.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.5.png",
             use_column_width=True
         )
 
     with columns[2]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.3.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.3.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.6.jpg",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.6.png",
             use_column_width=True
         )
     # Section: PDF Download
-    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
+    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.png"
     try:
         pdf_data = fetch_pdf(pdf_url)
         st.download_button(
