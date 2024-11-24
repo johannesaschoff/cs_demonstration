@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 from slides.utils import display_slideshow
 
 def render():
-    st.title("Slide 1: Overview")
+    st.title("Craftsmanship and production")
     st.markdown("**Category: Introduction**")
     st.write("- Welcome to the Overview slide.")
     st.write("- This slide introduces the topic.")
