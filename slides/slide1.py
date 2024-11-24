@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import requests
-import io
 
 
 @st.cache_data
@@ -93,14 +92,12 @@ def render():
         )
 
         # Add a download button for the original dataset
-        excel_buffer = io.BytesIO()
-        df.to_excel(excel_buffer, index=False, engine='openpyxl')
-        excel_buffer.seek(0)  # Move the buffer's cursor to the beginning
+        csv_data = pd.read_csv(csv_url).to_csv(index=False).encode("utf-8")
         st.download_button(
-            label="Download data as Excel",
-            data=excel_buffer,
-            file_name="corporate_dataset_with_logos.xlsx",
-            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            label="Download data as CSV",
+            data=csv_data,
+            file_name="corporate_dataset_with_logos.csv",
+            mime="text/csv",
         )
         
 
