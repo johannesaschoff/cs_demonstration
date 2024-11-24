@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import requests
+import io
+
 
 @st.cache_data
 def fetch_pdf(url):
@@ -91,13 +93,16 @@ def render():
         )
 
         # Add a download button for the original dataset
-        csv_data = pd.read_csv(csv_url).to_csv(index=False).encode("utf-8")
+        excel_buffer = io.BytesIO()
+        df.to_excel(excel_buffer, index=False, engine='openpyxl')
+        excel_buffer.seek(0)  # Move the buffer's cursor to the beginning
         st.download_button(
-            label="Download data as CSV",
-            data=csv_data,
-            file_name="corporate_dataset_with_logos.csv",
-            mime="text/csv",
+            label="Download data as Excel",
+            data=excel_buffer,
+            file_name="corporate_dataset_with_logos.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         )
+        
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
