@@ -1,6 +1,16 @@
 import streamlit as st
-from slides.utils import display_slideshow
+import requests  # To fetch the PDF file from the web
 import pandas as pd
+from slides.utils import display_slideshow
+
+# Function to download the PDF file as binary data
+@st.cache_data
+def fetch_pdf(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.content  # Return the binary content of the PDF
+    else:
+        raise Exception(f"Failed to fetch the PDF. Status code: {response.status_code}")
 
 def render():
     st.title("Food Security and Sustainable Agriculture")
@@ -20,39 +30,40 @@ def render():
         ],
     )
 
-    # Add custom CSS to reduce margins
-    st.markdown(
-        """
-        <style>
-        .stMarkdown {
-            margin-bottom: -30px; /* Adjust this value to fine-tune spacing */
-        }
-        div.stButton > button {
-            margin-top: -40px; /* Moves button closer to the slideshow */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    # PDF file URL
+    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
 
-    # Raw URL for the PowerPoint file
-    ppt_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
+    try:
+        # Fetch the PDF binary data
+        pdf_data = fetch_pdf(pdf_url)
 
-    # Single button for downloading the file
-    st.markdown(
-        f"""
-        <a href="{ppt_url}" download>
-            <button style="padding:10px 20px; font-size:16px;">Download PowerPoint File</button>
-        </a>
-        """,
-        unsafe_allow_html=True,
-    )
+        # Streamlit-native download button for the PDF file
+        st.download_button(
+            label="Download PDF File",
+            data=pdf_data,
+            file_name="PitchDeck.pdf",
+            mime="application/pdf",
+        )
 
+    except Exception as e:
+        st.error(f"Could not fetch the PDF file: {e}")
+
+    # Load CSV from GitHub
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates.csv"
     try:
         df = pd.read_csv(csv_url)  # Load the CSV file
         st.write("### Corporate Dataset")
         st.dataframe(df)  # Display the dataframe in Streamlit
+
+        # Add a download button for the dataframe
+        csv_data = df.to_csv().encode("utf-8")
+        st.download_button(
+            label="Download data as CSV",
+            data=csv_data,
+            file_name="corporate_dataset.csv",
+            mime="text/csv",
+        )
+
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
