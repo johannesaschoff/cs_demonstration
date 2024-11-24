@@ -1,6 +1,5 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from slides.utils import display_slideshow
 
 def render():
     st.title("Craftsmanship and production")
