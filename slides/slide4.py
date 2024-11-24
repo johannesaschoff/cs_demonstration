@@ -2,13 +2,12 @@ import streamlit as st
 from slides.utils import display_slideshow
 
 def render():
-    st.title("Slide 4: Analysis")
+    st.title("Emergency Relief and Basic Needs")
     st.markdown("**Category: Detailed Examination**")
-    st.write("- Explore key questions about the data.")
-    st.write("- Compare different outcomes.")
-    st.write("- Explain the methods used in analysis.")
-    st.write("- Present observations and conclusions.")
-    st.write("- Discuss any limitations.")
+    st.write("- Food")
+    st.write("- Medicine")
+    st.write("- Water Pumps")
+
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
