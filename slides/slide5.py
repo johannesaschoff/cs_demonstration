@@ -55,7 +55,7 @@ def render():
             use_column_width=True
         )
     # Section: PDF Download
-    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.png"
+    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
         pdf_data = fetch_pdf(pdf_url)
         st.download_button(
