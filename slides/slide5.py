@@ -52,8 +52,28 @@ def render():
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     try:
         df = pd.read_csv(csv_url)  # Load the CSV file
-        st.write("### Corporate Dataset")
-        st.dataframe(df)  # Display the dataframe in Streamlit
+        st.write("### Corporate Dataset with Logos")
+
+        # Display each row with the logo rendered as an image
+        for index, row in df.iterrows():
+            logo_url = row["Logo"]
+            company_name = row["Company Name"]
+            industry = row["Industries"]
+            ebit = row["EBIT"]
+
+            st.markdown(
+                f"""
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <img src="{logo_url}" style="height: 50px; margin-right: 10px;" alt="{company_name} Logo">
+                    <div>
+                        <strong>{company_name}</strong> <br>
+                        Industry: {industry} <br>
+                        EBIT: {ebit}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
         # Add a download button for the dataframe
         csv_data = df.to_csv().encode("utf-8")
