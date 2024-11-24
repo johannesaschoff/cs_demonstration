@@ -16,5 +16,16 @@ def render():
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg"
         ],
-        captions=["Conclusion 1", "Conclusion 2", "Conclusion 3"]
     )
+    ppt_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
+    
+    if st.button("Download PowerPoint File"):
+        st.markdown(
+            f"""
+            <a href="{ppt_url}" download>
+                <button style="padding:10px 20px; font-size:16px;">Click here to download</button>
+            </a>
+            """,
+            unsafe_allow_html=True,
+        )
+
