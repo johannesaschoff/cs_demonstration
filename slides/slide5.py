@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import requests
-from slides.utils import display_slideshow
-
 # Function to fetch the PDF file as binary data
 @st.cache_data
 def fetch_pdf(url):
@@ -39,13 +37,37 @@ def render():
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
-    display_slideshow(
-        images=[
+    columns = st.columns(3)
+
+    with columns[0]:
+        st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            use_column_width=True
+        )
+        st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            use_column_width=True
+        )
+
+    with columns[1]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
+            use_column_width=True
+        )
+        st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
-        ],
-    )
+            use_column_width=True
+        )
+
+    with columns[2]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
+            use_column_width=True
+        )
 
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
