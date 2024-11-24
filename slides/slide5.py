@@ -38,7 +38,7 @@ def render():
         st.error(f"Could not fetch the PDF file: {e}")
 
     # Section: Slideshow
-    st.write("##### Pitchdeck Preview")
+    st.markdown("**Pitchdeck Preview**")
     display_slideshow(
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
@@ -48,7 +48,7 @@ def render():
     )
 
     # Section: Corporate Dataset
-    st.write("### Corporate Dataset with Logos")
+    st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
 
     try:
