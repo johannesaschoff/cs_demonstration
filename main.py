@@ -1,27 +1,23 @@
 import streamlit as st
+from slides import slide1, slide2, slide3, slide4, slide5
 
-# List of GitHub raw image URLs
-image_urls = [
-    "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
-    "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
-    "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
-]
+# Sidebar for slide selection
+st.sidebar.title("Navigation")
+slides = ["Slide 1: Overview", 
+          "Slide 2: Data Insights", 
+          "Slide 3: Visualization", 
+          "Slide 4: Analysis", 
+          "Slide 5: Conclusion"]
+selected_slide = st.sidebar.radio("Choose a slide", slides)
 
-# Streamlit app
-st.title("Image Gallery")
-
-# Slider for navigation
-current_image_index = st.slider(
-    "Navigate through the images:",
-    min_value=0,
-    max_value=len(image_urls) - 1,
-    step=1,
-    format="Image %d",
-)
-
-# Display the current image
-st.image(
-    image_urls[current_image_index],
-    caption=f"Image {current_image_index + 1}",
-    use_column_width=True,
-)
+# Render the selected slide
+if selected_slide == slides[0]:
+    slide1.render()
+elif selected_slide == slides[1]:
+    slide2.render()
+elif selected_slide == slides[2]:
+    slide3.render()
+elif selected_slide == slides[3]:
+    slide4.render()
+elif selected_slide == slides[4]:
+    slide5.render()
