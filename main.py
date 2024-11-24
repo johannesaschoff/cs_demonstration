@@ -1,5 +1,5 @@
 import streamlit as st
-from slides import slide1, slide2, slide3, slide4, slide5
+from slides import slide1, slide2, slide3, slide4, slide5, slide6
 
 # Add a logo to the top of the sidebar
 logo_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/logo_grey.png" 
@@ -27,3 +27,5 @@ elif selected_slide == slides[3]:
     slide4.render()
 elif selected_slide == slides[4]:
     slide5.render()
+elif selected_slide == slides[5]:
+    slide6.render()
