@@ -3,11 +3,7 @@ import pandas as pd
 import requests
 from slides.utils import display_slideshow
 
-# Function to render the HTML code for displaying an image
-def show_image_from_url(image_url):
-    return f'<img src="{image_url}" style="height:50px;">'
-
-# Function to download the PDF file as binary data
+# Function to fetch the PDF file as binary data
 @st.cache_data
 def fetch_pdf(url):
     response = requests.get(url)
@@ -33,7 +29,7 @@ def render():
         images=[
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.jpg",
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.jpg",
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg"
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.jpg",
         ],
     )
 
@@ -59,14 +55,18 @@ def render():
         # Load the dataset
         df = pd.read_csv(csv_url)
 
-        # Add a new column with HTML-rendered images
-        df["Logo"] = df["Logo"].apply(show_image_from_url)
-
-        # Convert the dataframe to an HTML table with the rendered logos
-        html_table = df.to_html(escape=False, index=False)
-
-        # Display the dataframe as an HTML table
-        st.markdown(html_table, unsafe_allow_html=True)
+        # Use Streamlit's column_config.ImageColumn for the Logo column
+        st.dataframe(
+            df,
+            column_config={
+                "Logo": st.column_config.ImageColumn(
+                    label="Company Logo",
+                    width="small",
+                    help="Logos of companies"
+                )
+            },
+            hide_index=True,  # Optionally hide the index column
+        )
 
         # Add a download button for the original dataset
         csv_data = pd.read_csv(csv_url).to_csv(index=False).encode("utf-8")
