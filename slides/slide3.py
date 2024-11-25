@@ -101,5 +101,30 @@ def render():
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
+#    dataframe charities
+#    st.markdown("**Matching Charities**")
+#    try:
+#        Load the dataset
+#        df = pd.read_csv(csv_education_url)
+
+#         Use Streamlit's column_config.ImageColumn for the Logo column
+#        st.dataframe(
+#            df,
+#            hide_index=True,  
+#        )
+
+        # Add a download button for the original dataset
+#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
+#        st.download_button(
+#            label="Download data as CSV",
+#            data=csv_data,
+#            file_name="charities_education.csv",
+#            mime="text/csv",
+#        )
+
+#    except Exception as e:
+#        st.error(f"Failed to load the dataset: {e}")
+# Run the app
+
 # Run the app
 render()
