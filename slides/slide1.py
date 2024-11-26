@@ -1,4 +1,3 @@
-import streamlit as st
 import pandas as pd
 import requests
 
@@ -55,7 +54,6 @@ def render():
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.6.png",
             use_column_width=True
         )
-
     # Section: PDF Download
     pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
@@ -69,6 +67,7 @@ def render():
     except Exception as e:
         st.error(f"Could not fetch the PDF file: {e}")
 
+
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
@@ -78,20 +77,20 @@ def render():
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
 
-        # Display each company row with custom rendering
-        for index, row in df.iterrows():
-            st.markdown(f"### {row['Company Name']}")
-            
-            # Display the company logo
-            if not pd.isna(row["Logo"]):
-                st.image(row["Logo"], width=100)
-            
-            # Display industries as tags/labels
-            st.markdown("**Industries:**")
-            industries = eval(row["Industries"])  # Ensure it's treated as a list if saved as a string
-            st.markdown(" ".join([f"`{industry}`" for industry in industries]))
+        # Use Streamlit's column_config.ImageColumn for the Logo column
+        st.dataframe(
+            df,
+            column_config={
+                "Logo": st.column_config.ImageColumn(
+                    label="Company Logo",
+                    width="small",
+                    help="Logos of companies"
+                )
+            },
+            hide_index=True,  # Optionally hide the index column
+        )
 
-        # Add a download button for the dataset
+        # Add a download button for the original dataset
         csv_data = pd.read_csv(csv_url).to_csv(index=False).encode("utf-8")
         st.download_button(
             label="Download data as CSV",
@@ -99,10 +98,34 @@ def render():
             file_name="corporate_dataset_with_logos.csv",
             mime="text/csv",
         )
+        
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+        
+#    dataframe charities
+#    st.markdown("**Matching Charities**")
+#    try:
+#        Load the dataset
+#        df = pd.read_csv(csv_education_url)
 
+#         Use Streamlit's column_config.ImageColumn for the Logo column
+#        st.dataframe(
+#            df,
+#            hide_index=True,  
+#        )
 
+        # Add a download button for the original dataset
+#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
+#        st.download_button(
+#            label="Download data as CSV",
+#            data=csv_data,
+#            file_name="charities_education.csv",
+#            mime="text/csv",
+#        )
+
+#    except Exception as e:
+#        st.error(f"Failed to load the dataset: {e}")
+# Run the app
 # Run the app
 render()
