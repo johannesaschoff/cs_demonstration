@@ -11,13 +11,14 @@ def fetch_pdf(url):
         raise Exception(f"Failed to fetch the PDF. Status code: {response.status_code}")
 
 def render():
-    st.title("Educational Development")
+    st.title("Craftsmanship and Production")
     st.markdown("**Project types**")
-    st.write("- Teaching")
-    st.write("- School Meals")
-    st.write("- Hygiene")
-    st.write("- Medical Care")
-    st.write("- Musical Education")
+    st.write("- Butchery")
+    st.write("- Bakery")
+    st.write("- Kitchen")
+    st.write("- Woodwork")
+    st.write("- Sewing")
+    st.write("- Metal Construction Workshop")
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
@@ -75,7 +76,7 @@ def render():
     try:
         # Load the dataset
         df = pd.read_csv(csv_url)
-        df = df[df["Educational Development"] == True]
+        df = df[df["Craftsmanship and Production"] == True]
 
         # Use Streamlit's column_config.ImageColumn for the Logo column
         st.dataframe(
