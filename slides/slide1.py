@@ -73,25 +73,25 @@ def render():
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
 
-    try:
+        try:
         # Load the dataset
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
 
-        # Use Streamlit's column_config.ImageColumn for the Logo column
-        st.dataframe(
-            df,
-            column_config={
-                "Logo": st.column_config.ImageColumn(
-                    label="Company Logo",
-                    width="small",
-                    help="Logos of companies"
-                )
-            },
-            hide_index=True,  # Optionally hide the index column
-        )
+        # Display each company row with custom rendering
+        for index, row in df.iterrows():
+            st.markdown(f"### {row['Company Name']}")
+            
+            # Display the company logo
+            if not pd.isna(row["Logo"]):
+                st.image(row["Logo"], width=100)
+            
+            # Display industries as tags/labels
+            st.markdown("**Industries:**")
+            industries = eval(row["Industries"])  # Ensure it's treated as a list if saved as a string
+            st.markdown(" ".join([f"`{industry}`" for industry in industries]))
 
-        # Add a download button for the original dataset
+        # Add a download button for the dataset
         csv_data = pd.read_csv(csv_url).to_csv(index=False).encode("utf-8")
         st.download_button(
             label="Download data as CSV",
@@ -99,10 +99,10 @@ def render():
             file_name="corporate_dataset_with_logos.csv",
             mime="text/csv",
         )
-        
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+
         
 #    dataframe charities
 #    st.markdown("**Matching Charities**")
