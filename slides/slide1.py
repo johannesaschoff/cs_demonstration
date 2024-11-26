@@ -55,6 +55,7 @@ def render():
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.6.png",
             use_column_width=True
         )
+
     # Section: PDF Download
     pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
     try:
@@ -68,12 +69,11 @@ def render():
     except Exception as e:
         st.error(f"Could not fetch the PDF file: {e}")
 
-
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
 
-        try:
+    try:
         # Load the dataset
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
@@ -103,30 +103,6 @@ def render():
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
-        
-#    dataframe charities
-#    st.markdown("**Matching Charities**")
-#    try:
-#        Load the dataset
-#        df = pd.read_csv(csv_education_url)
 
-#         Use Streamlit's column_config.ImageColumn for the Logo column
-#        st.dataframe(
-#            df,
-#            hide_index=True,  
-#        )
-
-        # Add a download button for the original dataset
-#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
-#        st.download_button(
-#            label="Download data as CSV",
-#            data=csv_data,
-#            file_name="charities_education.csv",
-#            mime="text/csv",
-#        )
-
-#    except Exception as e:
-#        st.error(f"Failed to load the dataset: {e}")
-# Run the app
 # Run the app
 render()
