@@ -52,8 +52,8 @@ def render():
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
             use_column_width=True
         )
-    # Section: PDF Download
-    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pptx"
+
+    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
     try:
         pptx_data = fetch_pptx(pptx_url)
         st.download_button(
@@ -63,7 +63,7 @@ def render():
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
         )
     except Exception as e:
-        st.error(f"Could not fetch the PDF file: {e}")
+        st.error(f"Could not fetch the PPTX file: {e}")
 
 
     # Section: Corporate Dataset
