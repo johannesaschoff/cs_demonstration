@@ -1,18 +1,19 @@
+import streamlit as st
+import pandas as pd
+import requests
+import ast 
+
+
+@st.cache_data
+def fetch_pptx(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.content  
+    else:
+        raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
+
 def render():
     st.title("Craftsmanship and Production")
-    
-    # Create a layout with two columns: one for the image, one for the title
-    title_column, image_column = st.columns([1, 3])  # Adjust ratios as needed
-    
-    with title_column:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/logo_grey.png",  # Replace with your desired image URL
-            width=100  # Adjust size as needed
-        )
-    
-    with image_column:
-        st.markdown("# Craftsmanship and Production")
-    
     st.markdown("**Project types**")
     st.write("- Butchery")
     st.write("- Bakery")
@@ -55,6 +56,7 @@ def render():
             use_column_width=True
         )
 
+    
     pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
     try:
         pptx_data = fetch_pptx(pptx_url)
@@ -67,10 +69,13 @@ def render():
     except Exception as e:
         st.error(f"Could not fetch the PPTX file: {e}")
 
+
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
+    csv_education_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/education.csv"
 
+    #dataframe corporates
     try:
         # Load the dataset
         df = pd.read_csv(csv_url)
@@ -106,3 +111,29 @@ def render():
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+
+#    dataframe charities
+#    st.markdown("**Matching Charities**")
+#    try:
+#        Load the dataset
+#        df = pd.read_csv(csv_education_url)
+
+#         Use Streamlit's column_config.ImageColumn for the Logo column
+#        st.dataframe(
+#            df,
+#            hide_index=True,  
+#        )
+
+        # Add a download button for the original dataset
+#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
+#        st.download_button(
+#            label="Download data as CSV",
+#            data=csv_data,
+#            file_name="charities_education.csv",
+#            mime="text/csv",
+#        )
+
+#    except Exception as e:
+#        st.error(f"Failed to load the dataset: {e}")
+# Run the app
+render()
