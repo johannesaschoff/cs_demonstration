@@ -73,7 +73,7 @@ def render():
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
-    excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/education_development.xlsx"
+    excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
 
     #dataframe corporates
     try:
