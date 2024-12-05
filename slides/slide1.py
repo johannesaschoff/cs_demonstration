@@ -88,17 +88,6 @@ def render():
             use_column_width=True
         )
     
-    with columns[6]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
-            use_column_width=True
-        )
-
-    
     pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
     try:
         pptx_data = fetch_pptx(pptx_url)
