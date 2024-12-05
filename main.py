@@ -5,8 +5,6 @@ import ast
 
 st.set_page_config(layout="wide")
 
-if "contacted_tracker" not in st.session_state:
-    st.session_state["contacted_tracker"] = {}
 
 # Initialize or load the contact tracking dictionary
 if "contacted_tracker" not in st.session_state:
