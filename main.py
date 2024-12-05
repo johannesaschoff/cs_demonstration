@@ -5,7 +5,7 @@ from slides import slide1, slide2, slide3, slide4, slide5
 logo_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/logo_grey.png"
 st.sidebar.image(logo_url, width=100)
 
-# Define icons for each slide
+# Define icons and slides
 icons = [
     "🎨",  # Icon for "Craftsmanship and production"
     "📘",  # Icon for "Educational Development"
@@ -14,8 +14,6 @@ icons = [
     "🌱"   # Icon for "Food Security and Sustainable Agriculture"
 ]
 
-# Sidebar for slide selection
-st.sidebar.title("Navigation")
 slides = [
     "Craftsmanship and production",
     "Educational Development",
@@ -24,21 +22,35 @@ slides = [
     "Food Security and Sustainable Agriculture"
 ]
 
-# Create sidebar items with icons
-styled_slides = [f"{icons[i]} {slides[i]}" for i in range(len(slides))]
-selected_slide = st.sidebar.radio("Choose a slide", styled_slides)
+# Sidebar for slide selection
+st.sidebar.title("Navigation")
 
-# Determine which slide was selected (remove icon before comparison)
-selected_index = styled_slides.index(selected_slide)
+# Generate styled options with icons above the text
+styled_slides = [
+    f"""
+    <div style="text-align: center; line-height: 1.5;">
+        <span style="font-size: 2rem;">{icons[i]}</span><br>
+        <span>{slides[i]}</span>
+    </div>
+    """
+    for i in range(len(slides))
+]
+
+# Use `st.sidebar.radio` with HTML
+selected_slide = st.sidebar.radio(
+    "Choose a slide",
+    slides,
+    format_func=lambda x: slides[slides.index(x)]  # Keeps internal selection clean
+)
 
 # Render the selected slide
-if selected_index == 0:
+if selected_slide == slides[0]:
     slide1.render()
-elif selected_index == 1:
+elif selected_slide == slides[1]:
     slide2.render()
-elif selected_index == 2:
+elif selected_slide == slides[2]:
     slide3.render()
-elif selected_index == 3:
+elif selected_slide == slides[3]:
     slide4.render()
-elif selected_index == 4:
+elif selected_slide == slides[4]:
     slide5.render()
