@@ -61,7 +61,7 @@ def render():
     try:
         ppt_data = fetch_pdf(ppt_url)
         st.download_button(
-            label="Download Excel File",
+            label="Download PPT File",
             data=ppt_data,
             file_name="PitchDeck.pptx",
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
