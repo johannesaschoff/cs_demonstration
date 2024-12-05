@@ -99,15 +99,6 @@ def render():
             },
             hide_index=True,  # Optionally hide the index column
         )
-
-        # Add a download button for the original dataset
-        csv_data = pd.read_csv(csv_url).to_csv(index=False).encode("utf-8")
-        st.download_button(
-            label="Download data as CSV",
-            data=csv_data,
-            file_name="corporate_education.csv",
-            mime="text/csv",
-        ),
         response = requests.get(excel_url)
         if response.status_code == 200:
             excel_data = response.content  # Get the file content as binary
