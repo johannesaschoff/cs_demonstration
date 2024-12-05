@@ -26,7 +26,7 @@ def render():
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
-    columns = st.columns(3)
+    columns = st.columns(6)
 
     with columns[0]:
         st.image(
@@ -49,6 +49,46 @@ def render():
         )
 
     with columns[2]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
+            use_column_width=True
+        )
+
+    with columns[3]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
+            use_column_width=True
+        )
+
+    with columns[4]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
+            use_column_width=True
+        )
+
+    with columns[5]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
+            use_column_width=True
+        )
+    
+    with columns[6]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
             use_column_width=True
