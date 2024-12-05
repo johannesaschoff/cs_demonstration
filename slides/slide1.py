@@ -73,7 +73,7 @@ def render():
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
-    csv_education_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/education.csv"
+    excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/education_development.xlsx"
 
     #dataframe corporates
     try:
@@ -107,7 +107,20 @@ def render():
             data=csv_data,
             file_name="corporate_education.csv",
             mime="text/csv",
-        )
+        ),
+        response = requests.get(excel_url)
+        if response.status_code == 200:
+            excel_data = response.content  # Get the file content as binary
+    
+            # Add a download button for the Excel file
+            st.download_button(
+                label="Download data as Excel",
+                data=excel_data,
+                file_name="corporate_education.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+        else:
+            st.error(f"Failed to fetch the Excel file. Status code: {response.status_code}")
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
