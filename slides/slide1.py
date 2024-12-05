@@ -117,21 +117,34 @@ def render():
         if "Selected" not in df.columns:
             df["Selected"] = False
     
-        # Add select boxes for each row and update the "Selected" column
-        for index, row in df.iterrows():
-            df.at[index, "Selected"] = st.selectbox(
-                f"Select for {row['Company Name']}",
-                options=[True, False],
-                index=int(row["Selected"]),
-                key=f"select_{index}"
-            )
+        # Create a custom table with select boxes in a column
+        st.write("Interactive DataFrame:")
+        updated_selected = []
     
-        # Display the updated dataframe, including the "Selected" column
+        for index, row in df.iterrows():
+            col1, col2, col3, col4 = st.columns([2, 4, 4, 2])
+            with col1:
+                st.text(row["Company Name"])  # Display company name
+            with col2:
+                st.image(row["Logo"], use_column_width=True)  # Display company logo
+            with col3:
+                st.text(", ".join(row["Industries"]))  # Display industries
+            with col4:
+                # Create a select box for each row
+                selected_value = st.selectbox(
+                    "Select",
+                    options=[True, False],
+                    index=int(row["Selected"]),
+                    key=f"select_{index}",
+                )
+                updated_selected.append(selected_value)
+    
+        # Update the dataframe with new selections
+        df["Selected"] = updated_selected
+    
+        # Display the updated dataframe for verification
         st.write("Updated DataFrame:")
-        st.dataframe(
-            df[["Company Name", "Logo", "Industries", "Selected"]],  # Specify the columns to display
-            use_container_width=True
-        )
+        st.dataframe(df)
     
         # Provide the option to download the updated dataframe
         if st.button("Save Updated DataFrame"):
@@ -158,6 +171,7 @@ def render():
     
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+
 
 
 
