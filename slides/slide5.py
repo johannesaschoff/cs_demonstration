@@ -4,12 +4,12 @@ import requests
 import ast  
 
 @st.cache_data
-def fetch_pdf(url):
+def fetch_pptx(url):
     response = requests.get(url)
     if response.status_code == 200:
-        return response.content  # Return the binary content of the PDF
+        return response.content 
     else:
-        raise Exception(f"Failed to fetch the PDF. Status code: {response.status_code}")
+        raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
 
 def render():
     st.title("Food Security and Sustainable Agriculture")
@@ -56,14 +56,14 @@ def render():
             use_column_width=True
         )
     # Section: PDF Download
-    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
+    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pptx"
     try:
-        pdf_data = fetch_pdf(pdf_url)
+        pptx_data = fetch_pptx(pptx_url)
         st.download_button(
-            label="Download PDF File",
-            data=pdf_data,
-            file_name="PitchDeck.pdf",
-            mime="application/pdf",
+            label="Download PPTX File",
+            data=pptx_data,
+            file_name="PitchDeck.pptx",
+            mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
         )
     except Exception as e:
         st.error(f"Could not fetch the PDF file: {e}")
