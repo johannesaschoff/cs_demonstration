@@ -13,6 +13,7 @@ def fetch_pptx(url):
         raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
 
 def render():
+    st.set_page_config(layout="wide")
     st.title("Craftsmanship and Production")
     st.markdown("**Project types**")
     st.write("- Butchery")
