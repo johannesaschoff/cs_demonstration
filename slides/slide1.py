@@ -145,8 +145,6 @@ def render():
             use_container_width=True
         )
     
-        # Display the updated dataframe
-        st.write("Updated DataFrame:")
         st.dataframe(edited_df)
     
         # Option to download the updated dataframe as a CSV
