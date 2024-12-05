@@ -102,52 +102,61 @@ def render():
 
 
     # Section: Corporate Dataset
+    # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
-
-    #dataframe corporates
+    
     try:
         # Load the dataset
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
-
+    
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-
-        # Use Streamlit's column_config.ImageColumn for the Logo column
-        st.dataframe(
-            df,
-            column_config={
-                "Logo": st.column_config.ImageColumn(
-                    label="Company Logo",
-                    width="small",
-                    help="Logos of companies"
-                ),
-                "Industries": st.column_config.ListColumn(
-                    label="Industries",
-                    help="List of industries represented as tags"
-                )
-            },
-            hide_index=True,
-            use_container_width=True 
-
-        )
+    
+        # Add a "Selected" column to the dataframe with False as the default
+        if "Selected" not in df.columns:
+            df["Selected"] = False
+    
+        # Add select boxes for each row
+        for index, row in df.iterrows():
+            df.at[index, "Selected"] = st.selectbox(
+                f"Select for {row['Company Name']}",
+                options=[True, False],
+                index=int(row["Selected"]),
+                key=f"select_{index}"
+            )
+    
+        # Display the updated dataframe
+        st.write("Updated DataFrame:")
+        st.dataframe(df, use_container_width=True)
+    
+        # Provide the option to download the updated dataframe
+        if st.button("Save Updated DataFrame"):
+            csv_data = df.to_csv(index=False).encode("utf-8")
+            st.download_button(
+                label="Download Updated Data as CSV",
+                data=csv_data,
+                file_name="Updated_Craftsmanship_and_Production.csv",
+                mime="text/csv",
+            )
+    
+        # Add a download button for the Excel file
         response = requests.get(excel_url)
         if response.status_code == 200:
-            excel_data = response.content  # Get the file content as binary
-    
-            # Add a download button for the Excel file
+            excel_data = response.content
             st.download_button(
-                label="Download data as Excel",
+                label="Download Original Excel File",
                 data=excel_data,
                 file_name="Craftsmanship_and_Production.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             )
         else:
             st.error(f"Failed to fetch the Excel file. Status code: {response.status_code}")
-
+    
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+
 
 #    dataframe charities
 #    st.markdown("**Matching Charities**")
