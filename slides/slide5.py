@@ -24,7 +24,7 @@ def render():
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
-    columns = st.columns(3)
+    columns = st.columns(6)
 
     with columns[0]:
         st.image(
@@ -32,7 +32,7 @@ def render():
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image4.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image7.png",
             use_column_width=True
         )
 
@@ -42,7 +42,7 @@ def render():
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image5.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image8.png",
             use_column_width=True
         )
 
@@ -52,7 +52,37 @@ def render():
             use_column_width=True
         )
         st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image9.png",
+            use_column_width=True
+        )
+
+    with columns[3]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image4.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image10.png",
+            use_column_width=True
+        )
+
+    with columns[4]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image5.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image11.png",
+            use_column_width=True
+        )
+
+    with columns[5]:
+        st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image12.png",
             use_column_width=True
         )
     # Section: PDF Download
