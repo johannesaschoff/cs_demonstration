@@ -102,7 +102,6 @@ def render():
 
 
     # Section: Corporate Dataset
-    # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
@@ -118,7 +117,7 @@ def render():
         if "Selected" not in df.columns:
             df["Selected"] = False
     
-        # Add select boxes for each row
+        # Add select boxes for each row and update the "Selected" column
         for index, row in df.iterrows():
             df.at[index, "Selected"] = st.selectbox(
                 f"Select for {row['Company Name']}",
@@ -127,9 +126,12 @@ def render():
                 key=f"select_{index}"
             )
     
-        # Display the updated dataframe
+        # Display the updated dataframe, including the "Selected" column
         st.write("Updated DataFrame:")
-        st.dataframe(df, use_container_width=True)
+        st.dataframe(
+            df[["Company Name", "Logo", "Industries", "Selected"]],  # Specify the columns to display
+            use_container_width=True
+        )
     
         # Provide the option to download the updated dataframe
         if st.button("Save Updated DataFrame"):
@@ -156,6 +158,7 @@ def render():
     
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+
 
 
 #    dataframe charities
