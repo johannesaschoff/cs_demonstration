@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import requests
+import ast  
+
 
 @st.cache_data
 def fetch_pdf(url):
@@ -75,6 +77,9 @@ def render():
         # Load the dataset
         df = pd.read_csv(csv_url)
         df = df[df["Community Development and Employment"] == True]
+        
+        df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
+
 
         # Use Streamlit's column_config.ImageColumn for the Logo column
         st.dataframe(
@@ -84,6 +89,10 @@ def render():
                     label="Company Logo",
                     width="small",
                     help="Logos of companies"
+                ),
+                "Industries": st.column_config.ListColumn(
+                    label="Industries",
+                    help="List of industries represented as tags"
                 )
             },
             hide_index=True,  # Optionally hide the index column
