@@ -5,12 +5,12 @@ import ast
 
 
 @st.cache_data
-def fetch_pdf(url):
+def fetch_pptx(url):
     response = requests.get(url)
     if response.status_code == 200:
         return response.content  # Return the binary content of the PDF
     else:
-        raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
+        raise Exception(f"Failed to fetch the pptx. Status code: {response.status_code}")
 
 def render():
     st.title("Community Development and Employment")
