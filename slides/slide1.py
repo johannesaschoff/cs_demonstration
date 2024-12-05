@@ -6,7 +6,7 @@ def render():
     
     with title_column:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/logo.png",  # Replace with your desired image URL
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/logo_grey.png",  # Replace with your desired image URL
             width=100  # Adjust size as needed
         )
     
