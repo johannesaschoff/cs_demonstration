@@ -5,12 +5,12 @@ import ast
 
 
 @st.cache_data
-def fetch_pdf(url):
+def fetch_pptx(url):
     response = requests.get(url)
     if response.status_code == 200:
         return response.content  
     else:
-        raise Exception(f"Failed to fetch the PDF. Status code: {response.status_code}")
+        raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
 
 def render():
     st.title("Craftsmanship and Production")
@@ -57,17 +57,17 @@ def render():
         )
 
     
-    ppt_url = "https://drive.google.com/uc?export=download&id=19bM98Ne2gQae5sn33KrH9XU0Ei3z5uaT"
+    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
     try:
-        ppt_data = fetch_pdf(ppt_url)
+        pptx_data = fetch_pptx(pptx_url)
         st.download_button(
-            label="Download PPT File",
-            data=ppt_data,
+            label="Download PPTX File",
+            data=pptx_data,
             file_name="PitchDeck.pptx",
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
         )
     except Exception as e:
-        st.error(f"Could not fetch the PDF file: {e}")
+        st.error(f"Could not fetch the PPTX file: {e}")
 
 
     # Section: Corporate Dataset
