@@ -8,7 +8,7 @@ import ast
 def fetch_pdf(url):
     response = requests.get(url)
     if response.status_code == 200:
-        return response.content  # Return the binary content of the PDF
+        return response.content  
     else:
         raise Exception(f"Failed to fetch the PDF. Status code: {response.status_code}")
 
@@ -55,15 +55,16 @@ def render():
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
             use_column_width=True
         )
-    # Section: PDF Download
-    pdf_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck.pdf"
+
+    
+    ppt_url = "https://drive.google.com/uc?export=download&id=19bM98Ne2gQae5sn33KrH9XU0Ei3z5uaT"
     try:
-        pdf_data = fetch_pdf(pdf_url)
+        ppt_data = fetch_pdf(ppt_url)
         st.download_button(
-            label="Download PDF File",
-            data=pdf_data,
-            file_name="PitchDeck.pdf",
-            mime="application/pdf",
+            label="Download Excel File",
+            data=ppt_data,
+            file_name="PitchDeck.pptx",
+            mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
         )
     except Exception as e:
         st.error(f"Could not fetch the PDF file: {e}")
