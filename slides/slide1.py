@@ -113,41 +113,45 @@ def render():
     
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
     
-        # Add a "Selected" column to the dataframe with False as the default
-        if "Selected" not in df.columns:
-            df["Selected"] = False
+        # Add a "Category" column with default values if it doesn't exist
+        if "Category" not in df.columns:
+            df["Category"] = "📊 Data Exploration"  # Set a default category
     
-        # Create a custom table with checkboxes in a column
-        st.write("Interactive DataFrame:")
-        updated_selected = []
-    
-        for index, row in df.iterrows():
-            col1, col2, col3, col4 = st.columns([2, 4, 4, 2])
-            with col1:
-                st.text(row["Company Name"])  # Display company name
-            with col2:
-                st.image(row["Logo"], use_column_width=True)  # Display company logo
-            with col3:
-                st.text(", ".join(row["Industries"]))  # Display industries
-            with col4:
-                # Create a checkbox for each row
-                is_checked = st.checkbox(
-                    "Select",
-                    value=row["Selected"],
-                    key=f"checkbox_{index}",
+        # Use st.data_editor for an interactive dataframe with a select box column
+        edited_df = st.data_editor(
+            df,
+            column_config={
+                "Category": st.column_config.SelectboxColumn(
+                    "Category",
+                    help="Select a category for each company",
+                    options=[
+                        "📊 Data Exploration",
+                        "📈 Data Visualization",
+                        "🤖 LLM",
+                    ],
+                    required=True,
+                ),
+                "Logo": st.column_config.ImageColumn(
+                    label="Company Logo",
+                    width="small",
+                    help="Logos of companies"
+                ),
+                "Industries": st.column_config.ListColumn(
+                    label="Industries",
+                    help="List of industries represented as tags"
                 )
-                updated_selected.append(is_checked)
+            },
+            hide_index=True,
+            use_container_width=True
+        )
     
-        # Update the dataframe with new checkbox states
-        df["Selected"] = updated_selected
-    
-        # Display the updated dataframe for verification
+        # Display the updated dataframe
         st.write("Updated DataFrame:")
-        st.dataframe(df)
+        st.dataframe(edited_df)
     
-        # Provide the option to download the updated dataframe
+        # Option to download the updated dataframe as a CSV
         if st.button("Save Updated DataFrame"):
-            csv_data = df.to_csv(index=False).encode("utf-8")
+            csv_data = edited_df.to_csv(index=False).encode("utf-8")
             st.download_button(
                 label="Download Updated Data as CSV",
                 data=csv_data,
@@ -170,6 +174,7 @@ def render():
     
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+
 
 
 
