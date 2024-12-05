@@ -1,5 +1,8 @@
 import streamlit as st
 from slides import slide1, slide2, slide3, slide4, slide5
+
+st.set_page_config(layout="wide") 
+
 # Add a logo to the top of the sidebar
 logo_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/logo_grey.png" 
 st.sidebar.image(logo_url, width=100)
