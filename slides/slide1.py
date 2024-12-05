@@ -97,7 +97,9 @@ def render():
                     help="List of industries represented as tags"
                 )
             },
-            hide_index=True,  # Optionally hide the index column
+            hide_index=True,
+            use_container_width=True 
+
         )
         response = requests.get(excel_url)
         if response.status_code == 200:
