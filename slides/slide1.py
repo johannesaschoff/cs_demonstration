@@ -117,7 +117,7 @@ def render():
         if "Selected" not in df.columns:
             df["Selected"] = False
     
-        # Create a custom table with select boxes in a column
+        # Create a custom table with checkboxes in a column
         st.write("Interactive DataFrame:")
         updated_selected = []
     
@@ -130,16 +130,15 @@ def render():
             with col3:
                 st.text(", ".join(row["Industries"]))  # Display industries
             with col4:
-                # Create a select box for each row
-                selected_value = st.selectbox(
+                # Create a checkbox for each row
+                is_checked = st.checkbox(
                     "Select",
-                    options=[True, False],
-                    index=int(row["Selected"]),
-                    key=f"select_{index}",
+                    value=row["Selected"],
+                    key=f"checkbox_{index}",
                 )
-                updated_selected.append(selected_value)
+                updated_selected.append(is_checked)
     
-        # Update the dataframe with new selections
+        # Update the dataframe with new checkbox states
         df["Selected"] = updated_selected
     
         # Display the updated dataframe for verification
@@ -171,6 +170,7 @@ def render():
     
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
+
 
 
 
