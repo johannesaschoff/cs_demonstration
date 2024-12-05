@@ -78,7 +78,7 @@ def render():
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
 
-        df["Industries"] = df["Industries"].apply(lambda x: x.split(','))
+        df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
         # Use Streamlit's column_config.ImageColumn for the Logo column
         st.dataframe(
@@ -89,9 +89,9 @@ def render():
                     width="small",
                     help="Logos of companies"
                 ),
-                "Industries": st.column_config.TextColumn(
+                "Industries": st.column_config.ListColumn(
                     label="Industries",
-                    help="List of industries the company belongs to"
+                    help="List of industries represented as tags"
                 )
             },
             hide_index=True,  # Optionally hide the index column
