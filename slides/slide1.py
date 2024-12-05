@@ -144,9 +144,7 @@ def render():
             hide_index=True,
             use_container_width=True
         )
-    
-        st.dataframe(edited_df)
-    
+        
         # Option to download the updated dataframe as a CSV
         if st.button("Save Updated DataFrame"):
             csv_data = edited_df.to_csv(index=False).encode("utf-8")
