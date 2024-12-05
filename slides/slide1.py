@@ -3,6 +3,8 @@ import pandas as pd
 import requests
 import ast 
 
+st.set_page_config(layout="wide") 
+
 
 @st.cache_data
 def fetch_pptx(url):
