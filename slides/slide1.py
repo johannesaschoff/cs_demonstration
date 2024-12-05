@@ -115,7 +115,7 @@ def render():
     
         # Add a "Category" column with default values if it doesn't exist
         if "Category" not in df.columns:
-            df["Category"] = "📊 Data Exploration"  # Set a default category
+            df["Category"] = "Not Contacted"  # Set a default category
     
         # Use st.data_editor for an interactive dataframe with a select box column
         edited_df = st.data_editor(
@@ -125,9 +125,8 @@ def render():
                     "Category",
                     help="Select a category for each company",
                     options=[
-                        "📊 Data Exploration",
-                        "📈 Data Visualization",
-                        "🤖 LLM",
+                        "Not Contacted",
+                        "Contacted",
                     ],
                     required=True,
                 ),
