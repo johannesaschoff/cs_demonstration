@@ -102,7 +102,7 @@ def render():
             st.download_button(
                 label="Download data as Excel",
                 data=excel_data,
-                file_name="corporate_education.xlsx",
+                file_name="Emergency_Relief_and_Basic_Needs.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             )
         else:
