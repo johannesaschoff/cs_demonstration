@@ -1,11 +1,10 @@
 import streamlit as st
 import pandas as pd
 import requests
-import ast
-from st_aggrid import AgGrid, GridUpdateMode
-from st_aggrid.grid_options_builder import GridOptionsBuilder
+import ast 
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide") 
+
 
 @st.cache_data
 def fetch_pptx(url):
@@ -107,57 +106,37 @@ def render():
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
 
-    # Load and edit the dataset
+    #dataframe corporates
     try:
+        # Load the dataset
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
 
-        # Allow users to edit the dataframe
-        st.subheader("Edit and Select Rows in the Corporate Dataset")
-        st.info("💡 Tip: Click on cells to edit. Use checkboxes to select rows.")
+        df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
-        # Configure ag-grid options
-        gd = GridOptionsBuilder.from_dataframe(df)
-        gd.configure_pagination(enabled=True)  # Enable pagination
-        gd.configure_default_column(editable=True, groupable=True)  # Enable cell editing
-        gd.configure_selection(selection_mode="multiple", use_checkbox=True)  # Enable row selection
-        grid_options = gd.build()
-
-        # Render the editable table
-        grid_table = AgGrid(
+        # Use Streamlit's column_config.ImageColumn for the Logo column
+        st.dataframe(
             df,
-            gridOptions=grid_options,
-            update_mode=GridUpdateMode.SELECTION_CHANGED,
-            theme="material",
+            column_config={
+                "Logo": st.column_config.ImageColumn(
+                    label="Company Logo",
+                    width="small",
+                    help="Logos of companies"
+                ),
+                "Industries": st.column_config.ListColumn(
+                    label="Industries",
+                    help="List of industries represented as tags"
+                )
+            },
+            hide_index=True,
+            use_container_width=True 
+
         )
-        selected_rows = grid_table["selected_rows"]
-        edited_df = pd.DataFrame(selected_rows)
-
-        # Show selected rows if any
-        st.subheader("Selected and Edited Rows")
-        if not edited_df.empty:
-            st.dataframe(edited_df)
-            
-            # Add a download button for the selected rows
-            csv = edited_df.to_csv(index=False).encode("utf-8")
-            st.download_button(
-                label="Download Edited Data as CSV",
-                data=csv,
-                file_name="edited_corporate_dataset.csv",
-                mime="text/csv",
-            )
-        else:
-            st.info("No rows selected. Edit cells or select rows to proceed.")
-
-    except Exception as e:
-        st.error(f"Failed to load or edit the dataset: {e}")
-
-    # Add a download button for the Excel file
-    try:
         response = requests.get(excel_url)
         if response.status_code == 200:
             excel_data = response.content  # Get the file content as binary
     
+            # Add a download button for the Excel file
             st.download_button(
                 label="Download data as Excel",
                 data=excel_data,
@@ -166,8 +145,32 @@ def render():
             )
         else:
             st.error(f"Failed to fetch the Excel file. Status code: {response.status_code}")
-    except Exception as e:
-        st.error(f"Failed to fetch the Excel file: {e}")
 
+    except Exception as e:
+        st.error(f"Failed to load the dataset: {e}")
+
+#    dataframe charities
+#    st.markdown("**Matching Charities**")
+#    try:
+#        Load the dataset
+#        df = pd.read_csv(csv_education_url)
+
+#         Use Streamlit's column_config.ImageColumn for the Logo column
+#        st.dataframe(
+#            df,
+#            hide_index=True,  
+#        )
+
+        # Add a download button for the original dataset
+#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
+#        st.download_button(
+#            label="Download data as CSV",
+#            data=csv_data,
+#            file_name="charities_education.csv",
+#            mime="text/csv",
+#        )
+
+#    except Exception as e:
+#        st.error(f"Failed to load the dataset: {e}")
 # Run the app
 render()
