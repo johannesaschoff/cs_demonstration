@@ -54,7 +54,7 @@ def render():
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
         # Add an editable column for "Preferred Status" using a Selectbox
-        df["Preferred Status"] = ["Undecided"] * len(df)  # Default values
+        df["Contaced (double-click cell to edit)"] = ["Not yet contacted"] * len(df)  
 
         edited_df = st.data_editor(
             df,
@@ -71,7 +71,7 @@ def render():
                 "Preferred Status": st.column_config.SelectboxColumn(
                     "Preferred Status",
                     help="Set the preferred status for each company",
-                    options=["Undecided", "Preferred", "Not Preferred"],  # Options for the selectbox
+                    options=["Not yet contacted", "Contacted"],  # Options for the selectbox
                     required=True
                 )
             },
