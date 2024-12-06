@@ -1,15 +1,16 @@
 import streamlit as st
 import pandas as pd
 import requests
-import ast
+import ast 
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide") 
+
 
 @st.cache_data
 def fetch_pptx(url):
     response = requests.get(url)
     if response.status_code == 200:
-        return response.content
+        return response.content  
     else:
         raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
 
@@ -27,17 +28,66 @@ def render():
     st.markdown("**Pitchdeck Preview**")
     columns = st.columns(6)
 
-    for i in range(6):
-        with columns[i]:
-            st.image(
-                f"https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image{i + 1}.png",
-                use_column_width=True
-            )
-            st.image(
-                f"https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image{i + 7}.png",
-                use_column_width=True
-            )
+    with columns[0]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image7.png",
+            use_column_width=True
+        )
 
+    with columns[1]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image8.png",
+            use_column_width=True
+        )
+
+    with columns[2]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image9.png",
+            use_column_width=True
+        )
+
+    with columns[3]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image4.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image10.png",
+            use_column_width=True
+        )
+
+    with columns[4]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image5.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image11.png",
+            use_column_width=True
+        )
+
+    with columns[5]:
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
+            use_column_width=True
+        )
+        st.image(
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image12.png",
+            use_column_width=True
+        )
+    
     pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
     try:
         pptx_data = fetch_pptx(pptx_url)
@@ -50,48 +100,43 @@ def render():
     except Exception as e:
         st.error(f"Could not fetch the PPTX file: {e}")
 
+
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
 
+    #dataframe corporates
     try:
+        # Load the dataset
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
 
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
-        # Add an editable select box column for annotations
-        if "Annotations" not in df.columns:
-            df["Annotations"] = ""
-
-        df["Annotations"] = df["Annotations"].astype("category")
-        df["Annotations"] = df["Annotations"].cat.add_categories(["Potential Partner", "High Priority", "Low Priority", "Not Interested"])
-
-        # Initialize session state with DataFrame if it doesn't exist
-        if "annotated_df" not in st.session_state:
-            st.session_state.annotated_df = df
-
-        # Display the data editor with data from session state
-        st.markdown("**Edit Annotations Below:**")
-        st.session_state.annotated_df = st.data_editor(
-            st.session_state.annotated_df,
+        # Use Streamlit's column_config.ImageColumn for the Logo column
+        st.dataframe(
+            df,
+            column_config={
+                "Logo": st.column_config.ImageColumn(
+                    label="Company Logo",
+                    width="small",
+                    help="Logos of companies"
+                ),
+                "Industries": st.column_config.ListColumn(
+                    label="Industries",
+                    help="List of industries represented as tags"
+                )
+            },
             hide_index=True,
-            use_container_width=True,
-            disabled=["Logo", "Industries"],  # Disable columns that shouldn't be edited
-        )
+            use_container_width=True 
 
-        # Add download button for updated dataset
-        st.download_button(
-            label="⬇️ Download updated dataset as CSV",
-            data=st.session_state.annotated_df.to_csv(index=False).encode("utf-8"),
-            file_name="updated_corporates_dataset.csv",
-            mime="text/csv",
         )
-
         response = requests.get(excel_url)
         if response.status_code == 200:
-            excel_data = response.content
+            excel_data = response.content  # Get the file content as binary
+    
+            # Add a download button for the Excel file
             st.download_button(
                 label="Download data as Excel",
                 data=excel_data,
@@ -104,4 +149,28 @@ def render():
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
+#    dataframe charities
+#    st.markdown("**Matching Charities**")
+#    try:
+#        Load the dataset
+#        df = pd.read_csv(csv_education_url)
+
+#         Use Streamlit's column_config.ImageColumn for the Logo column
+#        st.dataframe(
+#            df,
+#            hide_index=True,  
+#        )
+
+        # Add a download button for the original dataset
+#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
+#        st.download_button(
+#            label="Download data as CSV",
+#            data=csv_data,
+#            file_name="charities_education.csv",
+#            mime="text/csv",
+#        )
+
+#    except Exception as e:
+#        st.error(f"Failed to load the dataset: {e}")
+# Run the app
 render()
