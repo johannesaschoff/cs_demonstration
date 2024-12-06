@@ -19,16 +19,16 @@ def authenticate_and_fetch(sheet_url):
     # Load credentials from Streamlit secrets directly as a dictionary
     credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]
     credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
-    
-    # Use AuthorizedSession for compatibility
-    gc = gspread.Client(auth=credentials)
-    gc.session = gspread.auth.AuthorizedSession(credentials)
+
+    # Authorize with gspread
+    gc = gspread.authorize(credentials)
 
     # Open and fetch the Google Sheet
     sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
     data = sheet.get_all_records()  # Fetch all rows as a list of dictionaries
     df = pd.DataFrame(data)
     return df, sheet
+
 
 
 
