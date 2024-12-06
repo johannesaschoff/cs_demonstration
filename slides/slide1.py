@@ -1,182 +1,102 @@
 import streamlit as st
 import pandas as pd
-import requests
-import ast 
+import gspread
+from google.auth.transport.requests import Request
+from google.oauth2.service_account import Credentials
 
-st.set_page_config(layout="wide") 
+# Streamlit app configuration
+st.set_page_config(layout="wide")
 
+# Google Sheets configuration
+SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 @st.cache_data
-def fetch_pptx(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.content  
-    else:
-        raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
+def authenticate_and_fetch(sheet_url):
+    """
+    Authenticate with Google Sheets API and fetch the sheet data.
+    """
+    # Debug: Show the loaded credentials from secrets
+    st.write("Loading credentials from secrets...")
+    
+    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's TOML format in secrets
+    credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
+    
+    # Debug: Check if credentials are valid
+    st.write("Credentials loaded successfully.")
+    
+    try:
+        gc = gspread.authorize(credentials)  # Authorize the client
+        sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
+        st.write("Google Sheet accessed successfully.")
+        
+        # Fetch the data and convert to DataFrame
+        data = sheet.get_all_records()
+        df = pd.DataFrame(data)
+        st.write("Data fetched successfully.")
+        return df, sheet
+    except Exception as e:
+        st.error(f"Failed to authenticate or fetch the sheet: {e}")
+        raise
+
+def update_sheet(sheet, dataframe):
+    """
+    Update the Google Sheet with new data from the DataFrame.
+    """
+    try:
+        st.write("Clearing sheet and updating data...")
+        
+        # Prepare data for update
+        data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
+        st.write("Prepared data for update:", data)  # Debugging log
+
+        # Clear the sheet by deleting rows and adding empty rows
+        sheet.resize(1)  # Resizes the sheet to only one row (the header)
+        st.write("Sheet cleared successfully.")
+
+        # Update the sheet with new data
+        sheet.insert_rows(data, row=1)  # Inserts the data starting from row 1
+        st.write("Sheet updated successfully.")
+    except Exception as e:
+        st.error(f"Failed to update the Google Sheet: {e}")
+        raise
+
+
 
 def render():
     st.title("Craftsmanship and Production")
-    st.markdown("**Project types**")
-    st.write("- Butchery")
-    st.write("- Bakery")
-    st.write("- Kitchen")
-    st.write("- Woodwork")
-    st.write("- Sewing")
-    st.write("- Metal Construction Workshop")
 
-    # Section: Slideshow
-    st.markdown("**Pitchdeck Preview**")
-    columns = st.columns(6)
-
-    with columns[0]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image7.png",
-            use_column_width=True
-        )
-
-    with columns[1]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image8.png",
-            use_column_width=True
-        )
-
-    with columns[2]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image9.png",
-            use_column_width=True
-        )
-
-    with columns[3]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image4.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image10.png",
-            use_column_width=True
-        )
-
-    with columns[4]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image5.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image11.png",
-            use_column_width=True
-        )
-
-    with columns[5]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image12.png",
-            use_column_width=True
-        )
-    
-    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
     try:
-        pptx_data = fetch_pptx(pptx_url)
-        st.download_button(
-            label="Download PPTX File",
-            data=pptx_data,
-            file_name="PitchDeck.pptx",
-            mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
-        )
-    except Exception as e:
-        st.error(f"Could not fetch the PPTX file: {e}")
+        df, sheet = authenticate_and_fetch(SHEET_URL)
 
+        if "category" not in df.columns:
+            df["category"] = ""
 
-    # Section: Corporate Dataset
-    st.markdown("**Matching Corporates**")
-    csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
-    excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
-
-    #dataframe corporates
-    try:
-        # Load the dataset
-        df = pd.read_csv(csv_url)
-        df = df[df["Craftsmanship and production"] == True]
-
-        df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-
-        # Use Streamlit's column_config.ImageColumn for the Logo column
-        st.dataframe(
+        # Display editable data with a select box column
+        st.markdown("### Update Data with Categories")
+        edited_df = st.data_editor(
             df,
             column_config={
-                "Logo": st.column_config.ImageColumn(
-                    label="Company Logo",
-                    width="small",
-                    help="Logos of companies"
-                ),
-                "Industries": st.column_config.ListColumn(
-                    label="Industries",
-                    help="List of industries represented as tags"
-                ),
-                "Sustainability report": st.column_config.LinkColumn(
-                    label="Sustainability Report",
-                    help="Link to the company's sustainability report",
-                    validate=r"^https?://.+",  # Basic validation for URLs
-                    display_text="View Report"  # Display text for the links
+                "category": st.column_config.SelectboxColumn(
+                    "App Category",
+                    help="The category of the app",
+                    width="medium",
+                    options=[
+                        "📊 Data Exploration",
+                        "📈 Data Visualization",
+                        "🤖 LLM",
+                    ],
+                    required=True,
                 )
             },
             hide_index=True,
-            use_container_width=True 
-
         )
-        response = requests.get(excel_url)
-        if response.status_code == 200:
-            excel_data = response.content  # Get the file content as binary
-    
-            # Add a download button for the Excel file
-            st.download_button(
-                label="Download data as Excel",
-                data=excel_data,
-                file_name="Craftsmanship_and_Production.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            )
-        else:
-            st.error(f"Failed to fetch the Excel file. Status code: {response.status_code}")
 
+        # Save changes back to Google Sheets
+        if st.button("Save Changes"):
+            update_sheet(sheet, edited_df)
+            st.success("Google Sheet updated successfully!")
     except Exception as e:
-        st.error(f"Failed to load the dataset: {e}")
+        st.error(f"An error occurred: {e}")
 
-#    dataframe charities
-#    st.markdown("**Matching Charities**")
-#    try:
-#        Load the dataset
-#        df = pd.read_csv(csv_education_url)
-
-#         Use Streamlit's column_config.ImageColumn for the Logo column
-#        st.dataframe(
-#            df,
-#            hide_index=True,  
-#        )
-
-        # Add a download button for the original dataset
-#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
-#        st.download_button(
-#            label="Download data as CSV",
-#            data=csv_data,
-#            file_name="charities_education.csv",
-#            mime="text/csv",
-#        )
-
-#    except Exception as e:
-#        st.error(f"Failed to load the dataset: {e}")
-# Run the app
 render()
