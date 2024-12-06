@@ -46,15 +46,21 @@ def update_sheet(sheet, dataframe):
     try:
         st.write("Clearing sheet and updating data...")
         
-        # Clear the sheet and update with the new data
-        sheet.clear()
+        # Convert the DataFrame to a list of lists
         data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
-        sheet.update("A1", data)
-        
-        st.write("Data updated successfully.")
+        st.write("Prepared data for update:", data)  # Debugging log
+
+        # First clear the sheet
+        sheet.batch_clear(["A1:Z1000"])  # Clear a wide range of cells to ensure it's empty
+        st.write("Sheet cleared successfully.")
+
+        # Update the sheet with the new data
+        sheet.update("A1", data)  # Start updating from cell A1
+        st.write("Sheet updated successfully.")
     except Exception as e:
         st.error(f"Failed to update the Google Sheet: {e}")
         raise
+
 
 def render():
     st.title("Craftsmanship and Production")
