@@ -16,8 +16,8 @@ def authenticate_and_fetch(sheet_url):
     """
     Authenticate with Google Sheets API and fetch the sheet data.
     """
-    # Load credentials from Streamlit secrets
-    credentials_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
+    # Load credentials from Streamlit secrets directly as a dictionary
+    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]
     credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
     
     # Use AuthorizedSession for compatibility
@@ -29,6 +29,7 @@ def authenticate_and_fetch(sheet_url):
     data = sheet.get_all_records()  # Fetch all rows as a list of dictionaries
     df = pd.DataFrame(data)
     return df, sheet
+
 
 
 def update_sheet(sheet, dataframe):
