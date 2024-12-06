@@ -31,8 +31,20 @@ def update_sheet(sheet, dataframe):
     """
     Update the Google Sheet with new data from the DataFrame.
     """
-    sheet.clear()  # Clear existing data in the sheet
-    sheet.update([dataframe.columns.values.tolist()] + dataframe.values.tolist())  # Update with new data
+    try:
+        # Clear existing data in the sheet
+        sheet.clear()
+
+        # Convert the DataFrame to a list of lists (compatible with gspread)
+        data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
+
+        # Update the sheet with new data
+        sheet.update("A1", data)  # Start updating from cell A1
+
+    except Exception as e:
+        st.error(f"Failed to update the Google Sheet: {e}")
+        raise
+
 
 def render():
     st.title("Craftsmanship and Production")
