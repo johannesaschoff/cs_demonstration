@@ -61,29 +61,18 @@ def render():
 
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
-        # Add an editable column for annotations
+        # Add an editable select box column for annotations
         if "Annotations" not in df.columns:
             df["Annotations"] = ""
+
+        df["Annotations"] = df["Annotations"].astype("category")
+        df["Annotations"] = df["Annotations"].cat.add_categories(["Potential Partner", "High Priority", "Low Priority", "Not Interested"])
 
         annotated_df = st.data_editor(
             df,
             hide_index=True,
             use_container_width=True,
-            column_config={
-                "Logo": st.column_config.ImageColumn(
-                    label="Company Logo",
-                    width="small",
-                    help="Logos of companies"
-                ),
-                "Industries": st.column_config.ListColumn(
-                    label="Industries",
-                    help="List of industries represented as tags"
-                ),
-                "Annotations": st.column_config.TextColumn(
-                    label="Annotations",
-                    help="Add your notes or comments here"
-                ),
-            }
+            disabled=["Logo", "Industries"],  # Disable columns that shouldn't be edited
         )
 
         # Add download button for updated dataset
