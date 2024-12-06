@@ -126,6 +126,12 @@ def render():
                 "Industries": st.column_config.ListColumn(
                     label="Industries",
                     help="List of industries represented as tags"
+                ),
+                "Sustainability Report": st.column_config.LinkColumn(
+                    label="Sustainability Report",
+                    help="Link to the company's sustainability report",
+                    validate=r"^https?://.+",  # Basic validation for URLs
+                    display_text="View Report"  # Display text for the links
                 )
             },
             hide_index=True,
