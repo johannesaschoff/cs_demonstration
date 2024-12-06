@@ -16,52 +16,29 @@ def authenticate_and_fetch(sheet_url):
     """
     Authenticate with Google Sheets API and fetch the sheet data.
     """
-    # Debug: Show the loaded credentials from secrets
-    st.write("Loading credentials from secrets...")
-    
     credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's TOML format in secrets
     credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
+
+    gc = gspread.authorize(credentials)  # Authorize the client
+    sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
     
-    # Debug: Check if credentials are valid
-    st.write("Credentials loaded successfully.")
-    
-    try:
-        gc = gspread.authorize(credentials)  # Authorize the client
-        sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
-        st.write("Google Sheet accessed successfully.")
-        
-        # Fetch the data and convert to DataFrame
-        data = sheet.get_all_records()
-        df = pd.DataFrame(data)
-        st.write("Data fetched successfully.")
-        return df, sheet
-    except Exception as e:
-        st.error(f"Failed to authenticate or fetch the sheet: {e}")
-        raise
+    # Fetch the data and convert to DataFrame
+    data = sheet.get_all_records()
+    df = pd.DataFrame(data)
+    return df, sheet
 
 def update_sheet(sheet, dataframe):
     """
     Update the Google Sheet with new data from the DataFrame.
     """
-    try:
-        st.write("Clearing sheet and updating data...")
-        
-        # Prepare data for update
-        data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
-        st.write("Prepared data for update:", data)  # Debugging log
+    # Prepare data for update
+    data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
 
-        # Clear the sheet by deleting rows and adding empty rows
-        sheet.resize(1)  # Resizes the sheet to only one row (the header)
-        st.write("Sheet cleared successfully.")
+    # Clear the sheet by deleting rows and adding empty rows
+    sheet.resize(1)  # Resizes the sheet to only one row (the header)
 
-        # Update the sheet with new data
-        sheet.insert_rows(data, row=1)  # Inserts the data starting from row 1
-        st.write("Sheet updated successfully.")
-    except Exception as e:
-        st.error(f"Failed to update the Google Sheet: {e}")
-        raise
-
-
+    # Update the sheet with new data
+    sheet.insert_rows(data, row=1)
 
 def render():
     st.title("Craftsmanship and Production")
@@ -90,12 +67,10 @@ def render():
                 )
             },
             hide_index=True,
+            on_change=lambda: update_sheet(sheet, edited_df),  # Automatically update sheet on change
         )
 
-        # Save changes back to Google Sheets
-        if st.button("Save Changes"):
-            update_sheet(sheet, edited_df)
-            st.success("Google Sheet updated successfully!")
+        st.success("Google Sheet updated automatically on change!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
