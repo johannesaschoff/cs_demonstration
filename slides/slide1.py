@@ -1,32 +1,27 @@
 import streamlit as st
 import pandas as pd
 import gspread
-from google.auth.transport.requests import Request
 from google.oauth2.service_account import Credentials
+import json
 
-# Streamlit app configuration
-st.set_page_config(layout="wide")
-
-# Google Sheets configuration
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-
-# Path to your service account credentials file
-SERVICE_ACCOUNT_FILE = "path/to/credentials.json"  # Replace with the path to your JSON file
-
 
 @st.cache_data
 def authenticate_and_fetch(sheet_url):
     """
     Authenticate with Google Sheets API and fetch the sheet data.
     """
-    credentials = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    # Load credentials from Streamlit secrets
+    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]
+    credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
+    
+    # Authenticate with gspread
     gc = gspread.authorize(credentials)
     sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
     data = sheet.get_all_records()  # Fetch all rows as a list of dictionaries
     df = pd.DataFrame(data)
     return df, sheet
-
 
 def update_sheet(sheet, dataframe):
     """
@@ -34,7 +29,6 @@ def update_sheet(sheet, dataframe):
     """
     sheet.clear()  # Clear existing data in the sheet
     sheet.update([dataframe.columns.values.tolist()] + dataframe.values.tolist())  # Update with new data
-
 
 def render():
     st.title("Craftsmanship and Production")
@@ -53,6 +47,5 @@ def render():
             st.success("Google Sheet updated successfully!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
-
 
 render()
