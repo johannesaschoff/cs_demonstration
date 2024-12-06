@@ -71,7 +71,7 @@ def render():
                 "Preferred Status": st.column_config.SelectboxColumn(
                     "Preferred Status",
                     help="Set the preferred status for each company",
-                    options=["Not yet contacted", "Contacted"],  # Options for the selectbox
+                    options=["Not yet contacted", "Contacted",],  # Options for the selectbox
                     required=True
                 )
             },
