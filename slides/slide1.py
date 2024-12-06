@@ -1,16 +1,15 @@
 import streamlit as st
 import pandas as pd
 import requests
-import ast 
+import ast
 
-st.set_page_config(layout="wide") 
-
+st.set_page_config(layout="wide")
 
 @st.cache_data
 def fetch_pptx(url):
     response = requests.get(url)
     if response.status_code == 200:
-        return response.content  
+        return response.content
     else:
         raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
 
@@ -100,13 +99,11 @@ def render():
     except Exception as e:
         st.error(f"Could not fetch the PPTX file: {e}")
 
-
     # Section: Corporate Dataset
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
 
-    #dataframe corporates
     try:
         # Load the dataset
         df = pd.read_csv(csv_url)
@@ -114,28 +111,25 @@ def render():
 
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
-        # Use Streamlit's column_config.ImageColumn for the Logo column
-        st.dataframe(
-            df,
-            column_config={
-                "Logo": st.column_config.ImageColumn(
-                    label="Company Logo",
-                    width="small",
-                    help="Logos of companies"
-                ),
-                "Industries": st.column_config.ListColumn(
-                    label="Industries",
-                    help="List of industries represented as tags"
-                )
-            },
-            hide_index=True,
-            use_container_width=True 
+        # Make DataFrame editable
+        st.markdown("### Edit Matching Corporates")
+        edited_df = st.experimental_data_editor(df, num_rows="dynamic", use_container_width=True)
 
-        )
+        # Save and display updates
+        if st.button("Save Changes"):
+            st.success("Changes saved successfully!")
+            st.write("Updated DataFrame:")
+            st.dataframe(edited_df)
+
+        # Favorite Command Example
+        if "rating" in edited_df.columns:
+            favorite_command = edited_df.loc[edited_df["rating"].idxmax()]["command"]
+            st.markdown(f"Your favorite command is **{favorite_command}** 🎈")
+
         response = requests.get(excel_url)
         if response.status_code == 200:
-            excel_data = response.content  # Get the file content as binary
-    
+            excel_data = response.content
+
             # Add a download button for the Excel file
             st.download_button(
                 label="Download data as Excel",
@@ -149,28 +143,5 @@ def render():
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
-#    dataframe charities
-#    st.markdown("**Matching Charities**")
-#    try:
-#        Load the dataset
-#        df = pd.read_csv(csv_education_url)
-
-#         Use Streamlit's column_config.ImageColumn for the Logo column
-#        st.dataframe(
-#            df,
-#            hide_index=True,  
-#        )
-
-        # Add a download button for the original dataset
-#        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
-#        st.download_button(
-#            label="Download data as CSV",
-#            data=csv_data,
-#            file_name="charities_education.csv",
-#            mime="text/csv",
-#        )
-
-#    except Exception as e:
-#        st.error(f"Failed to load the dataset: {e}")
 # Run the app
 render()
