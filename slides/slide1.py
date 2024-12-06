@@ -8,7 +8,7 @@ from google.oauth2.service_account import Credentials
 st.set_page_config(layout="wide")
 
 # Google Sheets configuration
-SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
+SHEET_URL = "YOUR_GOOGLE_SHEET_URL"  # Replace with your Google Sheet URL
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 @st.cache_data
@@ -16,24 +16,18 @@ def authenticate_and_fetch(sheet_url):
     """
     Authenticate with Google Sheets API and fetch the sheet data.
     """
-    # Debug: Show the loaded credentials from secrets
-    st.write("Loading credentials from secrets...")
-    
-    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's TOML format in secrets
-    credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
-    
-    # Debug: Check if credentials are valid
-    st.write("Credentials loaded successfully.")
-    
     try:
-        gc = gspread.authorize(credentials)  # Authorize the client
-        sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
-        st.write("Google Sheet accessed successfully.")
+        # Load credentials from Streamlit secrets
+        credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's in TOML format
+        credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
         
-        # Fetch the data and convert to DataFrame
+        # Authorize with Google Sheets
+        client = gspread.authorize(credentials)
+        sheet = client.open_by_url(sheet_url).sheet1  # Access the first sheet
+        
+        # Fetch data and convert to DataFrame
         data = sheet.get_all_records()
         df = pd.DataFrame(data)
-        st.write("Data fetched successfully.")
         return df, sheet
     except Exception as e:
         st.error(f"Failed to authenticate or fetch the sheet: {e}")
@@ -44,53 +38,26 @@ def update_sheet(sheet, dataframe):
     Update the Google Sheet with new data from the DataFrame.
     """
     try:
-        st.write("Clearing sheet and updating data...")
-        
-        # Prepare data for update
+        # Prepare data for updating the sheet
         data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
-        st.write("Prepared data for update:", data)  # Debugging log
-
-        # Clear the sheet by deleting rows and adding empty rows
-        sheet.resize(1)  # Resizes the sheet to only one row (the header)
-        st.write("Sheet cleared successfully.")
-
-        # Update the sheet with new data
-        sheet.insert_rows(data, row=1)  # Inserts the data starting from row 1
-        st.write("Sheet updated successfully.")
+        
+        # Clear the sheet and update with new data
+        sheet.clear()  # Clear existing data
+        sheet.insert_rows(data, row=1)  # Write new rows starting at the first row
     except Exception as e:
         st.error(f"Failed to update the Google Sheet: {e}")
         raise
 
-
-
 def render():
-    st.title("Craftsmanship and Production")
+    st.title("Google Sheets as a Database with Streamlit")
 
     try:
+        # Authenticate and fetch the Google Sheet data
         df, sheet = authenticate_and_fetch(SHEET_URL)
 
-        if "category" not in df.columns:
-            df["category"] = ""
-
-        # Display editable data with a select box column
-        st.markdown("### Update Data with Categories")
-        edited_df = st.data_editor(
-            df,
-            column_config={
-                "category": st.column_config.SelectboxColumn(
-                    "App Category",
-                    help="The category of the app",
-                    width="medium",
-                    options=[
-                        "📊 Data Exploration",
-                        "📈 Data Visualization",
-                        "🤖 LLM",
-                    ],
-                    required=True,
-                )
-            },
-            hide_index=True,
-        )
+        # Display editable table
+        st.markdown("### Edit Data")
+        edited_df = st.data_editor(df, hide_index=True)
 
         # Save changes back to Google Sheets
         if st.button("Save Changes"):
@@ -99,4 +66,5 @@ def render():
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
+# Run the Streamlit app
 render()
