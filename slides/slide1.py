@@ -17,17 +17,15 @@ def authenticate_and_fetch(sheet_url):
     Authenticate with Google Sheets API and fetch the sheet data.
     """
     # Load credentials from Streamlit secrets
-    credentials_dict = json.loads(st.secrets["GOOGLE_CREDENTIALS"])
+    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]
     credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
     
     # Authenticate with gspread
-    gc = gspread.Client(auth=credentials)
-    gc.session = gspread.auth.AuthorizedSession(credentials)
+    gc = gspread.authorize(credentials)
     sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
     data = sheet.get_all_records()  # Fetch all rows as a list of dictionaries
     df = pd.DataFrame(data)
     return df, sheet
-
 
 def update_sheet(sheet, dataframe):
     """
