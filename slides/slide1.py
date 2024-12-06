@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import gspread
-from google.auth.transport.requests import Request
 from google.oauth2.service_account import Credentials
 
 # Streamlit app configuration
@@ -9,8 +8,9 @@ st.set_page_config(layout="wide")
 
 # Google Sheets configuration
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"]
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
+# Function to authenticate and fetch data from Google Sheets
 @st.cache_data
 def authenticate_and_fetch(sheet_url):
     """
@@ -18,9 +18,11 @@ def authenticate_and_fetch(sheet_url):
     """
     try:
         # Load credentials from Streamlit secrets
-        credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's in TOML format
-        credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
-        
+        credentials = Credentials.from_service_account_info(
+            st.secrets["gcp_service_account"],
+            scopes=SCOPES,
+        )
+
         # Authorize with Google Sheets
         client = gspread.authorize(credentials)
         sheet = client.open_by_url(sheet_url).sheet1  # Access the first sheet
@@ -33,29 +35,31 @@ def authenticate_and_fetch(sheet_url):
         st.error(f"Failed to authenticate or fetch the sheet: {e}")
         raise
 
+# Function to update Google Sheets with edited data
 def update_sheet(sheet, dataframe):
     """
     Update the Google Sheet with new data from the DataFrame.
     """
     try:
-        # Prepare data for updating the sheet
+        # Convert DataFrame to a list of lists for Google Sheets
         data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
         
         # Clear the sheet and update with new data
         sheet.clear()  # Clear existing data
-        sheet.insert_rows(data, row=1)  # Write new rows starting at the first row
+        sheet.update(data)  # Write new rows starting at the first row
     except Exception as e:
         st.error(f"Failed to update the Google Sheet: {e}")
         raise
 
+# Main function to render the Streamlit app
 def render():
     st.title("Google Sheets as a Database with Streamlit")
 
     try:
-        # Authenticate and fetch the Google Sheet data
+        # Authenticate and fetch Google Sheet data
         df, sheet = authenticate_and_fetch(SHEET_URL)
 
-        # Display editable table
+        # Display editable table in Streamlit
         st.markdown("### Edit Data")
         edited_df = st.data_editor(df, hide_index=True)
 
