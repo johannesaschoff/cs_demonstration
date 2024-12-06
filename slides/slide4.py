@@ -120,6 +120,12 @@ def render():
                 "Industries": st.column_config.ListColumn(
                     label="Industries",
                     help="List of industries represented as tags"
+                ),
+                "Sustainability report": st.column_config.LinkColumn(
+                    label="Sustainability Report",
+                    help="Link to the company's sustainability report",
+                    validate=r"^https?://.+", 
+                    display_text="View Report" 
                 )
             },
             hide_index=True,  # Optionally hide the index column
