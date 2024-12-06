@@ -61,10 +61,37 @@ def render():
 
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
-        st.dataframe(
+        # Add an editable column for annotations
+        if "Annotations" not in df.columns:
+            df["Annotations"] = ""
+
+        annotated_df = st.data_editor(
             df,
             hide_index=True,
-            use_container_width=True
+            use_container_width=True,
+            column_config={
+                "Logo": st.column_config.ImageColumn(
+                    label="Company Logo",
+                    width="small",
+                    help="Logos of companies"
+                ),
+                "Industries": st.column_config.ListColumn(
+                    label="Industries",
+                    help="List of industries represented as tags"
+                ),
+                "Annotations": st.column_config.TextColumn(
+                    label="Annotations",
+                    help="Add your notes or comments here"
+                ),
+            }
+        )
+
+        # Add download button for updated dataset
+        st.download_button(
+            label="⬇️ Download updated dataset as CSV",
+            data=annotated_df.to_csv(index=False).encode("utf-8"),
+            file_name="updated_corporates_dataset.csv",
+            mime="text/csv",
         )
 
         response = requests.get(excel_url)
@@ -81,29 +108,5 @@ def render():
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
-
-    # Sentiment annotation
-    st.markdown("**Annotate Sentiments**")
-    sentiment_data = [
-        {"tweet": "What a great new feature! I love it!", "author": "John Rose", "sentiment": "🤩 Positive"},
-        {"tweet": "I don't like this feature. It's not useful. I prefer chart improvements.", "author": "Will Hangu", "sentiment": ""},
-        {"tweet": "Wow, the Streamlit team can be proud! What an achievement!", "author": "Luca Masucco", "sentiment": ""},
-        {"tweet": "The recent ChatGPT breakthrough is really exciting.", "author": "Adrien Tree", "sentiment": ""},
-    ]
-
-    sentiment_df = pd.DataFrame(sentiment_data)
-    sentiment_df.sentiment = sentiment_df.sentiment.astype("category")
-    sentiment_df.sentiment = sentiment_df.sentiment.cat.add_categories(("☯ Neutral", "😤 Negative"))
-
-    annotated_sentiments = st.data_editor(
-        sentiment_df, hide_index=True, use_container_width=True, disabled=["tweet", "author"]
-    )
-
-    st.download_button(
-        "⬇️ Download sentiment annotations as CSV",
-        annotated_sentiments.to_csv(index=False).encode("utf-8"),
-        "annotated_sentiments.csv",
-        mime="text/csv",
-    )
 
 render()
