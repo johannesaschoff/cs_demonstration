@@ -1,46 +1,102 @@
 import streamlit as st
 import pandas as pd
+import gspread
+from google.auth.transport.requests import Request
+from google.oauth2.service_account import Credentials
 
-# Create a connection to Google Sheets
-conn = st.experimental_connection("gsheets", type="gspread")
+# Streamlit app configuration
+st.set_page_config(layout="wide")
 
-# Specify the worksheet name
-worksheet_name = "Orders"
+# Google Sheets configuration
+SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
-# Placeholder DataFrame for demonstration purposes
-data = pd.DataFrame({
-    "Item": ["Apple", "Banana", "Cherry"],
-    "Price": [1.2, 0.8, 2.5],
-    "Quantity": [10, 20, 15],
-})
+@st.cache_data
+def authenticate_and_fetch(sheet_url):
+    """
+    Authenticate with Google Sheets API and fetch the sheet data.
+    """
+    # Debug: Show the loaded credentials from secrets
+    st.write("Loading credentials from secrets...")
+    
+    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's TOML format in secrets
+    credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
+    
+    # Debug: Check if credentials are valid
+    st.write("Credentials loaded successfully.")
+    
+    try:
+        gc = gspread.authorize(credentials)  # Authorize the client
+        sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
+        st.write("Google Sheet accessed successfully.")
+        
+        # Fetch the data and convert to DataFrame
+        data = sheet.get_all_records()
+        df = pd.DataFrame(data)
+        st.write("Data fetched successfully.")
+        return df, sheet
+    except Exception as e:
+        st.error(f"Failed to authenticate or fetch the sheet: {e}")
+        raise
 
-# Streamlit UI
-st.title("Google Sheets Integration with Streamlit")
-st.write("CRUD Operations on Google Sheets")
+def update_sheet(sheet, dataframe):
+    """
+    Update the Google Sheet with new data from the DataFrame.
+    """
+    try:
+        st.write("Clearing sheet and updating data...")
+        
+        # Prepare data for update
+        data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
+        st.write("Prepared data for update:", data)  # Debugging log
 
-# Create a new worksheet with data
-if st.button("New Worksheet"):
-    conn.create(worksheet=worksheet_name, data=data)
-    st.success(f"Worksheet '{worksheet_name}' Created 🎉")
+        # Clear the sheet by deleting rows and adding empty rows
+        sheet.resize(1)  # Resizes the sheet to only one row (the header)
+        st.write("Sheet cleared successfully.")
 
-# Read data from the worksheet
-if st.button("Read Worksheet"):
-    fetched_data = conn.read(worksheet=worksheet_name)
-    st.write("Fetched Data:")
-    st.dataframe(fetched_data)
+        # Update the sheet with new data
+        sheet.insert_rows(data, row=1)  # Inserts the data starting from row 1
+        st.write("Sheet updated successfully.")
+    except Exception as e:
+        st.error(f"Failed to update the Google Sheet: {e}")
+        raise
 
-# Update data in the worksheet
-if st.button("Update Worksheet"):
-    # Example of modified data
-    updated_data = pd.DataFrame({
-        "Item": ["Orange", "Grape"],
-        "Price": [1.5, 2.8],
-        "Quantity": [25, 30],
-    })
-    conn.update(worksheet=worksheet_name, data=updated_data)
-    st.success(f"Worksheet '{worksheet_name}' Updated ✅")
 
-# Clear the worksheet
-if st.button("Clear Worksheet"):
-    conn.clear(worksheet=worksheet_name)
-    st.success(f"Worksheet '{worksheet_name}' Cleared 🧹")
+
+def render():
+    st.title("Craftsmanship and Production")
+
+    try:
+        df, sheet = authenticate_and_fetch(SHEET_URL)
+
+        if "category" not in df.columns:
+            df["category"] = ""
+
+        # Display editable data with a select box column
+        st.markdown("### Update Data with Categories")
+        edited_df = st.data_editor(
+            df,
+            column_config={
+                "category": st.column_config.SelectboxColumn(
+                    "App Category",
+                    help="The category of the app",
+                    width="medium",
+                    options=[
+                        "📊 Data Exploration",
+                        "📈 Data Visualization",
+                        "🤖 LLM",
+                    ],
+                    required=True,
+                )
+            },
+            hide_index=True,
+        )
+
+        # Save changes back to Google Sheets
+        if st.button("Save Changes"):
+            update_sheet(sheet, edited_df)
+            st.success("Google Sheet updated successfully!")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+
+render()
