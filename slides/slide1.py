@@ -35,7 +35,7 @@ def update_sheet(sheet, dataframe):
     data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
 
     # Clear the sheet by deleting rows and adding empty rows
-    sheet.resize(1)  # Resizes the sheet to only one row (the header)
+    sheet.clear()  # Clears all content in the sheet
 
     # Update the sheet with new data
     sheet.insert_rows(data, row=1)
@@ -49,10 +49,20 @@ def render():
         if "category" not in df.columns:
             df["category"] = ""
 
+        # Function to handle real-time updates
+        def on_change_callback():
+            st.session_state["dataframe"].update(st.session_state["edited_df"])
+            update_sheet(sheet, st.session_state["dataframe"])
+            st.success("Google Sheet updated automatically!")
+
+        # Use session state to manage the DataFrame
+        if "dataframe" not in st.session_state:
+            st.session_state["dataframe"] = df
+
         # Display editable data with a select box column
         st.markdown("### Update Data with Categories")
-        edited_df = st.data_editor(
-            df,
+        st.session_state["edited_df"] = st.data_editor(
+            st.session_state["dataframe"],
             column_config={
                 "category": st.column_config.SelectboxColumn(
                     "App Category",
@@ -67,10 +77,9 @@ def render():
                 )
             },
             hide_index=True,
-            on_change=lambda: update_sheet(sheet, edited_df),  # Automatically update sheet on change
+            on_change=on_change_callback,  # Automatically update sheet on change
         )
 
-        st.success("Google Sheet updated automatically on change!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
