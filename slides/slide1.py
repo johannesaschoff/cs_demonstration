@@ -2,15 +2,29 @@ import streamlit as st
 import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
+from google.auth.transport.requests import Request
 
 # Streamlit app configuration
 st.set_page_config(layout="wide")
 
 # Google Sheets configuration
-SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
+SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
 
-# Function to authenticate and fetch data from Google Sheets
+# Function to create a connection to Google Sheets
+def connect(credentials):
+    """
+    Create a connection object for Google Sheets using gspread and credentials.
+    """
+    try:
+        client = gspread.Client(auth=credentials)
+        credentials.refresh(Request())  # Refresh the token
+        client.session = gspread.auth.AuthorizedSession(credentials)
+        return client
+    except Exception as e:
+        st.error(f"Failed to connect to Google Sheets: {e}")
+        raise
+
 @st.cache_data
 def authenticate_and_fetch(sheet_url):
     """
@@ -23,10 +37,10 @@ def authenticate_and_fetch(sheet_url):
             scopes=SCOPES,
         )
 
-        # Authorize with Google Sheets
-        client = gspread.authorize(credentials)
+        # Connect to Google Sheets
+        client = connect(credentials)
         sheet = client.open_by_url(sheet_url).sheet1  # Access the first sheet
-        
+
         # Fetch data and convert to DataFrame
         data = sheet.get_all_records()
         df = pd.DataFrame(data)
@@ -35,7 +49,6 @@ def authenticate_and_fetch(sheet_url):
         st.error(f"Failed to authenticate or fetch the sheet: {e}")
         raise
 
-# Function to update Google Sheets with edited data
 def update_sheet(sheet, dataframe):
     """
     Update the Google Sheet with new data from the DataFrame.
@@ -43,7 +56,7 @@ def update_sheet(sheet, dataframe):
     try:
         # Convert DataFrame to a list of lists for Google Sheets
         data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
-        
+
         # Clear the sheet and update with new data
         sheet.clear()  # Clear existing data
         sheet.update(data)  # Write new rows starting at the first row
@@ -51,7 +64,6 @@ def update_sheet(sheet, dataframe):
         st.error(f"Failed to update the Google Sheet: {e}")
         raise
 
-# Main function to render the Streamlit app
 def render():
     st.title("Google Sheets as a Database with Streamlit")
 
