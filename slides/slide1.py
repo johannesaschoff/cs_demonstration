@@ -68,12 +68,20 @@ def render():
         df["Annotations"] = df["Annotations"].astype("category")
         df["Annotations"] = df["Annotations"].cat.add_categories(["Potential Partner", "High Priority", "Low Priority", "Not Interested"])
 
+        # Load session state or initialize it
+        if "annotated_df" not in st.session_state:
+            st.session_state.annotated_df = df
+
+        # Display editable data editor
         annotated_df = st.data_editor(
-            df,
+            st.session_state.annotated_df,
             hide_index=True,
             use_container_width=True,
             disabled=["Logo", "Industries"],  # Disable columns that shouldn't be edited
         )
+
+        # Save changes back to session state
+        st.session_state.annotated_df = annotated_df
 
         # Add download button for updated dataset
         st.download_button(
