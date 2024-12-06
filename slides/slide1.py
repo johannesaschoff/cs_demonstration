@@ -127,7 +127,7 @@ def render():
                     label="Industries",
                     help="List of industries represented as tags"
                 ),
-                "Sustainability Report": st.column_config.LinkColumn(
+                "Sustainability report": st.column_config.LinkColumn(
                     label="Sustainability Report",
                     help="Link to the company's sustainability report",
                     validate=r"^https?://.+",  # Basic validation for URLs
