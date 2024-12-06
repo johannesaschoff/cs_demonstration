@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import gspread
+from google.auth.transport.requests import Request
 from google.oauth2.service_account import Credentials
-import json
 
 # Streamlit app configuration
 st.set_page_config(layout="wide")
@@ -16,49 +16,52 @@ def authenticate_and_fetch(sheet_url):
     """
     Authenticate with Google Sheets API and fetch the sheet data.
     """
-    # Load credentials from Streamlit secrets directly as a dictionary
-    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]
+    # Debug: Show the loaded credentials from secrets
+    st.write("Loading credentials from secrets...")
+    
+    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's TOML format in secrets
     credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
-
-    # Authorize with gspread
-    gc = gspread.authorize(credentials)
-
-    # Open and fetch the Google Sheet
-    sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
-    data = sheet.get_all_records()  # Fetch all rows as a list of dictionaries
-    df = pd.DataFrame(data)
-    return df, sheet
-
-
-
+    
+    # Debug: Check if credentials are valid
+    st.write("Credentials loaded successfully.")
+    
+    try:
+        gc = gspread.authorize(credentials)  # Authorize the client
+        sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
+        st.write("Google Sheet accessed successfully.")
+        
+        # Fetch the data and convert to DataFrame
+        data = sheet.get_all_records()
+        df = pd.DataFrame(data)
+        st.write("Data fetched successfully.")
+        return df, sheet
+    except Exception as e:
+        st.error(f"Failed to authenticate or fetch the sheet: {e}")
+        raise
 
 def update_sheet(sheet, dataframe):
     """
     Update the Google Sheet with new data from the DataFrame.
     """
     try:
-        # Clear existing data in the sheet
+        st.write("Clearing sheet and updating data...")
+        
+        # Clear the sheet and update with the new data
         sheet.clear()
-
-        # Convert the DataFrame to a list of lists (compatible with gspread)
         data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
-
-        # Update the sheet with new data
-        sheet.update("A1", data)  # Start updating from cell A1
-
+        sheet.update("A1", data)
+        
+        st.write("Data updated successfully.")
     except Exception as e:
         st.error(f"Failed to update the Google Sheet: {e}")
         raise
 
-
 def render():
     st.title("Craftsmanship and Production")
 
-    # Authenticate and fetch Google Sheets data
     try:
         df, sheet = authenticate_and_fetch(SHEET_URL)
 
-        # Ensure the category column exists in the data
         if "category" not in df.columns:
             df["category"] = ""
 
