@@ -8,7 +8,7 @@ from google.oauth2.service_account import Credentials
 st.set_page_config(layout="wide")
 
 # Google Sheets configuration
-SHEET_URL = "YOUR_GOOGLE_SHEET_URL"  # Replace with your Google Sheet URL
+SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 @st.cache_data
