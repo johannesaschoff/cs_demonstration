@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 
 # Google Sheets configuration
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"]
 
 @st.cache_data
 def authenticate_and_fetch(sheet_url):
