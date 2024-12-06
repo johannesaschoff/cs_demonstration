@@ -125,6 +125,7 @@ def render():
                 ),
                 "Industries": st.column_config.ListColumn(
                     label="Industries",
+                    help="Main industries based on Pitchbook data",
                     help="List of industries represented as tags"
                 ),
                 "Sustainability report": st.column_config.LinkColumn(
