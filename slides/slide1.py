@@ -1,64 +1,102 @@
 import streamlit as st
 import pandas as pd
 import gspread
+from google.auth.transport.requests import Request
 from google.oauth2.service_account import Credentials
 
-# Streamlit page configuration
+# Streamlit app configuration
 st.set_page_config(layout="wide")
 
-# Load credentials from secrets
-def authenticate_with_google():
-    credentials_info = st.secrets["gcp_service_account"]
-    credentials = Credentials.from_service_account_info(credentials_info)
-    return credentials
+# Google Sheets configuration
+SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 @st.cache_data
-def fetch_google_sheet(sheet_url):
-    credentials = authenticate_with_google()
-    gc = gspread.authorize(credentials)
-    sheet = gc.open_by_url(sheet_url).sheet1  # Access first sheet
-    data = sheet.get_all_records()  # Fetch existing data
-    return pd.DataFrame(data), sheet
-
-def update_google_sheet(sheet, dataframe):
+def authenticate_and_fetch(sheet_url):
+    """
+    Authenticate with Google Sheets API and fetch the sheet data.
+    """
+    # Debug: Show the loaded credentials from secrets
+    st.write("Loading credentials from secrets...")
+    
+    credentials_dict = st.secrets["GOOGLE_CREDENTIALS"]  # Ensure it's TOML format in secrets
+    credentials = Credentials.from_service_account_info(credentials_dict, scopes=SCOPES)
+    
+    # Debug: Check if credentials are valid
+    st.write("Credentials loaded successfully.")
+    
     try:
-        # Prepare and write data
-        rows = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
-        sheet.clear()
-        sheet.insert_rows(rows, row=1)
-        st.success("Data successfully updated in Google Sheets!")
+        gc = gspread.authorize(credentials)  # Authorize the client
+        sheet = gc.open_by_url(sheet_url).sheet1  # Access the first sheet
+        st.write("Google Sheet accessed successfully.")
+        
+        # Fetch the data and convert to DataFrame
+        data = sheet.get_all_records()
+        df = pd.DataFrame(data)
+        st.write("Data fetched successfully.")
+        return df, sheet
     except Exception as e:
-        st.error(f"Error updating Google Sheet: {e}")
+        st.error(f"Failed to authenticate or fetch the sheet: {e}")
+        raise
 
-def render_app():
-    st.title("Data Management with Google Sheets")
+def update_sheet(sheet, dataframe):
+    """
+    Update the Google Sheet with new data from the DataFrame.
+    """
+    try:
+        st.write("Clearing sheet and updating data...")
+        
+        # Prepare data for update
+        data = [dataframe.columns.values.tolist()] + dataframe.values.tolist()
+        st.write("Prepared data for update:", data)  # Debugging log
 
-    # Fetch data from Google Sheets
-    sheet_url = st.secrets["private_gsheets_url"]
-    data, sheet = fetch_google_sheet(sheet_url)
+        # Clear the sheet by deleting rows and adding empty rows
+        sheet.resize(1)  # Resizes the sheet to only one row (the header)
+        st.write("Sheet cleared successfully.")
 
-    # Add a category column if it doesn't exist
-    if "category" not in data.columns:
-        data["category"] = ""
+        # Update the sheet with new data
+        sheet.insert_rows(data, row=1)  # Inserts the data starting from row 1
+        st.write("Sheet updated successfully.")
+    except Exception as e:
+        st.error(f"Failed to update the Google Sheet: {e}")
+        raise
 
-    # Interactive table with update feature
-    edited_data = st.data_editor(
-        data,
-        column_config={
-            "category": st.column_config.SelectboxColumn(
-                "Category",
-                options=["Option 1", "Option 2", "Option 3"],
-                required=True,
-            )
-        },
-        hide_index=True,
-        use_container_width=True,
-    )
 
-    # Button to save changes
-    if st.button("Save Changes"):
-        update_google_sheet(sheet, edited_data)
 
-# Run the app
-if __name__ == "__main__":
-    render_app()
+def render():
+    st.title("Craftsmanship and Production")
+
+    try:
+        df, sheet = authenticate_and_fetch(SHEET_URL)
+
+        if "category" not in df.columns:
+            df["category"] = ""
+
+        # Display editable data with a select box column
+        st.markdown("### Update Data with Categories")
+        edited_df = st.data_editor(
+            df,
+            column_config={
+                "category": st.column_config.SelectboxColumn(
+                    "App Category",
+                    help="The category of the app",
+                    width="medium",
+                    options=[
+                        "📊 Data Exploration",
+                        "📈 Data Visualization",
+                        "🤖 LLM",
+                    ],
+                    required=True,
+                )
+            },
+            hide_index=True,
+        )
+
+        # Save changes back to Google Sheets
+        if st.button("Save Changes"):
+            update_sheet(sheet, edited_df)
+            st.success("Google Sheet updated successfully!")
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+
+render()
