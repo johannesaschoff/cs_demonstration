@@ -41,26 +41,33 @@ def render():
     try:
         df, sheet = authenticate_and_fetch(SHEET_URL)
 
-        # Display the data as a table
-        st.markdown("### Matching Corporates")
-        st.write("Current Data from Google Sheets:")
-        st.dataframe(df)
+        # Ensure the category column exists in the data
+        if "category" not in df.columns:
+            df["category"] = ""
 
-        # Add manual input fields for updates
-        st.markdown("### Update Data")
-        rows = []
-        for i in range(len(df)):
-            row = {}
-            for column in df.columns:
-                row[column] = st.text_input(f"Row {i + 1} - {column}", df.at[i, column])
-            rows.append(row)
-
-        # Create a new DataFrame from input
-        new_df = pd.DataFrame(rows)
+        # Display editable data with a select box column
+        st.markdown("### Update Data with Categories")
+        edited_df = st.data_editor(
+            df,
+            column_config={
+                "category": st.column_config.SelectboxColumn(
+                    "App Category",
+                    help="The category of the app",
+                    width="medium",
+                    options=[
+                        "📊 Data Exploration",
+                        "📈 Data Visualization",
+                        "🤖 LLM",
+                    ],
+                    required=True,
+                )
+            },
+            hide_index=True,
+        )
 
         # Save changes back to Google Sheets
         if st.button("Save Changes"):
-            update_sheet(sheet, new_df)
+            update_sheet(sheet, edited_df)
             st.success("Google Sheet updated successfully!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
