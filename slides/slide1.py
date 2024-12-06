@@ -4,6 +4,10 @@ import gspread
 from google.oauth2.service_account import Credentials
 import json
 
+# Streamlit app configuration
+st.set_page_config(layout="wide")
+
+# Google Sheets configuration
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1pqJjuQCt28LayLeRne8eZu8e356I1q6NWUzBABsNqeU/edit?usp=sharing"  # Replace with your Google Sheet URL
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
@@ -37,13 +41,26 @@ def render():
     try:
         df, sheet = authenticate_and_fetch(SHEET_URL)
 
-        # Display editable data table
+        # Display the data as a table
         st.markdown("### Matching Corporates")
-        edited_df = st.experimental_data_editor(df, num_rows="dynamic")
+        st.write("Current Data from Google Sheets:")
+        st.dataframe(df)
+
+        # Add manual input fields for updates
+        st.markdown("### Update Data")
+        rows = []
+        for i in range(len(df)):
+            row = {}
+            for column in df.columns:
+                row[column] = st.text_input(f"Row {i + 1} - {column}", df.at[i, column])
+            rows.append(row)
+
+        # Create a new DataFrame from input
+        new_df = pd.DataFrame(rows)
 
         # Save changes back to Google Sheets
         if st.button("Save Changes"):
-            update_sheet(sheet, edited_df)
+            update_sheet(sheet, new_df)
             st.success("Google Sheet updated successfully!")
     except Exception as e:
         st.error(f"An error occurred: {e}")
