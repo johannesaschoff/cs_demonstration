@@ -30,51 +30,51 @@ def render():
 
     with columns[0]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image1.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_1.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_6.png",
             use_column_width=True
         )
 
     with columns[1]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image2.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_2.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image7.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_7.png",
             use_column_width=True
         )
 
     with columns[2]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image3.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_3.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image8.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_8.png",
             use_column_width=True
         )
 
     with columns[3]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image4.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_4.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image9.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_9.png",
             use_column_width=True
         )
 
     with columns[4]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image5.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_5.png",
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image10.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_10.png",
             use_column_width=True
         )
 
