@@ -34,7 +34,7 @@ def render():
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image7.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
             use_column_width=True
         )
 
@@ -44,7 +44,7 @@ def render():
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image8.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image7.png",
             use_column_width=True
         )
 
@@ -54,7 +54,7 @@ def render():
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image9.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image8.png",
             use_column_width=True
         )
 
@@ -64,7 +64,7 @@ def render():
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image10.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image9.png",
             use_column_width=True
         )
 
@@ -74,7 +74,7 @@ def render():
             use_column_width=True
         )
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image11.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image10.png",
             use_column_width=True
         )
 
