@@ -24,7 +24,7 @@ def render():
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
-    columns = st.columns(6)
+    columns = st.columns(5)
 
     with columns[0]:
         st.image(
@@ -76,15 +76,7 @@ def render():
             use_column_width=True
         )
 
-    with columns[5]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image6.png",
-            use_column_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image12.png",
-            use_column_width=True
-        )
+
     # Section: PDF Download
     pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
     try:
