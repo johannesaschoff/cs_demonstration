@@ -77,7 +77,7 @@ def render():
 
 
 
-    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch.pptx"
+    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/Pitch_2.pptx"
     try:
         pptx_data = fetch_pptx(pptx_url)
         st.download_button(
