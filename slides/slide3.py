@@ -28,7 +28,7 @@ def render():
 
     with columns[0]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_1.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_1.2.png",
             use_column_width=True
         )
         st.image(
@@ -68,7 +68,7 @@ def render():
 
     with columns[4]:
         st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_5.png",
+            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_5.2.png",
             use_column_width=True
         )
         st.image(
