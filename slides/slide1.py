@@ -152,7 +152,7 @@ def render():
                     label="Company Logo",
                     width="small",
                     help="Logos of companies"
-                )
+                ),
             hide_index=True,
         )
 
