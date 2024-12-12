@@ -99,7 +99,7 @@ def render():
     try:
         df = pd.read_csv(csv_url)
         df = df[df["Craftsmanship and production"] == True]
-        df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn})
+        df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
 
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
