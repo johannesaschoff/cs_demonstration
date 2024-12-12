@@ -14,7 +14,7 @@ def fetch_pptx(url):
         return response.content
     else:
         raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
-
+def render():
     st.markdown("**Matching Charities**")
     csv_education_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/gesourcte_charities.csv"  # Fixed URL
 
