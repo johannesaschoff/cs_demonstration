@@ -29,51 +29,51 @@ def render():
     with columns[0]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_1.2.png",
-            use_column_width=True
+            use_container_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_6.png",
-            use_column_width=True
+            use_container_width=True
         )
 
     with columns[1]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_2.png",
-            use_column_width=True
+            use_container_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_7.png",
-            use_column_width=True
+            use_container_width=True
         )
 
     with columns[2]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_3.png",
-            use_column_width=True
+            use_container_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_8.png",
-            use_column_width=True
+            use_container_width=True
         )
 
     with columns[3]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_4.png",
-            use_column_width=True
+            use_container_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_9.png",
-            use_column_width=True
+            use_container_width=True
         )
 
     with columns[4]:
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_5.2.png",
-            use_column_width=True
+            use_container_width=True
         )
         st.image(
             "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_10.png",
-            use_column_width=True
+            use_container_width=True
         )
 
 
