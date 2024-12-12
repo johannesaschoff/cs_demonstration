@@ -31,4 +31,4 @@ elif selected_slide == slides[3]:
 elif selected_slide == slides[4]:
     slide5.render()
 elif selected_slide == slides[5]:
-    slide5.render()
+    slideKPI.render()
