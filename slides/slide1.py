@@ -147,7 +147,7 @@ def render():
         df = pd.read_csv(csv_education_url)
         df = df[df["area_id"] == 1]   
         df = df.drop(columns=["fitting area (1 / 0)", "area_id"])
-        df.rename(columns={"charity_name": "Charity Name", "registered_charity_number": "Registered Charity Number", "latest_income": "Latest Income", "latest_expenditure": "Latest Expenditure", "charity_contact_email": "Charity Contact Email", "charity_activities": "Charity Activities"})
+        df = df.rename(columns={"charity_name": "Charity Name", "registered_charity_number": "Registered Charity Number", "latest_income": "Latest Income", "latest_expenditure": "Latest Expenditure", "charity_contact_email": "Charity Contact Email", "charity_activities": "Charity Activities"})
     
         st.dataframe(
             df,
