@@ -147,6 +147,12 @@ def render():
 
         st.dataframe(
             df,
+            column_config={
+                "Logo": st.column_config.ImageColumn(
+                    label="Company Logo",
+                    width="small",
+                    help="Logos of companies"
+                )
             hide_index=True,
         )
 
