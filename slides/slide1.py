@@ -154,7 +154,6 @@ def render():
                     help="Logos of companies"
                 )
             },
-            hide_index=True  
         )
 
 
