@@ -1,5 +1,5 @@
 import streamlit as st
-from slides import slide1, slide2, slide3, slide4, slide5
+from slides import slide1, slide2, slide3, slide4, slide5, KPI
 
 st.set_page_config(layout="wide") 
 
@@ -14,7 +14,8 @@ slides = [
     "Educational Development",
     "Community Development and Employment",
     "Emergency Relief and Basic Needs",
-    "Food Security and Sustainable Agriculture"
+    "Food Security and Sustainable Agriculture",
+    "KPI"
 ]
 selected_slide = st.sidebar.radio("Choose a slide", slides)
 
@@ -28,4 +29,6 @@ elif selected_slide == slides[2]:
 elif selected_slide == slides[3]:
     slide4.render()
 elif selected_slide == slides[4]:
+    slide5.render()
+elif selected_slide == slides[5]:
     slide5.render()
