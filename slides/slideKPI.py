@@ -16,14 +16,26 @@ def render():
         #df = df[df["area_id"] == 1]   
         #df = df.drop(columns=["fitting area (1 / 0)", "area_id"])
         #df = df.rename(columns={"charity_name": "Charity Name", "registered_charity_number": "Registered Charity Number", "latest_income": "Latest Income", "latest_expenditure": "Latest Expenditure", "charity_contact_email": "Charity Contact Email", "charity_activities": "Charity Activities"})
-    
-        st.dataframe(
+        
+        st.data_editor(
             existing_data,
             column_config={
                 "Logo": st.column_config.ImageColumn(
                     label="Company Logo",
                     width="small",
                     help="Logos of companies"
+                ),
+                "area": st.column_config.SelectboxColumn(
+                    "Select Area",
+                    width="medium",
+                    options=[
+                        "Production",
+                        "Education",
+                        "Community",
+                        "Emergency",
+                        "Agriculture",
+                    ],
+                    required=True,
                 )
             },
             hide_index=True  
