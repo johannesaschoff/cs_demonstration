@@ -144,7 +144,7 @@ def render():
 
     try:
         df = pd.read_csv(csv_education_url)
-
+    
         st.dataframe(
             df,
             column_config={
@@ -152,9 +152,11 @@ def render():
                     label="Company Logo",
                     width="small",
                     help="Logos of companies"
-                ),
-            hide_index=True,
+                )
+            },
+            hide_index=True  
         )
+
 
         csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
         st.download_button(
