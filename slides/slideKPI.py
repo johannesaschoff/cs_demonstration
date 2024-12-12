@@ -5,8 +5,6 @@ from streamlit_gsheets import GSheetsConnection
 import requests
 import ast
 
-st.set_page_config(layout="wide")
-
 def render():
     st.markdown("**Matching Charities**")
     #csv_education_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/gesourcte_charities.csv" 
