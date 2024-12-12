@@ -100,6 +100,7 @@ def render():
         # Load the dataset
         df = pd.read_csv(csv_url)
         df = df[df["Community Development and Employment"] == True]
+        df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
         
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
 
