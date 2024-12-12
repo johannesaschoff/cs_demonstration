@@ -150,7 +150,6 @@ def render():
     csv_education_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/gesourcte charities.csv"
 
     try:
-        Load the dataset
         df = pd.read_csv(csv_education_url)
 
         st.dataframe(
@@ -168,5 +167,4 @@ def render():
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
- Run the app
 render()
