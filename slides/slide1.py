@@ -161,14 +161,18 @@ def render():
             hide_index=True  
         )
 
-
-        csv_data = pd.read_csv(csv_education_url).to_csv(index=False).encode("utf-8")
-        st.download_button(
-            label="Download data as CSV",
-            data=csv_data,
-            file_name="charities_education.csv",
-            mime="text/csv",
-        )
+        excel_url_charity = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/gesourcte_charities.xlsx"
+        response = requests.get(excel_url_charity)
+        if response.status_code == 200:
+            excel_data = response.content
+            st.download_button(
+                label="Download data as Excel",
+                data=excel_data,
+                file_name="charities_sourcing.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
+        else:
+            st.error(f"Failed to fetch the Excel file. Status code: {response.status_code}")
 
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
