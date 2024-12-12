@@ -146,7 +146,6 @@ def render():
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
-    dataframe charities
     st.markdown("**Matching Charities**")
     csv_education_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/gesourcte charities.csv"
 
