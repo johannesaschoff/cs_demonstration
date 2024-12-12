@@ -145,7 +145,7 @@ def render():
     try:
         df = pd.read_csv(csv_education_url)
         df = df[df["area_id"] == 1]   
-        df = df.drop(columns=['fitting area (1 / 0)'])    
+        df = df.drop(columns=["fitting area (1 / 0)", "area_id"])    
     
         st.dataframe(
             df,
