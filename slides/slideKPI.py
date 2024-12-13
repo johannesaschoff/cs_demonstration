@@ -6,6 +6,9 @@ import ast
 
 st.set_page_config(layout="wide")
 
+def fetch_data():
+    conn = st.connection("gsheets", type=GSheetsConnection)
+    return conn.read(worksheet="Names")
 
 @st.cache_data
 def fetch_pptx(url):
@@ -14,6 +17,7 @@ def fetch_pptx(url):
         return response.content
     else:
         raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
+
 
 
 def render():
@@ -96,11 +100,7 @@ def render():
     st.markdown("**Matching Corporates**")
     csv_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/dataframe_corporates_with_logos.csv"
     excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
-    
-    def fetch_data():
-    conn = st.connection("gsheets", type=GSheetsConnection)
-    return conn.read(worksheet="Names")
-
+        
     try:
         existing_data = fetch_data()
         
