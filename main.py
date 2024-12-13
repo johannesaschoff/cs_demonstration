@@ -1,5 +1,5 @@
 import streamlit as st
-from slides import slide1, slide2, slide3, slide4, slide5, dashboardKPI, slide1.1,
+from slides import slide1, slide2, slide3, slide4, slide5, dashboardKPI, slide11,
 
 st.set_page_config(layout="wide") 
 
@@ -34,4 +34,4 @@ elif selected_slide == slides[4]:
 elif selected_slide == slides[5]:
     dashboardKPI.render()
 elif selected_slide == slides[6]:
-    slide1.1.render()
+    slide11.render()
