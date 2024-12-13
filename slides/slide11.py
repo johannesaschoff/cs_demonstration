@@ -189,6 +189,7 @@ def render():
                     result = update_google_sheets_data(sheet_id, range_name, updated_values)
                     if result:
                         st.success("Changes saved successfully!")
+                        st.rerun()
                     else:
                         st.error("Failed to save changes.")
                 except Exception as e:
