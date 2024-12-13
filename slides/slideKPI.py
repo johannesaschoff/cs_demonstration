@@ -102,10 +102,9 @@ def render():
     excel_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/craftmanship_production.xlsx"
         
     try:
-        existing_data = fetch_data()
-        
+        df = fetch_data()
         #df = pd.read_csv(csv_url)
-        df = existing_data[existing_data["Craftsmanship and production"] == True]
+        df = df[df["Craftsmanship and production"] == True]
         #df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
 
         df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
@@ -132,6 +131,7 @@ def render():
             hide_index=True,
             use_container_width=True
         )
+        
         response = requests.get(excel_url)
         if response.status_code == 200:
             excel_data = response.content
