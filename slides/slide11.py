@@ -166,10 +166,6 @@ def render():
             hide_index=True,
             use_container_width=True
         )
-
-        df["Industries"] = df["Industries"].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) else x)
-        if not df.empty:
-            st.dataframe(df)
         
         else:
             st.error("No data found in the specified Google Sheets range.")
