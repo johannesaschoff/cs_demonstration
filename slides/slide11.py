@@ -99,9 +99,8 @@ def render():
 
     # Fetch data
     try:
-        if "edited_df" not in st.session_state:
-            df = fetch_google_sheets_data(sheet_id, range_name)
-            df = pd.DataFrame(data=df)
+        df = fetch_google_sheets_data(sheet_id, range_name)
+        if not df.empty:
             df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
 
             def safe_literal_eval(x):
@@ -140,64 +139,49 @@ def render():
                     df[col] = df[col].apply(convert_to_boolean)
 
             df = df[df["Craftsmanship and production"] == True]
-            st.session_state.edited_df = df
 
-        edited_df = st.session_state.edited_df
+            # Store current state before editing
+            original_df = df.copy()
 
-        if not edited_df.empty:
+            # Display data in an editable format
             edited_df = st.data_editor(
-                edited_df,
+                df,
                 column_config={
                     "Logo": st.column_config.ImageColumn(
-                        label="Company Logo",
-                        width="small",
-                        help="Logos of companies"
+                        label="Company Logo", width="small"
                     ),
-                    "Industries": st.column_config.ListColumn(
-                        label="Industries",
-                        help="List of industries represented as tags"
-                    ),
+                    "Industries": st.column_config.ListColumn(label="Industries"),
                     "Sustainability report": st.column_config.LinkColumn(
                         label="Sustainability Report",
-                        help="Link to the company's sustainability report",
                         validate=r"^https?://.+",
                         display_text="View Report"
                     ),
                     "Total Donations": st.column_config.NumberColumn(
-                        "Total Donations (in CHF)",
-                        help="Total amount of collected donations from Corporate in CHF",
-                        min_value=0,
-                        max_value=100000000,
-                        step=1,
-                        format="CHF%d",
+                        "Total Donations (in CHF)", min_value=0
                     )
                 },
-                disabled=[
-                    "Logo", "Company Name", "Industries", "EBIT", "Craftsmanship and production",
-                    "Educational Development", "Community Development and Employment",
-                    "Emergency Relief and Basic Needs", "Food Security and Sustainable Agriculture",
-                    "Contact Name", "Contact Mail/Phone Nr./LinkedIn", "Sustainability report", "Focus"
-                ],
                 hide_index=True,
-                use_container_width=True
+                use_container_width=True,
             )
 
             if st.button("Save Changes"):
                 # Flatten any list-like columns
                 for col in edited_df.columns:
                     if edited_df[col].apply(lambda x: isinstance(x, list)).any():
-                        edited_df[col] = edited_df[col].apply(lambda x: ", ".join(x) if isinstance(x, list) else x)
+                        edited_df[col] = edited_df[col].apply(
+                            lambda x: ", ".join(x) if isinstance(x, list) else x
+                        )
 
-                # Convert DataFrame to a list of lists
+                # Convert to list of lists for Google Sheets
                 updated_values = [edited_df.columns.tolist()] + edited_df.values.tolist()
-
-                # Update Google Sheets
                 try:
                     result = update_google_sheets_data(sheet_id, range_name, updated_values)
                     if result:
-                        st.session_state.pop("edited_df", None)  # Clear session state to refresh data
                         st.success("Changes saved successfully!")
-                        st.rerun()  # Rerun the app to fetch updated data
+                        # Refresh displayed data
+                        df = fetch_google_sheets_data(sheet_id, range_name)
+                        df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
+                        st.experimental_rerun()
                     else:
                         st.error("Failed to save changes.")
                 except Exception as e:
