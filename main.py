@@ -1,5 +1,5 @@
 import streamlit as st
-from slides import slide1, slide2, slide3, slide4, slide5, dashboardKPI, slide11,
+from slides import slide1, slide2, slide3, slide4, slide5, dashboardKPI, slide11
 
 st.set_page_config(layout="wide") 
 
