@@ -133,6 +133,8 @@ def render():
         use_container_width=True
     )
 
+    #Charities
+    st.markdown("**Matching Charities**")
 
     df_char= fetch_data("Charities")
     df_char = pd.DataFrame(data = df_char)
