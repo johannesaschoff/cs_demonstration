@@ -170,6 +170,7 @@ def render():
                         format="CHF%d",
                     )
                 },
+                disabled=["Logo	Company Name","Industries","EBIT","Craftsmanship and production","Educational Development","Community Development and Employment","Emergency Relief and Basic Needs","Food Security and Sustainable Agriculture","Contact Name","Contact Mail/Phone Nr./LinkedIn","Sustainability report","Focus"],
                 hide_index=True,
                 use_container_width=True
             ) 
