@@ -19,7 +19,8 @@ def fetch_pptx(url):
         return response.content
     else:
         raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
-
+existing_data = fetch_data()
+st.dataframe(existing_data)
 # Render the app UI
 def render():
     st.title("KPI")
@@ -62,18 +63,6 @@ def render():
     except Exception as e:
         st.error(f"Could not fetch the PPTX file: {e}")
 
-    # Section: Corporate Dataset
-    st.markdown("**Matching Corporates**")
-    try:
-        df = fetch_data()
-        df = df[df["Craftsmanship and production"] == True]
-        df["Industries"] = df["Industries"].apply(
-            lambda x: ast.literal_eval(x) if isinstance(x, str) else x
-        )
 
-        st.dataframe(df)
-
-    except Exception as e:
-        st.error(f"Failed to load the dataset: {e}")
 
 render()
