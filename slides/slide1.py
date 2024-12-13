@@ -27,7 +27,6 @@ def render():
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
-    st.markdown("**Pitchdeck Preview**")
     columns = st.columns(5)
 
     image_urls = [
