@@ -4,7 +4,6 @@ import pandas as pd
 import requests
 import ast
 
-st.set_page_config(layout="wide")
 
 def fetch_data():
     conn = st.connection("gsheets", type=GSheetsConnection)
