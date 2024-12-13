@@ -142,31 +142,29 @@ def render():
                 df[col] = df[col].apply(convert_to_boolean)
 
         df = df[df["Craftsmanship and production"] == True]
-
-
-        st.dataframe(
-            df,
-            column_config={
-                "Logo": st.column_config.ImageColumn(
-                    label="Company Logo",
-                    width="small",
-                    help="Logos of companies"
-                ),
-                "Industries": st.column_config.ListColumn(
-                    label="Industries",
-                    help="List of industries represented as tags"
-                ),
-                "Sustainability report": st.column_config.LinkColumn(
-                    label="Sustainability Report",
-                    help="Link to the company's sustainability report",
-                    validate=r"^https?://.+",  # Basic validation for URLs
-                    display_text="View Report"  # Display text for the links
-                )
-            },
-            hide_index=True,
-            use_container_width=True
-        )
-        
+        if not df.empty:
+            st.dataframe(
+                df,
+                column_config={
+                    "Logo": st.column_config.ImageColumn(
+                        label="Company Logo",
+                        width="small",
+                        help="Logos of companies"
+                    ),
+                    "Industries": st.column_config.ListColumn(
+                        label="Industries",
+                        help="List of industries represented as tags"
+                    ),
+                    "Sustainability report": st.column_config.LinkColumn(
+                        label="Sustainability Report",
+                        help="Link to the company's sustainability report",
+                        validate=r"^https?://.+",  # Basic validation for URLs
+                        display_text="View Report"  # Display text for the links
+                    )
+                },
+                hide_index=True,
+                use_container_width=True
+            ) 
         else:
             st.error("No data found in the specified Google Sheets range.")
     except Exception as e:
