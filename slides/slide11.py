@@ -2,13 +2,10 @@ import streamlit as st
 import pandas as pd
 import requests
 import ast
-import streamlit as st
+import logging
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2.service_account import Credentials
-import pandas as pd
-import logging
-
 
 @st.cache_data
 def fetch_pptx(url):
@@ -94,7 +91,7 @@ def render():
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
         )
     except Exception as e:
-        st.error(f"Could not fetch the PPTX file: {e}")     
+        st.error(f"Could not fetch the PPTX file: {e}")
 
     # Google Sheets details
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  # Replace with your Google Sheet ID
@@ -102,49 +99,54 @@ def render():
 
     # Fetch data
     try:
-        df = fetch_google_sheets_data(sheet_id, range_name)
-        df = pd.DataFrame(data = df)
-        df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
+        if "edited_df" not in st.session_state:
+            df = fetch_google_sheets_data(sheet_id, range_name)
+            df = pd.DataFrame(data=df)
+            df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
 
-        def safe_literal_eval(x):
-            try:
-                # Attempt to evaluate the string as a Python literal
-                return ast.literal_eval(x) if isinstance(x, str) else x
-            except (ValueError, SyntaxError) as e:
-                logging.warning(f"Skipping invalid value: {x} ({e})")
-                return []  # Return an empty list for invalid values
+            def safe_literal_eval(x):
+                try:
+                    # Attempt to evaluate the string as a Python literal
+                    return ast.literal_eval(x) if isinstance(x, str) else x
+                except (ValueError, SyntaxError) as e:
+                    logging.warning(f"Skipping invalid value: {x} ({e})")
+                    return []  # Return an empty list for invalid values
 
-        # Apply the function and ensure all entries are lists
-        df["Industries"] = df["Industries"].apply(safe_literal_eval)
-        df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
+            # Apply the function and ensure all entries are lists
+            df["Industries"] = df["Industries"].apply(safe_literal_eval)
+            df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
 
-        # List of columns to process
-        columns_to_process = [
-            "Craftsmanship and production",
-            "Educational Development",
-            "Community Development and Employment",
-            "Emergency Relief and Basic Needs",
-            "Food Security and Sustainable Agriculture"
-        ]
+            # List of columns to process
+            columns_to_process = [
+                "Craftsmanship and production",
+                "Educational Development",
+                "Community Development and Employment",
+                "Emergency Relief and Basic Needs",
+                "Food Security and Sustainable Agriculture"
+            ]
 
-        # Define a function to convert "WAHR" to True and "FALSCH" to False
-        def convert_to_boolean(value):
-            if isinstance(value, str):
-                if value.strip().upper() == "WAHR":  # Check if the value is "WAHR"
-                    return True
-                elif value.strip().upper() == "FALSCH":  # Check if the value is "FALSCH"
-                    return False
-            return None  # Return None for other cases
+            # Define a function to convert "WAHR" to True and "FALSCH" to False
+            def convert_to_boolean(value):
+                if isinstance(value, str):
+                    if value.strip().upper() == "WAHR":
+                        return True
+                    elif value.strip().upper() == "FALSCH":
+                        return False
+                return None
 
-        # Apply the function to all specified columns
-        for col in columns_to_process:
-            if col in df.columns:  # Check if the column exists in the DataFrame
-                df[col] = df[col].apply(convert_to_boolean)
+            # Apply the function to all specified columns
+            for col in columns_to_process:
+                if col in df.columns:
+                    df[col] = df[col].apply(convert_to_boolean)
 
-        df = df[df["Craftsmanship and production"] == True]
-        if not df.empty:
+            df = df[df["Craftsmanship and production"] == True]
+            st.session_state.edited_df = df
+
+        edited_df = st.session_state.edited_df
+
+        if not edited_df.empty:
             edited_df = st.data_editor(
-                df,
+                edited_df,
                 column_config={
                     "Logo": st.column_config.ImageColumn(
                         label="Company Logo",
@@ -158,8 +160,8 @@ def render():
                     "Sustainability report": st.column_config.LinkColumn(
                         label="Sustainability Report",
                         help="Link to the company's sustainability report",
-                        validate=r"^https?://.+",  # Basic validation for URLs
-                        display_text="View Report"  # Display text for the links
+                        validate=r"^https?://.+",
+                        display_text="View Report"
                     ),
                     "Total Donations": st.column_config.NumberColumn(
                         "Total Donations (in CHF)",
@@ -170,17 +172,22 @@ def render():
                         format="CHF%d",
                     )
                 },
-                disabled=["Logo	Company Name","Industries","EBIT","Craftsmanship and production","Educational Development","Community Development and Employment","Emergency Relief and Basic Needs","Food Security and Sustainable Agriculture","Contact Name","Contact Mail/Phone Nr./LinkedIn","Sustainability report","Focus"],
+                disabled=[
+                    "Logo", "Company Name", "Industries", "EBIT", "Craftsmanship and production",
+                    "Educational Development", "Community Development and Employment",
+                    "Emergency Relief and Basic Needs", "Food Security and Sustainable Agriculture",
+                    "Contact Name", "Contact Mail/Phone Nr./LinkedIn", "Sustainability report", "Focus"
+                ],
                 hide_index=True,
                 use_container_width=True
-            ) 
+            )
 
             if st.button("Save Changes"):
                 # Flatten any list-like columns
                 for col in edited_df.columns:
                     if edited_df[col].apply(lambda x: isinstance(x, list)).any():
                         edited_df[col] = edited_df[col].apply(lambda x: ", ".join(x) if isinstance(x, list) else x)
-                
+
                 # Convert DataFrame to a list of lists
                 updated_values = [edited_df.columns.tolist()] + edited_df.values.tolist()
 
@@ -188,17 +195,15 @@ def render():
                 try:
                     result = update_google_sheets_data(sheet_id, range_name, updated_values)
                     if result:
+                        st.session_state.edited_df = edited_df  # Save the new state
                         st.success("Changes saved successfully!")
                     else:
                         st.error("Failed to save changes.")
                 except Exception as e:
                     st.error(f"An error occurred while saving: {e}")
-
-
         else:
             st.error("No data found in the specified Google Sheets range.")
     except Exception as e:
         st.error(f"An error occurred: {e}")
-
 
 render()
