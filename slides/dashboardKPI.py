@@ -38,6 +38,4 @@ def render():
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
-# Run the app
-if __name__ == "__main__":
-    render()
+render()
