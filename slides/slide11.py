@@ -143,7 +143,7 @@ def render():
 
         df = df[df["Craftsmanship and production"] == True]
         if not df.empty:
-            st.dataframe(
+            st.data_editor(
                 df,
                 column_config={
                     "Logo": st.column_config.ImageColumn(
