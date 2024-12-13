@@ -16,10 +16,7 @@ def render():
     
     try:
         df= fetch_data()
-    
-        df = df[df["Craftsmanship and production"] == True]
-        df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
-    
+        
         st.dataframe(
             df,
             column_config={
