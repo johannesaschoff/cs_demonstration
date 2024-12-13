@@ -23,55 +23,20 @@ def render():
     st.markdown("**Pitchdeck Preview**")
     columns = st.columns(5)
 
-    with columns[0]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_1.3.png",
-            use_container_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_6.png",
-            use_container_width=True
-        )
+    image_urls = [
+        ["image_1.3.png", "image_6.png"],
+        ["image_2.png", "image_7.png"],
+        ["image_3.png", "image_8.png"],
+        ["image_4.png", "image_9.png"],
+        ["image_5.3.png", "image_10.png"]
+    ]
 
-    with columns[1]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_2.png",
-            use_container_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_7.png",
-            use_container_width=True
-        )
-
-    with columns[2]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_3.png",
-            use_container_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_8.png",
-            use_container_width=True
-        )
-
-    with columns[3]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_4.png",
-            use_container_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_9.png",
-            use_container_width=True
-        )
-
-    with columns[4]:
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_5.3.png",
-            use_container_width=True
-        )
-        st.image(
-            "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/image_10.png",
-            use_container_width=True
-        )
+    for col, urls in zip(columns, image_urls):
+        for url in urls:
+            col.image(
+                f"https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/images/{url}",
+                use_container_width=True
+            )
 
 
     pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck emergency relief.pptx"
