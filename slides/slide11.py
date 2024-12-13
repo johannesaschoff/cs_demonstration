@@ -102,46 +102,51 @@ def render():
 
     # Fetch data
     try:
-        df = fetch_google_sheets_data(sheet_id, range_name)
-        df = pd.DataFrame(data = df)
-        df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
+        if "edited_df" not in st.session_state:
+            df = fetch_google_sheets_data(sheet_id, range_name)
+            df = pd.DataFrame(data = df)
+            df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
 
-        def safe_literal_eval(x):
-            try:
-                # Attempt to evaluate the string as a Python literal
-                return ast.literal_eval(x) if isinstance(x, str) else x
-            except (ValueError, SyntaxError) as e:
-                logging.warning(f"Skipping invalid value: {x} ({e})")
-                return []  # Return an empty list for invalid values
+            def safe_literal_eval(x):
+                try:
+                    # Attempt to evaluate the string as a Python literal
+                    return ast.literal_eval(x) if isinstance(x, str) else x
+                except (ValueError, SyntaxError) as e:
+                    logging.warning(f"Skipping invalid value: {x} ({e})")
+                    return []  # Return an empty list for invalid values
 
-        # Apply the function and ensure all entries are lists
-        df["Industries"] = df["Industries"].apply(safe_literal_eval)
-        df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
+            # Apply the function and ensure all entries are lists
+            df["Industries"] = df["Industries"].apply(safe_literal_eval)
+            df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
 
-        # List of columns to process
-        columns_to_process = [
-            "Craftsmanship and production",
-            "Educational Development",
-            "Community Development and Employment",
-            "Emergency Relief and Basic Needs",
-            "Food Security and Sustainable Agriculture"
-        ]
+            # List of columns to process
+            columns_to_process = [
+                "Craftsmanship and production",
+                "Educational Development",
+                "Community Development and Employment",
+                "Emergency Relief and Basic Needs",
+                "Food Security and Sustainable Agriculture"
+            ]
 
-        # Define a function to convert "WAHR" to True and "FALSCH" to False
-        def convert_to_boolean(value):
-            if isinstance(value, str):
-                if value.strip().upper() == "WAHR":  # Check if the value is "WAHR"
-                    return True
-                elif value.strip().upper() == "FALSCH":  # Check if the value is "FALSCH"
-                    return False
-            return None  # Return None for other cases
+            # Define a function to convert "WAHR" to True and "FALSCH" to False
+            def convert_to_boolean(value):
+                if isinstance(value, str):
+                    if value.strip().upper() == "WAHR":  # Check if the value is "WAHR"
+                        return True
+                    elif value.strip().upper() == "FALSCH":  # Check if the value is "FALSCH"
+                        return False
+                return None  # Return None for other cases
 
-        # Apply the function to all specified columns
-        for col in columns_to_process:
-            if col in df.columns:  # Check if the column exists in the DataFrame
-                df[col] = df[col].apply(convert_to_boolean)
+            # Apply the function to all specified columns
+            for col in columns_to_process:
+                if col in df.columns:  # Check if the column exists in the DataFrame
+                    df[col] = df[col].apply(convert_to_boolean)
 
-        df = df[df["Craftsmanship and production"] == True]
+            df = df[df["Craftsmanship and production"] == True]
+            st.session_state.edited_df = df
+
+        edited_df = st.session_state.edited_df
+
         if not df.empty:
             edited_df = st.data_editor(
                 df,
@@ -188,6 +193,7 @@ def render():
                 try:
                     result = update_google_sheets_data(sheet_id, range_name, updated_values)
                     if result:
+                        st.session_state.edited_df = edited_df  # Save the new state
                         st.success("Changes saved successfully!")
                     else:
                         st.error("Failed to save changes.")
@@ -195,8 +201,8 @@ def render():
                     st.error(f"An error occurred while saving: {e}")
 
 
-        else:
-            st.error("No data found in the specified Google Sheets range.")
+            else:
+                st.error("No data found in the specified Google Sheets range.")
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
