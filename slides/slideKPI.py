@@ -5,7 +5,7 @@ import pandas as pd
 import ast
 import requests
 
-def render()
+def render():
     st.title("Edit Vendor Areas in Google Sheets")
         
         # Fetch data directly without caching
