@@ -174,6 +174,18 @@ def render():
                 hide_index=True,
                 use_container_width=True
             ) 
+
+            if st.button("Save Changes"):
+                # Convert DataFrame to a list of lists
+                updated_values = [edited_df.columns.tolist()] + edited_df.values.tolist()
+
+                # Update Google Sheets
+                result = update_google_sheets_data(sheet_id, range_name, updated_values)
+                if result:
+                    st.success("Changes saved successfully!")
+                else:
+                    st.error("Failed to save changes.")
+                    
         else:
             st.error("No data found in the specified Google Sheets range.")
     except Exception as e:
