@@ -2,13 +2,10 @@ import streamlit as st
 import pandas as pd
 import requests
 import ast
-import streamlit as st
+import logging
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2.service_account import Credentials
-import pandas as pd
-import logging
-
 
 @st.cache_data
 def fetch_pptx(url):
@@ -94,7 +91,7 @@ def render():
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation",
         )
     except Exception as e:
-        st.error(f"Could not fetch the PPTX file: {e}")     
+        st.error(f"Could not fetch the PPTX file: {e}")
 
     # Google Sheets details
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  # Replace with your Google Sheet ID
@@ -104,7 +101,7 @@ def render():
     try:
         if "edited_df" not in st.session_state:
             df = fetch_google_sheets_data(sheet_id, range_name)
-            df = pd.DataFrame(data = df)
+            df = pd.DataFrame(data=df)
             df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
 
             def safe_literal_eval(x):
@@ -131,15 +128,15 @@ def render():
             # Define a function to convert "WAHR" to True and "FALSCH" to False
             def convert_to_boolean(value):
                 if isinstance(value, str):
-                    if value.strip().upper() == "WAHR":  # Check if the value is "WAHR"
+                    if value.strip().upper() == "WAHR":
                         return True
-                    elif value.strip().upper() == "FALSCH":  # Check if the value is "FALSCH"
+                    elif value.strip().upper() == "FALSCH":
                         return False
-                return None  # Return None for other cases
+                return None
 
             # Apply the function to all specified columns
             for col in columns_to_process:
-                if col in df.columns:  # Check if the column exists in the DataFrame
+                if col in df.columns:
                     df[col] = df[col].apply(convert_to_boolean)
 
             df = df[df["Craftsmanship and production"] == True]
@@ -147,9 +144,9 @@ def render():
 
         edited_df = st.session_state.edited_df
 
-        if not df.empty:
+        if not edited_df.empty:
             edited_df = st.data_editor(
-                df,
+                edited_df,
                 column_config={
                     "Logo": st.column_config.ImageColumn(
                         label="Company Logo",
@@ -163,8 +160,8 @@ def render():
                     "Sustainability report": st.column_config.LinkColumn(
                         label="Sustainability Report",
                         help="Link to the company's sustainability report",
-                        validate=r"^https?://.+",  # Basic validation for URLs
-                        display_text="View Report"  # Display text for the links
+                        validate=r"^https?://.+",
+                        display_text="View Report"
                     ),
                     "Total Donations": st.column_config.NumberColumn(
                         "Total Donations (in CHF)",
@@ -175,17 +172,22 @@ def render():
                         format="CHF%d",
                     )
                 },
-                disabled=["Logo	Company Name","Industries","EBIT","Craftsmanship and production","Educational Development","Community Development and Employment","Emergency Relief and Basic Needs","Food Security and Sustainable Agriculture","Contact Name","Contact Mail/Phone Nr./LinkedIn","Sustainability report","Focus"],
+                disabled=[
+                    "Logo", "Company Name", "Industries", "EBIT", "Craftsmanship and production",
+                    "Educational Development", "Community Development and Employment",
+                    "Emergency Relief and Basic Needs", "Food Security and Sustainable Agriculture",
+                    "Contact Name", "Contact Mail/Phone Nr./LinkedIn", "Sustainability report", "Focus"
+                ],
                 hide_index=True,
                 use_container_width=True
-            ) 
+            )
 
             if st.button("Save Changes"):
                 # Flatten any list-like columns
                 for col in edited_df.columns:
                     if edited_df[col].apply(lambda x: isinstance(x, list)).any():
                         edited_df[col] = edited_df[col].apply(lambda x: ", ".join(x) if isinstance(x, list) else x)
-                
+
                 # Convert DataFrame to a list of lists
                 updated_values = [edited_df.columns.tolist()] + edited_df.values.tolist()
 
@@ -199,12 +201,9 @@ def render():
                         st.error("Failed to save changes.")
                 except Exception as e:
                     st.error(f"An error occurred while saving: {e}")
-
-
-            else:
-                st.error("No data found in the specified Google Sheets range.")
+        else:
+            st.error("No data found in the specified Google Sheets range.")
     except Exception as e:
         st.error(f"An error occurred: {e}")
-
 
 render()
