@@ -5,6 +5,17 @@ import pandas as pd
 import ast
 import logging
 
+st.set_page_config(layout="wide")
+
+
+@st.cache_data
+def fetch_pptx(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.content
+    else:
+        raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
+        
 def render():
     
     st.title("Craftsmanship and Production")
