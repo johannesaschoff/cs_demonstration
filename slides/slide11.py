@@ -8,6 +8,15 @@ from googleapiclient.errors import HttpError
 from google.oauth2.service_account import Credentials
 import pandas as pd
 
+
+@st.cache_data
+def fetch_pptx(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.content
+    else:
+        raise Exception(f"Failed to fetch the PPTX. Status code: {response.status_code}")
+
 # Function to fetch data from Google Sheets
 def fetch_google_sheets_data(sheet_id, range_name):
     # Load credentials from Streamlit secrets
@@ -103,4 +112,3 @@ def render():
 
 
 render()
-
