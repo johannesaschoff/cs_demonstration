@@ -2,6 +2,8 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 import pandas as pd
+import ast
+import logging
 
 def render():
     st.title("Edit Vendor Areas in Google Sheets")
@@ -14,7 +16,20 @@ def render():
     
     
     df= fetch_data()
+    df = pd.DataFrame(data = df)
     df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
+    
+    def safe_literal_eval(x):
+        try:
+            # Attempt to evaluate the string as a Python literal
+            return ast.literal_eval(x) if isinstance(x, str) else x
+        except (ValueError, SyntaxError) as e:
+            logging.warning(f"Skipping invalid value: {x} ({e})")
+            return []  # Return an empty list for invalid values
+    
+    # Apply the function and ensure all entries are lists
+    df["Industries"] = df["Industries"].apply(safe_literal_eval)
+    df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
     
     st.dataframe(
         df,
@@ -38,4 +53,5 @@ def render():
         hide_index=True,
         use_container_width=True
     )
+
 render()
