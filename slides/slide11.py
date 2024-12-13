@@ -143,7 +143,7 @@ def render():
 
         df = df[df["Craftsmanship and production"] == True]
         if not df.empty:
-            edited_df= st.data_editor(
+            st.data_editor(
                 df,
                 column_config={
                     "Logo": st.column_config.ImageColumn(
@@ -176,16 +176,25 @@ def render():
             ) 
 
             if st.button("Save Changes"):
+                # Flatten any list-like columns
+                for col in edited_df.columns:
+                    if edited_df[col].apply(lambda x: isinstance(x, list)).any():
+                        edited_df[col] = edited_df[col].apply(lambda x: ", ".join(x) if isinstance(x, list) else x)
+                
                 # Convert DataFrame to a list of lists
                 updated_values = [edited_df.columns.tolist()] + edited_df.values.tolist()
 
                 # Update Google Sheets
-                result = update_google_sheets_data(sheet_id, range_name, updated_values)
-                if result:
-                    st.success("Changes saved successfully!")
-                else:
-                    st.error("Failed to save changes.")
-                    
+                try:
+                    result = update_google_sheets_data(sheet_id, range_name, updated_values)
+                    if result:
+                        st.success("Changes saved successfully!")
+                    else:
+                        st.error("Failed to save changes.")
+                except Exception as e:
+                    st.error(f"An error occurred while saving: {e}")
+
+
         else:
             st.error("No data found in the specified Google Sheets range.")
     except Exception as e:
