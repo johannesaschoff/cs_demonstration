@@ -6,6 +6,8 @@ import ast
 import logging
 
 def render():
+    
+    
     st.title("Edit Vendor Areas in Google Sheets")
         
         # Fetch data directly without caching
@@ -31,6 +33,32 @@ def render():
     df["Industries"] = df["Industries"].apply(safe_literal_eval)
     df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
     
+    # List of columns to process
+    columns_to_process = [
+        "Craftsmanship and production",
+        "Educational Development",
+        "Community Development and Employment",
+        "Emergency Relief and Basic Needs",
+        "Food Security and Sustainable Agriculture"
+    ]
+    
+    # Define a function to convert "WAHR" to True and "FALSCH" to False
+    def convert_to_boolean(value):
+        if isinstance(value, str):
+            if value.strip().upper() == "WAHR":  # Check if the value is "WAHR"
+                return True
+            elif value.strip().upper() == "FALSCH":  # Check if the value is "FALSCH"
+                return False
+        return None  # Return None for other cases
+    
+    # Apply the function to all specified columns
+    for col in columns_to_process:
+        if col in df.columns:  # Check if the column exists in the DataFrame
+            df[col] = df[col].apply(convert_to_boolean)
+    
+    df = df[df["Craftsmanship and production"] == True]
+    
+    
     st.dataframe(
         df,
         column_config={
@@ -53,5 +81,7 @@ def render():
         hide_index=True,
         use_container_width=True
     )
+    
+
 
 render()
