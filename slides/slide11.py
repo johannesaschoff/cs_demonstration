@@ -160,6 +160,14 @@ def render():
                         help="Link to the company's sustainability report",
                         validate=r"^https?://.+",  # Basic validation for URLs
                         display_text="View Report"  # Display text for the links
+                    ),
+                    "Total Donations": st.column_config.NumberColumn(
+                        "Total Donations (in CHF)",
+                        help="Total amount of collected donations from Corporate in CHF",
+                        min_value=0,
+                        max_value=100000000,
+                        step=1,
+                        format="CHF%d",
                     )
                 },
                 hide_index=True,
