@@ -63,12 +63,12 @@ def render():
     st.markdown("**Matching Corporates**")
             
         # Fetch data directly without caching
-    def fetch_data():
+    def fetch_data(x):
         conn = st.connection("gsheets", type=GSheetsConnection)
-        return conn.read(worksheet="Names")
+        return conn.read(worksheet = x)
+        
     
-    
-    df= fetch_data()
+    df= fetch_data("Names")
     df = pd.DataFrame(data = df)
     df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
     
@@ -132,7 +132,26 @@ def render():
         hide_index=True,
         use_container_width=True
     )
+
+
+    df_char= fetch_data("Charities")
+    df_char = pd.DataFrame(data = df_char)
     
+    df_char = df_char[df_char["area_id"] == 1]   
+    df_char = df_char.drop(columns=["fitting area (1 / 0)", "area_id"])
+    df_char = df_char.rename(columns={"charity_name": "Charity Name", "registered_charity_number": "Registered Charity Number", "latest_income": "Latest Income", "latest_expenditure": "Latest Expenditure", "charity_contact_email": "Charity Contact Email", "charity_activities": "Charity Activities"})
+        
+    st.dataframe(
+        df_char,
+        column_config={
+            "Logo": st.column_config.ImageColumn(
+                label="Company Logo",
+                width="small",
+                help="Logos of companies"
+            )
+        },
+        hide_index=True  
+    )
 
 
 render()
