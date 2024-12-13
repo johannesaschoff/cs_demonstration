@@ -195,8 +195,9 @@ def render():
                 try:
                     result = update_google_sheets_data(sheet_id, range_name, updated_values)
                     if result:
-                        st.session_state.edited_df = edited_df  # Save the new state
+                        st.session_state.pop("edited_df", None)  # Clear session state to refresh data
                         st.success("Changes saved successfully!")
+                        st.rerun()  # Rerun the app to fetch updated data
                     else:
                         st.error("Failed to save changes.")
                 except Exception as e:
