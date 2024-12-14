@@ -48,12 +48,7 @@ def update_google_sheets_data(sheet_id, range_name, values):
 def render():
     st.title("Community Development and Employment")
     st.markdown("**Project types**")
-    st.write("- Bungalows and suites")
-    st.write("- Farmhouse Restaurant")
-    st.write("- Restaurant «Un»")
-    st.write("- Sanctuary Spa")
-    st.write("- Pool Bar and Lounge")
-    st.write("- Local Attractions")
+    st.write(''':blue-background[Bungalows and suites] :blue-background[Farmhouse Restaurant] :blue-background[Restaurant «Un»] :blue-background[Sanctuary Spa] :blue-background[Pool Bar and Lounge] :blue-background[Local Attractions]''')
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
