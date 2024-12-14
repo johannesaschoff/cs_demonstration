@@ -48,11 +48,12 @@ def update_google_sheets_data(sheet_id, range_name, values):
 def render():
     st.title("Community Development and Employment")
     st.markdown("**Project types**")
-    st.write("- Teaching")
-    st.write("- School Meals")
-    st.write("- Hygiene")
-    st.write("- Medical Care")
-    st.write("- Musical Education")
+    st.write("- Bungalows and suites")
+    st.write("- Farmhouse Restaurant")
+    st.write("- Restaurant «Un»")
+    st.write("- Sanctuary Spa")
+    st.write("- Pool Bar and Lounge")
+    st.write("- Local Attractions")
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
