@@ -251,6 +251,9 @@ def render():
                 ),
                 "Latest Income": st.column_config.NumberColumn(
                     format="£ %d"
+                ),
+                "Latest Expenditure": st.column_config.NumberColumn(
+                    format="£ %d"
                 )
       
             },
