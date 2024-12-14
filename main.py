@@ -10,7 +10,7 @@ st.sidebar.image(logo_url, width=100)
 # Sidebar for slide selection
 st.sidebar.title("Navigation")
 slides = [
-    ''':blue-background[Craftsmanship and production]''',
+    ''':white-background[Craftsmanship and production]''',
     ''':blue-background[Educational Development]''',
     ''':blue-background[Community Development and Employment]''',
     ''':blue-background[Emergency Relief and Basic Needs]''',
