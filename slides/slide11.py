@@ -222,7 +222,7 @@ def render():
     try:
         charity_df = fetch_google_sheets_data(charity_sheet_id, charity_range_name)
 
-        charity_df = charity_df[charity_df["Focus"] == "Craftsmanship and Production"]   
+        charity_df = charity_df[charity_df["Focus"] == "Craftsmanship and production"]   
         charity_df = charity_df.rename(columns={"charity_name": "Charity Name", "registered_charity_number": "Registered Charity Number", "latest_income": "Latest Income", "latest_expenditure": "Latest Expenditure", "charity_contact_email": "Charity Contact Email", "charity_activities": "Charity Activities"})
 
         editable_columns = ["Total Donations", "Status"]
