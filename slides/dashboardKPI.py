@@ -54,7 +54,7 @@ def render():
     col1, col2, col3, col4 = st.columns(4)
     col1.metric(label="Engagement Rate", value=cer, delta=0.3, border=True)
     col2.metric(label= "Conversion Rate", value=cr,delta=-0.5, border=True)
-    col3.metric(label="Average Gift Size", value=ags,delta=1.2, border=True)
+    col3.metric(label="Average Gift Size", value=f"£ {ags}",delta=1.2, border=True)
     col4.metric(label="Return on Invest (ROI)", value=roi,delta=0.1, border=True)
     
     try:
@@ -74,7 +74,7 @@ def render():
     col1, col2, col3, col4 = st.columns(4)
     col1.metric(label="Engagement Rate", value=ccer, delta=0.3, border=True)
     col2.metric(label= "Conversion Rate", value=ccr,delta=-0.5, border=True)
-    col3.metric(label="Average Gift Size", value=cags,delta=1.2, border=True)
+    col3.metric(label="Average Gift Size", value=f"£ {cags}",delta=1.2, border=True)
     col4.metric(label="Return on Invest (ROI)", value=croi,delta=0.1, border=True)
 
 render()
