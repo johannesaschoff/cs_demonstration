@@ -18,12 +18,12 @@ def fetch_pptx(url):
 def render():
     st.title("Craftsmanship and Production")
     st.markdown("**Project types**")
-    st.write("- Butchery")
-    st.write("- Bakery")
-    st.write("- Kitchen")
-    st.write("- Woodwork")
-    st.write("- Sewing")
-    st.write("- Metal Construction Workshop")
+    st.write(''':blue-background[Butchery''')
+    st.write(''':blue-background[Bakery''')
+    st.write(''':blue-background[Kitchen''')
+    st.write(''':blue-background[Woodwork''')
+    st.write(''':blue-background[Sewing''')
+    st.write(''':blue-background[Metal Construction Workshop''')
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
