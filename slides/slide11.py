@@ -105,7 +105,7 @@ def render():
             df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
 
         # Ensure unique column names
-        df.columns = pd.io.parsers.ParserBase({'names': df.columns})._maybe_dedup_names()
+        df.columns = pd.Series(df.columns).apply(lambda x: f"{x}_dup" if list(df.columns).count(x) > 1 else x)
 
         # Define editable and non-editable columns
         editable_columns = ["Total Donations", "Status"]
