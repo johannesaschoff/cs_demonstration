@@ -24,13 +24,6 @@ def fetch_google_sheets_data(sheet_id, range_name):
 def render():
     st.title("KPI Dashboard")
 
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Corporate Engagement Rate", "70 °F", "1.2 °F")
-    col2.metric("Conversion Rate", "9 mph", "-8%")
-    col3.metric("Average Gift Size", "86%", "4%")
-    col4.metric("Return on Invest (ROI)", "86%", "4%")
-
-
     # Google Sheets details
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  # Replace with your Google Sheet ID
     range_name = "KPIdashboard"  # Replace with your sheet's range (e.g., 'Sheet1!A1:D10')
@@ -38,11 +31,13 @@ def render():
     # Fetch data
     try:
         df = fetch_google_sheets_data(sheet_id, range_name)
-        if not df.empty:
-            st.dataframe(df)
-        else:
-            st.error("No data found in the specified Google Sheets range.")
     except Exception as e:
         st.error(f"An error occurred: {e}")
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Corporate Engagement Rate", value=df["Corporate Engagement Rate"][0], "1.2 °F")
+    col2.metric("Conversion Rate", "9 mph", "-8%")
+    col3.metric("Average Gift Size", "86%", "4%")
+    col4.metric("Return on Invest (ROI)", "86%", "4%")
 
 render()
