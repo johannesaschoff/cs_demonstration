@@ -152,10 +152,15 @@ def render():
                 ),
                 "Emergency Relief and Basic Needs": st.column_config.CheckboxColumn(
                     default=False,
-                )
-                ,"Food Security and Sustainable Agriculture": st.column_config.CheckboxColumn(
+                ),
+                "Food Security and Sustainable Agriculture": st.column_config.CheckboxColumn(
                     default=False,
-                )
+                ),
+                "EBIT": st.column_config.NumberColumn(
+                    "EBIT (in mio.)",
+                    help="Source: Pitchbook",
+                    format="£ %d",
+                ),
                 
                 
                 
