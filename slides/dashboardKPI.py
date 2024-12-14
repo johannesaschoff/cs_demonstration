@@ -24,10 +24,12 @@ def fetch_google_sheets_data(sheet_id, range_name):
 def render():
     st.title("KPI Dashboard")
 
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Temperature", "70 °F", "1.2 °F")
-    col2.metric("Wind", "9 mph", "-8%")
-    col3.metric("Humidity", "86%", "4%")
+    col1, col2, col3, col4, col5 = st.columns(3)
+    col1.metric(""Corporate Engagement Rate", "70 °F", "1.2 °F")
+    col2.metric("Conversion Rate", "9 mph", "-8%")
+    col3.metric("Average Gift Size", "86%", "4%")
+    col4.metric("Return on Invest (ROI)", "86%", "4%")
+
 
     # Google Sheets details
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  # Replace with your Google Sheet ID
