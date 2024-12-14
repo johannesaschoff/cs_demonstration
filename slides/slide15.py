@@ -129,12 +129,12 @@ def render():
                     display_text="View Report"  # Display text for the links
                 ),
                 "Total Donations": st.column_config.NumberColumn(
-                    "Total Donations (in CHF)",
-                    help="Total amount of collected donations from Corporate in CHF",
+                    "Total Donations",
+                    help="Total amount of collected donations from Corporate in £",
                     min_value=0,
                     max_value=100000000,
                     step=1,
-                    format="CHF%d",
+                    format="£%d",
                 ),
                 "Status": st.column_config.SelectboxColumn(
                     label="Status",
@@ -233,12 +233,12 @@ def render():
                     help="Logos of companies"
                 ),
                 "Total Donations": st.column_config.NumberColumn(
-                    "Total Donations (in CHF)",
-                    help="Total amount of collected donations from Corporate in CHF",
+                    "Total Donations",
+                    help="Total amount of collected donations from Corporate in £",
                     min_value=0,
                     max_value=100000000,
                     step=1,
-                    format="CHF%d",
+                    format="£%d",
                 ),
                 "Status": st.column_config.SelectboxColumn(
                     label="Status",
