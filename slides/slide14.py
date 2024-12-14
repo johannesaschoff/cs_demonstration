@@ -48,11 +48,9 @@ def update_google_sheets_data(sheet_id, range_name, values):
 def render():
     st.title("Emergency Relief and Basic Needs")
     st.markdown("**Project types**")
-    st.write("- Teaching")
-    st.write("- School Meals")
-    st.write("- Hygiene")
-    st.write("- Medical Care")
-    st.write("- Musical Education")
+    st.write("- Food")
+    st.write("- Medicine")
+    st.write("- Water Pumps")
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
