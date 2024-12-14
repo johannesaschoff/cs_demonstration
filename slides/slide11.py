@@ -87,7 +87,7 @@ def render():
         st.error(f"Could not fetch the PPTX file: {e}")     
 
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"
-    range_name = "Names"
+    range_name = "Corporates"
     
     try:
         # Fetch fresh data from Google Sheets
@@ -107,9 +107,11 @@ def render():
             df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
     
         # Define editable and non-editable columns
-        editable_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
+        editable_columns = ["Total Donations", "Status"]
         disabled_columns = [col for col in df.columns if col not in editable_columns]
-    
+        status_options = ["", "Contacted", "Positive Response", "Negative Response", "Partnership"]
+        
+        df = df[df["Craftsmanship and production"] == "TRUE"]
         # Pass the full DataFrame to the editor
         st.write("Editing data:")
         edited_df = st.data_editor(
@@ -117,6 +119,7 @@ def render():
             column_config={
                 "Logo": st.column_config.ImageColumn(
                     label="Company Logo",
+                    pinned = True,
                     width="small",
                     help="Logos of companies"
                 ),
@@ -138,26 +141,32 @@ def render():
                     step=1,
                     format="CHF%d",
                 ),
-                "Contacted": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
+                "Status": st.column_config.SelectboxColumn(
+                    label="Status",
+                    options=status_options,
+                    help="Select the current status of the corporate."
                 ),
-                "Positive Response": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
+                "Craftsmanship and production": st.column_config.CheckboxColumn(
+                    default=False,
                 ),
-                "Negative Response": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
+                "Educational Development": st.column_config.CheckboxColumn(
+                    default=False,
                 ),
-                "Partnership": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
+                "Community Development and Employment": st.column_config.CheckboxColumn(
+                    default=False,
                 ),
+                "Emergency Relief and Basic Needs": st.column_config.CheckboxColumn(
+                    default=False,
+                )
+                ,"Food Security and Sustainable Agriculture": st.column_config.CheckboxColumn(
+                    default=False,
+                )
+                
+                
+                
+                
+                
+
             },
             hide_index=True,
             disabled=disabled_columns,
@@ -171,10 +180,18 @@ def render():
                     edited_df[col] = edited_df[col].apply(lambda x: "[" + ", ".join(map(lambda y: f"'{y}'", x)) + "]" if isinstance(x, list) else x)
     
             # Ensure numeric columns are stored as integers and handle NaN values
-            numeric_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
+            numeric_columns = ["Total Donations"]
             for col in numeric_columns:
                 if col in edited_df.columns:
                     edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
+
+            # Ensure string columns are stored as strings and handle NaN values
+            str_columns = ["Status"]
+            for col in str_columns:
+                if col in edited_df.columns:
+                    # Convert to string type and replace NaN values with an empty string
+                    edited_df[col] = edited_df[col].fillna("").astype(str)
+            
             
             # Replace NaN and invalid values in other columns with empty strings
             edited_df = edited_df.fillna("")
@@ -191,6 +208,8 @@ def render():
                     st.error("Failed to save changes.")
             except Exception as e:
                 st.error(f"An error occurred while saving: {e}")
+
+        st.link_button("Open Google Sheets", "https://docs.google.com/spreadsheets/d/1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY/edit?gid=0#gid=0")
     
     except Exception as e:
         st.error(f"An error occurred: {e}")
@@ -202,19 +221,19 @@ def render():
 
     try:
         charity_df = fetch_google_sheets_data(charity_sheet_id, charity_range_name)
-        charity_df["area_id"] = pd.to_numeric(charity_df["area_id"], errors="coerce")
 
-        charity_df = charity_df[charity_df["area_id"] == 1]   
+        charity_df = charity_df[charity_df["Focus"] == "Craftsmanship and Production"]   
         charity_df = charity_df.rename(columns={"charity_name": "Charity Name", "registered_charity_number": "Registered Charity Number", "latest_income": "Latest Income", "latest_expenditure": "Latest Expenditure", "charity_contact_email": "Charity Contact Email", "charity_activities": "Charity Activities"})
 
-        editable_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
+        editable_columns = ["Total Donations", "Status"]
         disabled_columns = [col for col in charity_df.columns if col not in editable_columns]
-
+                
         edited_charity_df = st.data_editor(
             charity_df,
             column_config={
                 "Logo": st.column_config.ImageColumn(
                     label="Company Logo",
+                    pinned = True,
                     width="small",
                     help="Logos of companies"
                 ),
@@ -226,26 +245,16 @@ def render():
                     step=1,
                     format="CHF%d",
                 ),
-                "Contacted": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
+                "Status": st.column_config.SelectboxColumn(
+                    label="Status",
+                    options=status_options,
+                    help="Select the current status of the corporate."
                 ),
-                "Positive Response": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
+                "Focus": st.column_config.ListColumn(
+                    label="Focus",
+                    help="List of SG focus area as tags"
                 ),
-                "Negative Response": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
-                ),
-                "Partnership": st.column_config.NumberColumn(
-                    min_value=0,
-                    max_value=1,
-                    step=1,
-                ),
+      
             },
             hide_index=True,
             disabled=disabled_columns,
@@ -258,10 +267,18 @@ def render():
                 if edited_charity_df[col].apply(lambda x: isinstance(x, list)).any():
                     edited_charity_df[col] = edited_charity_df[col].apply(lambda x: "[" + ", ".join(map(lambda y: f"'{y}'", x)) + "]" if isinstance(x, list) else x)
     
-            numeric_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
+            numeric_columns = ["Total Donations"]
             for col in numeric_columns:
                 if col in edited_charity_df.columns:
                     edited_charity_df[col] = pd.to_numeric(edited_charity_df[col], errors='coerce').fillna(0).astype(int)
+
+            # Ensure string columns are stored as strings and handle NaN values
+            str_columns = ["Status"]
+            for col in str_columns:
+                if col in edited_df.columns:
+                    # Convert to string type and replace NaN values with an empty string
+                    edited_df[col] = edited_df[col].fillna("").astype(str)
+
             
             edited_charity_df = edited_charity_df.fillna("")
     
@@ -274,8 +291,12 @@ def render():
                     st.rerun()
                 else:
                     st.error("Failed to save changes.")
+
             except Exception as e:
                 st.error(f"An error occurred while saving: {e}")
+            
+        st.link_button("Open Google Sheets", "https://docs.google.com/spreadsheets/d/1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY/edit?gid=217792113#gid=217792113")
+
     except Exception as e:
         st.error(f"Failed to load the dataset: {e}")
 
