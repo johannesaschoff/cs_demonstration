@@ -249,6 +249,15 @@ def render():
                     label="Focus",
                     help="List of SG focus area as tags"
                 ),
+                "Latest Income": st.column_config.NumberColumn(
+                    "Latest Income (in thausand)",
+                    format="£ %d"
+                ),
+                "Latest Expenditure": st.column_config.NumberColumn(
+                    "Latest Expenditure (in thausand)",
+                    format="£ %d"
+                )
+      
       
             },
             hide_index=True,
