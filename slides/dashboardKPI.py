@@ -69,6 +69,9 @@ def render():
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  
     range_name = "History"  
     history = fetch_google_sheets_data(sheet_id, range_name)
+    history = history.replace({',': '.', '#DIV/0!': None, '': None}, regex=True)
+    history = history.apply(pd.to_numeric, errors='coerce')
+
     
     #changes of CER
     history['Corporate Engagement Rate'] = history['Corporate Engagement Rate'].str.replace(',', '.').astype(float)
@@ -115,12 +118,6 @@ def render():
         st.error(f"Invalid value for conversion: {e}")
         cer, cr, ags, roi = None, None, None, None
     
-    
-    #changes of values
-    sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  
-    range_name = "History"  
-    history = fetch_google_sheets_data(sheet_id, range_name)
-    
     #changes of CER
     history['Charity Engagement Rate'] = history['Charity Engagement Rate'].str.replace(',', '.').astype(float)
     last_value = history['Charity Engagement Rate'].iloc[-1]
@@ -161,6 +158,8 @@ def render():
     
     
     df = fetch_google_sheets_data(sheet_id, range_name)
+    df = df.replace({',': '.', '#DIV/0!': None, '': None}, regex=True)
+    df = df.apply(pd.to_numeric, errors='coerce')
     
     try:
         cfh = round(float(df.loc[0, "Corporate Fundraising Hours"]))
