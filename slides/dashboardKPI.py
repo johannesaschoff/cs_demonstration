@@ -37,7 +37,7 @@ def render():
         st.error(f"An error occurred: {e}")
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Corporate Engagement Rate", value=cer, "1.2 °F")
+    col1.metric(label="Corporate Engagement Rate", value=cer,delta= "1.2 °F")
     col2.metric("Conversion Rate", "9 mph", "-8%")
     col3.metric("Average Gift Size", "86%", "4%")
     col4.metric("Return on Invest (ROI)", "86%", "4%")
