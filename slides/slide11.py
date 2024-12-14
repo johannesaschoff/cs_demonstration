@@ -104,6 +104,9 @@ def render():
             df["Industries"] = df["Industries"].apply(safe_literal_eval)
             df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
 
+        # Ensure unique column names
+        df.columns = pd.io.parsers.ParserBase({'names': df.columns})._maybe_dedup_names()
+
         # Define editable and non-editable columns
         editable_columns = ["Total Donations", "Status"]
         disabled_columns = [col for col in df.columns if col not in editable_columns]
