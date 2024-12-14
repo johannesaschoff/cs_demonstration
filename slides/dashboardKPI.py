@@ -34,8 +34,9 @@ def update_google_sheets_data(sheet_id, range_name, values):
     except HttpError as error:
         st.error(f"An error occurred: {error}")
         return None
+
+def render():
         
-def render():   
     st.title("KPI Dashboard")
     
     # Google Sheets details
@@ -64,14 +65,43 @@ def render():
         cer, cr, ags, roi = None, None, None, None
     
     
+    #changes of values
+    sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  
+    range_name = "History"  
+    history = fetch_google_sheets_data(sheet_id, range_name)
+    
+    #changes of CER
+    history['Corporate Engagement Rate'] = history['Corporate Engagement Rate'].str.replace(',', '.').astype(float)
+    last_value = history['Corporate Engagement Rate'].iloc[-1]
+    second_last_different_value = history['Corporate Engagement Rate'][history['Corporate Engagement Rate'] != last_value].iloc[-1]
+    cer_ratio = round(last_value/second_last_different_value-1,2)
+    
+    #changes of CER
+    history['Corporate Conversion Rate'] = history['Corporate Conversion Rate'].str.replace(',', '.').astype(float)
+    last_value = history['Corporate Conversion Rate'].iloc[-1]
+    second_last_different_value = history['Corporate Conversion Rate'][history['Corporate Conversion Rate'] != last_value].iloc[-1]
+    cr_ratio = round(last_value/second_last_different_value-1,2)
+    
+    #changes of CAGS
+    history['Corporate Average Gift Size'] = history['Corporate Average Gift Size'].str.replace(',', '.').astype(float)
+    last_value = history['Corporate Average Gift Size'].iloc[-1]
+    second_last_different_value = history['Corporate Average Gift Size'][history['Corporate Average Gift Size'] != last_value].iloc[-1]
+    ags_ratio = round(last_value/second_last_different_value-1,2)
+    
+    #changes of CROI
+    history['Corporate Return on Invest (ROI)'] = history['Corporate Return on Invest (ROI)'].str.replace(',', '.').astype(float)
+    last_value = history['Corporate Return on Invest (ROI)'].iloc[-1]
+    second_last_different_value = history['Corporate Return on Invest (ROI)'][history['Corporate Return on Invest (ROI)'] != last_value].iloc[-1]
+    roi_ratio = round(last_value/second_last_different_value-1,2)
+    
     
     st.markdown("**Corporate KPIs**")
     # Display metrics
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric(label="Engagement Rate", value=cer,  border=True)
-    col2.metric(label= "Conversion Rate", value=cr, border=True)
-    col3.metric(label="Average Gift Size", value=f"£ {ags}",border=True)
-    col4.metric(label="Return on Invest (ROI)", value=roi,border=True)
+    col1.metric(label="Engagement Rate", value=cer, delta=cer_ratio, border=True)
+    col2.metric(label= "Conversion Rate", value=cr,delta=cr_ratio, border=True)
+    col3.metric(label="Average Gift Size", value=f"£ {ags}",delta=ags_ratio, border=True)
+    col4.metric(label="Return on Invest (ROI)", value=roi,delta=roi_ratio, border=True)
     
     try:
         ccer = round(float(df.loc[0, "Charity Engagement Rate"]), 2)
@@ -86,14 +116,43 @@ def render():
         cer, cr, ags, roi = None, None, None, None
     
     
+    #changes of values
+    sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  
+    range_name = "History"  
+    history = fetch_google_sheets_data(sheet_id, range_name)
+    
+    #changes of CER
+    history['Charity Engagement Rate'] = history['Charity Engagement Rate'].str.replace(',', '.').astype(float)
+    last_value = history['Charity Engagement Rate'].iloc[-1]
+    second_last_different_value = history['Charity Engagement Rate'][history['Charity Engagement Rate'] != last_value].iloc[-1]
+    ccer_ratio = round(last_value/second_last_different_value-1,2)
+    
+    #changes of CER
+    history['Charity Conversion Rate'] = history['Charity Conversion Rate'].str.replace(',', '.').astype(float)
+    last_value = history['Charity Conversion Rate'].iloc[-1]
+    second_last_different_value = history['Charity Conversion Rate'][history['Charity Conversion Rate'] != last_value].iloc[-1]
+    ccr_ratio = round(last_value/second_last_different_value-1,2)
+    
+    #changes of CAGS
+    history['Charity Average Gift Size'] = history['Charity Average Gift Size'].str.replace(',', '.').astype(float)
+    last_value = history['Charity Average Gift Size'].iloc[-1]
+    second_last_different_value = history['Charity Average Gift Size'][history['Charity Average Gift Size'] != last_value].iloc[-1]
+    cags_ratio = round(last_value/second_last_different_value-1,2)
+    
+    #changes of CROI
+    history['Charity Return on Invest (ROI)'] = history['Charity Return on Invest (ROI)'].str.replace(',', '.').astype(float)
+    last_value = history['Charity Return on Invest (ROI)'].iloc[-1]
+    second_last_different_value = history['Charity Return on Invest (ROI)'][history['Charity Return on Invest (ROI)'] != last_value].iloc[-1]
+    croi_ratio = round(last_value/second_last_different_value-1,2)
+    
     
     st.markdown("**Charity KPIs**")
     # Display metrics
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric(label="Engagement Rate", value=ccer,  border=True)
-    col2.metric(label= "Conversion Rate", value=ccr,border=True)
-    col3.metric(label="Average Gift Size", value=f"£ {cags}", border=True)
-    col4.metric(label="Return on Invest (ROI)", value=croi,border=True)
+    col1.metric(label="Engagement Rate", value=ccer, delta=ccer_ratio, border=True)
+    col2.metric(label= "Conversion Rate", value=ccr,delta=ccr_ratio, border=True)
+    col3.metric(label="Average Gift Size", value=f"£ {cags}",delta=cags_ratio, border=True)
+    col4.metric(label="Return on Invest (ROI)", value=croi,delta=croi_ratio, border=True)
     
     st.markdown("**Expenditure Inputs**")
     
@@ -154,5 +213,4 @@ def render():
             st.error(f"Invalid input: {e}")
         except Exception as e:
             st.error(f"An error occurred: {e}")
-            
 render()
