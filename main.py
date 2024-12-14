@@ -15,8 +15,7 @@ slides = [
     "Community Development and Employment",
     "Emergency Relief and Basic Needs",
     "Food Security and Sustainable Agriculture",
-    "KPI Dashboard",
-    "gsslide"
+    "KPI Dashboard"
 ]
 selected_slide = st.sidebar.radio("Choose a slide", slides)
 
