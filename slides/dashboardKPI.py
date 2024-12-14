@@ -25,7 +25,7 @@ def render():
     st.title("KPI Dashboard")
 
     col1, col2, col3, col4, col5 = st.columns(5)
-    col1.metric(""Corporate Engagement Rate", "70 °F", "1.2 °F")
+    col1.metric("Corporate Engagement Rate", "70 °F", "1.2 °F")
     col2.metric("Conversion Rate", "9 mph", "-8%")
     col3.metric("Average Gift Size", "86%", "4%")
     col4.metric("Return on Invest (ROI)", "86%", "4%")
