@@ -1,5 +1,5 @@
 import streamlit as st
-from slides import slide1, slide2, slide3, slide4, slide5, dashboardKPI, slide11
+from slides import slide11, slide12, slide3, slide4, slide5, dashboardKPI
 
 st.set_page_config(layout="wide") 
 
@@ -22,9 +22,9 @@ selected_slide = st.sidebar.radio("Choose a slide", slides)
 
 # Render the selected slide
 if selected_slide == slides[0]:
-    slide1.render()
+    slide11.render()
 elif selected_slide == slides[1]:
-    slide2.render()
+    slide12.render()
 elif selected_slide == slides[2]:
     slide3.render()
 elif selected_slide == slides[3]:
@@ -33,5 +33,3 @@ elif selected_slide == slides[4]:
     slide5.render()
 elif selected_slide == slides[5]:
     dashboardKPI.render()
-elif selected_slide == slides[6]:
-    slide11.render()
