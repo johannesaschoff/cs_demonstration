@@ -31,11 +31,13 @@ def render():
     # Fetch data
     try:
         df = fetch_google_sheets_data(sheet_id, range_name)
+        df = pd.DataFrame(data =df)
+        cer = df.loc[0, "Corporate Engagement Rate"]
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Corporate Engagement Rate", value=df["Corporate Engagement Rate"][0], "1.2 °F")
+    col1.metric("Corporate Engagement Rate", value=cer, "1.2 °F")
     col2.metric("Conversion Rate", "9 mph", "-8%")
     col3.metric("Average Gift Size", "86%", "4%")
     col4.metric("Return on Invest (ROI)", "86%", "4%")
