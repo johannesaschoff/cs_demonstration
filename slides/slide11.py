@@ -250,7 +250,8 @@ def render():
                     help="List of SG focus area as tags"
                 ),
                 "Last Income": st.column_config.NumberColumn(
-                    format="£ %d",
+                    format="£ %d"
+                )
       
             },
             hide_index=True,
