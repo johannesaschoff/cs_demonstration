@@ -48,12 +48,7 @@ def update_google_sheets_data(sheet_id, range_name, values):
 def render():
     st.title("Craftsmanship and Production")
     st.markdown("**Project types**")
-    st.write(''':blue-background[Butchery] :blue-background[Bakery]''')
-    st.write(''':blue-background[Bakery]''')
-    st.write(''':blue-background[Kitchen]''')
-    st.write(''':blue-background[Woodwork]''')
-    st.write(''':blue-background[Sewing]''')
-    st.write(''':blue-background[Metal Construction Workshop]''')
+    st.write(''':blue-background[Butchery] :blue-background[Bakery] :blue-background[Kitchen] :blue-background[Woodwork] :blue-background[Sewing] :blue-background[Metal Construction Workshop]''')
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
