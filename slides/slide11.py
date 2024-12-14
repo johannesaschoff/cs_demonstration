@@ -92,6 +92,7 @@ def render():
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"
     range_name = "Names"
     
+    
     try:
         # Fetch fresh data from Google Sheets
         df = fetch_google_sheets_data(sheet_id, range_name)
@@ -110,7 +111,7 @@ def render():
             df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
     
         # Define editable and non-editable columns
-        editable_columns = ["Total Donations", "Positive Response",	"Negative Response","Contacted",	"Partnership"]
+        editable_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
         disabled_columns = [col for col in df.columns if col not in editable_columns]
     
         # Pass the full DataFrame to the editor
@@ -140,8 +141,29 @@ def render():
                     max_value=100000000,
                     step=1,
                     format="CHF%d",
-                )
+                ),
+                "Contacted": st.column_config.NumberColumn(
+                    min_value=0,
+                    max_value=1,
+                    step=1,
+                ),
+                "Positive Response": st.column_config.NumberColumn(
+                    min_value=0,
+                    max_value=1,
+                    step=1,
+                ),
+                "Negative Response": st.column_config.NumberColumn(
+                    min_value=0,
+                    max_value=1,
+                    step=1,
+                ),
+                "Partnership": st.column_config.NumberColumn(
+                    min_value=0,
+                    max_value=1,
+                    step=1,
+                ),
             },
+            hide_index=True,
             disabled=disabled_columns,
             use_container_width=True
         )
@@ -151,6 +173,27 @@ def render():
             for col in edited_df.columns:
                 if edited_df[col].apply(lambda x: isinstance(x, list)).any():
                     edited_df[col] = edited_df[col].apply(lambda x: ", ".join(map(str, x)) if isinstance(x, list) else x)
+    
+            # Ensure numeric columns are stored as integers and handle NaN values
+            for col in ["Total Donations"]:  # Add other numeric columns as needed
+                if col in edited_df.columns:
+                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
+            for col in ["Contacted"]:  # Add other numeric columns as needed
+                if col in edited_df.columns:
+                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
+            for col in ["Positive Response"]:  # Add other numeric columns as needed
+                if col in edited_df.columns:
+                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
+            for col in ["Negative Response"]:  # Add other numeric columns as needed
+                if col in edited_df.columns:
+                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
+            for col in ["Partnership"]:  # Add other numeric columns as needed
+                if col in edited_df.columns:
+                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
+            
+    
+            # Replace NaN and invalid values in other columns with empty strings
+            edited_df = edited_df.fillna("")
     
             # Convert DataFrame to list of lists
             updated_values = [edited_df.columns.tolist()] + edited_df.values.tolist()
@@ -167,6 +210,7 @@ def render():
     
     except Exception as e:
         st.error(f"An error occurred: {e}")
+
 
 
 render()
