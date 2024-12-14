@@ -48,11 +48,7 @@ def update_google_sheets_data(sheet_id, range_name, values):
 def render():
     st.title("Educational Development")
     st.markdown("**Project types**")
-    st.write("- Teaching")
-    st.write("- School Meals")
-    st.write("- Hygiene")
-    st.write("- Medical Care")
-    st.write("- Musical Education")
+    st.write(''':blue-background[Teaching] :blue-background[School Meals] :blue-background[Hygiene] :blue-background[Medical Care] :blue-background[Musical Education]''')
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
