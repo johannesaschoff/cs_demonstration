@@ -47,10 +47,12 @@ def update_google_sheets_data(sheet_id, range_name, values):
 
 def render():
     st.title("Food Security and Sustainable Agriculture")
-    st.markdown("**Project types**")
-    st.write("- Food")
-    st.write("- Medicine")
-    st.write("- Water Pumps")
+    st.markdown("**Project Types**")
+    st.write("- Fruit and Vegetable Growing")
+    st.write("- Cattle")
+    st.write("- Chicken Farming")
+    st.write("- Fish Farming")
+    st.write("- Experimental Agriculture")
 
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
