@@ -22,24 +22,37 @@ def fetch_google_sheets_data(sheet_id, range_name):
         return pd.DataFrame()  # Return empty DataFrame if no data
 
 def render():
+        
     st.title("KPI Dashboard")
-
+    
     # Google Sheets details
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"  # Replace with your Google Sheet ID
     range_name = "KPIdashboard"  # Replace with your sheet's range (e.g., 'Sheet1!A1:D10')
-
+    
     # Fetch data
+    df = fetch_google_sheets_data(sheet_id, range_name)
+    df.columns = df.columns.str.strip().str.replace("\n", "")  
+    
+    # Replace commas with dots and convert to float
+    df = df.replace(',', '.', regex=True).apply(pd.to_numeric, errors='coerce')
+    
+    # Access and round specific values
     try:
-        df = fetch_google_sheets_data(sheet_id, range_name)
-        df = pd.DataFrame(data =df)
-        cer = df.loc[0, "Corporate Engagement Rate"]
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-
+        cer = round(float(df.loc[0, "Corporate Engagement Rate"]), 2)
+        cr = round(float(df.loc[0, "Conversion Rate"]), 2)
+        ags = round(float(df.loc[0, "Average Gift Size"]), 2)
+        roi = round(float(df.loc[0, "Return on Invest (ROI)"]), 2)
+    except KeyError as e:
+        st.error(f"Column not found: {e}")
+        cer, cr, ags, roi = None, None, None, None
+    except ValueError as e:
+        st.error(f"Invalid value for conversion: {e}")
+        cer, cr, ags, roi = None, None, None, None
+    
+    # Display metrics
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric(label="Corporate Engagement Rate", value=cer,delta= "1.2 °F")
-    col2.metric("Conversion Rate", "9 mph", "-8%")
-    col3.metric("Average Gift Size", "86%", "4%")
-    col4.metric("Return on Invest (ROI)", "86%", "4%")
-
+    col1.metric(label="Corporate Engagement Rate", value=cer, delta=0.3)
+    col2.metric(label="Conversion Rate", value=cr,delta=-0.5)
+    col3.metric(label="Average Gift Size", value=ags,delta=1.2)
+    col4.metric(label="Return on Invest (ROI)", value=roi,delta=0.1)
 render()
