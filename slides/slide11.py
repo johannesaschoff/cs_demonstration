@@ -85,37 +85,14 @@ def render():
         )
     except Exception as e:
         st.error(f"Could not fetch the PPTX file: {e}")     
-    
-    
-    st.markdown("**Matching Corporates**")
-    corporate_sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"
-    corporate_range_name = "Names"
 
+    sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"
+    range_name = "Names"
+    
     try:
-        corporate_df = fetch_google_sheets_data(corporate_sheet_id, corporate_range_name)
-        corporate_df = corporate_df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
-
-        columns_to_process = [
-            "Craftsmanship and production",
-            "Educational Development",
-            "Community Development and Employment",
-            "Emergency Relief and Basic Needs",
-            "Food Security and Sustainable Agriculture"
-        ]
-
-        def convert_to_boolean(value):
-            if isinstance(value, str):
-                if value.strip().upper() == "WAHR":  
-                    return True
-                elif value.strip().upper() == "FALSCH":  
-                    return False
-            return None  
-
-        for col in columns_to_process:
-            if col in corporate_df.columns:  
-                corporate_df[col] = corporate_df[col].apply(convert_to_boolean)
-
-        corporate_df = corporate_df[corporate_df["Craftsmanship and production"] == True]
+        # Fetch fresh data from Google Sheets
+        df = fetch_google_sheets_data(sheet_id, range_name)
+        df = df.rename(columns={"Contact Mail": "Contact Mail/Phone Nr./LinkedIn"})
     
         def safe_literal_eval(x):
             try:
@@ -124,15 +101,19 @@ def render():
                 logging.warning(f"Skipping invalid value: {x}")
                 return []
     
-        if "Industries" in corporate_df.columns:
-            corporate_df["Industries"] = corporate_df["Industries"].apply(safe_literal_eval)
-            corporate_df["Industries"] = corporate_df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
+        # Process columns with list-like data
+        if "Industries" in df.columns:
+            df["Industries"] = df["Industries"].apply(safe_literal_eval)
+            df["Industries"] = df["Industries"].apply(lambda x: x if isinstance(x, list) else [])
     
+        # Define editable and non-editable columns
         editable_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
-        disabled_columns = [col for col in corporate_df.columns if col not in editable_columns]
+        disabled_columns = [col for col in df.columns if col not in editable_columns]
     
-        edited_corporate_df = st.data_editor(
-            corporate_df,
+        # Pass the full DataFrame to the editor
+        st.write("Editing data:")
+        edited_df = st.data_editor(
+            df,
             column_config={
                 "Logo": st.column_config.ImageColumn(
                     label="Company Logo",
@@ -180,26 +161,29 @@ def render():
             },
             hide_index=True,
             disabled=disabled_columns,
-            use_container_width=True,
-            key="corporate_data_editor"
+            use_container_width=True
         )
     
-        if st.button("Save Changes", key="save_corporate_changes"):
-            for col in edited_corporate_df.columns:
-                if edited_corporate_df[col].apply(lambda x: isinstance(x, list)).any():
-                    edited_corporate_df[col] = edited_corporate_df[col].apply(lambda x: "[" + ", ".join(map(lambda y: f"'{y}'", x)) + "]" if isinstance(x, list) else x)
+        if st.button("Save Changes"):
+            # Flatten lists to strings for saving to Google Sheets
+            for col in edited_df.columns:
+                if edited_df[col].apply(lambda x: isinstance(x, list)).any():
+                    edited_df[col] = edited_df[col].apply(lambda x: "[" + ", ".join(map(lambda y: f"'{y}'", x)) + "]" if isinstance(x, list) else x)
     
+            # Ensure numeric columns are stored as integers and handle NaN values
             numeric_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
             for col in numeric_columns:
-                if col in edited_corporate_df.columns:
-                    edited_corporate_df[col] = pd.to_numeric(edited_corporate_df[col], errors='coerce').fillna(0).astype(int)
+                if col in edited_df.columns:
+                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
             
-            edited_corporate_df = edited_corporate_df.fillna("")
+            # Replace NaN and invalid values in other columns with empty strings
+            edited_df = edited_df.fillna("")
     
-            updated_values = [edited_corporate_df.columns.tolist()] + edited_corporate_df.values.tolist()
+            # Convert DataFrame to list of lists
+            updated_values = [edited_df.columns.tolist()] + edited_df.values.tolist()
     
             try:
-                result = update_google_sheets_data(corporate_sheet_id, corporate_range_name, updated_values)
+                result = update_google_sheets_data(sheet_id, range_name, updated_values)
                 if result:
                     st.success("Changes saved successfully! Reloading data...")
                     st.rerun()
@@ -207,6 +191,7 @@ def render():
                     st.error("Failed to save changes.")
             except Exception as e:
                 st.error(f"An error occurred while saving: {e}")
+    
     except Exception as e:
         st.error(f"An error occurred: {e}")
 
