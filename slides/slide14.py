@@ -71,7 +71,7 @@ def render():
                 use_container_width=True
             )
 
-    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck community development.pptx"
+    pptx_url = "https://raw.githubusercontent.com/johannesaschoff/cs_demonstration/main/PitchDeck emergency relief.pptx"
     try:
         pptx_data = fetch_pptx(pptx_url)
         st.download_button(
