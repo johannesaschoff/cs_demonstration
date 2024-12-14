@@ -134,7 +134,7 @@ def render():
                     min_value=0,
                     max_value=100000000,
                     step=1,
-                    format="£%d",
+                    format="£ %d",
                 ),
                 "Status": st.column_config.SelectboxColumn(
                     label="Status",
@@ -238,7 +238,7 @@ def render():
                     min_value=0,
                     max_value=100000000,
                     step=1,
-                    format="£%d",
+                    format="£ %d",
                 ),
                 "Status": st.column_config.SelectboxColumn(
                     label="Status",
