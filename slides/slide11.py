@@ -2,13 +2,10 @@ import streamlit as st
 import pandas as pd
 import requests
 import ast
-import streamlit as st
+import logging
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.oauth2.service_account import Credentials
-import pandas as pd
-import logging
-
 
 @st.cache_data
 def fetch_pptx(url):
@@ -92,7 +89,6 @@ def render():
     sheet_id = "1TPZ-lKKTrLK3TcG2r7ybl24Hy2SWLC2rhinpNRmjewY"
     range_name = "Names"
     
-    
     try:
         # Fetch fresh data from Google Sheets
         df = fetch_google_sheets_data(sheet_id, range_name)
@@ -172,26 +168,14 @@ def render():
             # Flatten lists to strings for saving to Google Sheets
             for col in edited_df.columns:
                 if edited_df[col].apply(lambda x: isinstance(x, list)).any():
-                    edited_df[col] = edited_df[col].apply(lambda x: ", ".join(map(str, x)) if isinstance(x, list) else x)
+                    edited_df[col] = edited_df[col].apply(lambda x: "[" + ", ".join(map(lambda y: f"'{y}'", x)) + "]" if isinstance(x, list) else x)
     
             # Ensure numeric columns are stored as integers and handle NaN values
-            for col in ["Total Donations"]:  # Add other numeric columns as needed
-                if col in edited_df.columns:
-                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
-            for col in ["Contacted"]:  # Add other numeric columns as needed
-                if col in edited_df.columns:
-                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
-            for col in ["Positive Response"]:  # Add other numeric columns as needed
-                if col in edited_df.columns:
-                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
-            for col in ["Negative Response"]:  # Add other numeric columns as needed
-                if col in edited_df.columns:
-                    edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
-            for col in ["Partnership"]:  # Add other numeric columns as needed
+            numeric_columns = ["Total Donations", "Contacted", "Positive Response", "Negative Response", "Partnership"]
+            for col in numeric_columns:
                 if col in edited_df.columns:
                     edited_df[col] = pd.to_numeric(edited_df[col], errors='coerce').fillna(0).astype(int)
             
-    
             # Replace NaN and invalid values in other columns with empty strings
             edited_df = edited_df.fillna("")
     
@@ -210,7 +194,5 @@ def render():
     
     except Exception as e:
         st.error(f"An error occurred: {e}")
-
-
 
 render()
