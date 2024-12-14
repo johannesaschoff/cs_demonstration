@@ -39,9 +39,9 @@ def render():
     # Access and round specific values
     try:
         cer = round(float(df.loc[0, "Corporate Engagement Rate"]), 2)
-        cr = round(float(df.loc[0, "Conversion Rate"]), 2)
-        ags = round(float(df.loc[0, "Average Gift Size"]), 2)
-        roi = round(float(df.loc[0, "Return on Invest (ROI)"]), 2)
+        cr = round(float(df.loc[0, "Corporate Conversion Rate"]), 2)
+        ags = round(float(df.loc[0, "Corporate Average Gift Size"]), 2)
+        roi = round(float(df.loc[0, "Corporate Return on Invest (ROI)"]), 2)
     except KeyError as e:
         st.error(f"Column not found: {e}")
         cer, cr, ags, roi = None, None, None, None
@@ -49,10 +49,32 @@ def render():
         st.error(f"Invalid value for conversion: {e}")
         cer, cr, ags, roi = None, None, None, None
     
+    st.markdown("**Corporate KPIs**")
     # Display metrics
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric(label="Corporate Engagement Rate", value=cer, delta=0.3)
-    col2.metric(label="Conversion Rate", value=cr,delta=-0.5)
-    col3.metric(label="Average Gift Size", value=ags,delta=1.2)
-    col4.metric(label="Return on Invest (ROI)", value=roi,delta=0.1)
+    col1.metric(label="Engagement Rate", value=cer, delta=0.3, border=True)
+    col2.metric(label= "Conversion Rate", value=cr,delta=-0.5, border=True)
+    col3.metric(label="Average Gift Size", value=ags,delta=1.2, border=True)
+    col4.metric(label="Return on Invest (ROI)", value=roi,delta=0.1, border=True)
+    
+    try:
+        ccer = round(float(df.loc[0, "Charity Engagement Rate"]), 2)
+        ccr = round(float(df.loc[0, "Charity Conversion Rate"]), 2)
+        cags = round(float(df.loc[0, "Charity Average Gift Size"]), 2)
+        croi = round(float(df.loc[0, "Charity Return on Invest (ROI)"]), 2)
+    except KeyError as e:
+        st.error(f"Column not found: {e}")
+        cer, cr, ags, roi = None, None, None, None
+    except ValueError as e:
+        st.error(f"Invalid value for conversion: {e}")
+        cer, cr, ags, roi = None, None, None, None
+    
+    st.markdown("**Charity KPIs**")
+    # Display metrics
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric(label="Engagement Rate", value=ccer, delta=0.3, border=True)
+    col2.metric(label= "Conversion Rate", value=ccr,delta=-0.5, border=True)
+    col3.metric(label="Average Gift Size", value=cags,delta=1.2, border=True)
+    col4.metric(label="Return on Invest (ROI)", value=croi,delta=0.1, border=True)
+
 render()
