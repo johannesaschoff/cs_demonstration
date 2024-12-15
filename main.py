@@ -10,8 +10,8 @@ st.sidebar.image(logo_url, width=100)
 # Sidebar for slide selection
 st.sidebar.title("Navigation")
 slides = [
-    '''Craftsmanship and production''',
     '''Educational Development''',
+    '''Craftsmanship and production''',
     '''Community Development and Employment''',
     '''Emergency Relief and Basic Needs''',
     '''Food Security and Sustainable Agriculture''',
@@ -21,9 +21,9 @@ selected_slide = st.sidebar.radio("Choose a slide", slides)
 
 # Render the selected slide
 if selected_slide == slides[0]:
-    slide11.render()
-elif selected_slide == slides[1]:
     slide12.render()
+elif selected_slide == slides[1]:
+    slide11.render()
 elif selected_slide == slides[2]:
     slide13.render()
 elif selected_slide == slides[3]:
