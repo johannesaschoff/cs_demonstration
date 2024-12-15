@@ -46,20 +46,19 @@ def update_google_sheets_data(sheet_id, range_name, values):
         return None
 
 def render():
-    st.title("Educational Development")
+    st.title("Craftsmanship and Production")
     st.markdown("**Project types**")
-    st.write(''':blue-background[Teaching] :blue-background[School Meals] :blue-background[Hygiene] :blue-background[Medical Care] :blue-background[Musical Education]''')
-
+    st.write(''':blue-background[Butchery] :blue-background[Bakery] :blue-background[Kitchen] :blue-background[Woodwork] :blue-background[Sewing] :blue-background[Metal Construction Workshop]''')
     # Section: Slideshow
     st.markdown("**Pitchdeck Preview**")
     columns = st.columns(5)
 
     image_urls = [
-        ["image_1.1.png", "image_6.png"],
+        ["image_1.png", "image_6.png"],
         ["image_2.png", "image_7.png"],
         ["image_3.png", "image_8.png"],
         ["image_4.png", "image_9.png"],
-        ["image_5.1.png", "image_10.png"]
+        ["image_5.png", "image_10.png"]
     ]
 
     for col, urls in zip(columns, image_urls):
@@ -106,7 +105,7 @@ def render():
         disabled_columns = [col for col in df.columns if col not in editable_columns]
         status_options = ["", "Contacted", "Positive Response", "Negative Response", "Partnership"]
         
-        df = df[df["Educational Development"] == "TRUE"]
+        df = df[df["Craftsmanship and production"] == "TRUE"]
         # Pass the full DataFrame to the editor
         st.write("Editing data:")
         edited_df = st.data_editor(
@@ -217,7 +216,7 @@ def render():
     try:
         charity_df = fetch_google_sheets_data(charity_sheet_id, charity_range_name)
 
-        charity_df = charity_df[charity_df["Focus"] == "Educational Development"]   
+        charity_df = charity_df[charity_df["Focus"] == "Craftsmanship and production"]   
         charity_df = charity_df.rename(columns={"charity_name": "Charity Name", "registered_charity_number": "Registered Charity Number", "latest_income": "Latest Income", "latest_expenditure": "Latest Expenditure", "charity_contact_email": "Charity Contact Email", "charity_activities": "Charity Activities"})
 
         editable_columns = ["Total Donations", "Status"]
